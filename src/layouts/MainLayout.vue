@@ -1,15 +1,27 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header class=" q-layout__section--marginal">
+    <q-header class=" q-layout__section--marginal ">
       <q-toolbar
-        style="height: 137px"
+        style="height: 100px"
         class="bg-info ">     
+        <div class="left q-ml-xl">
+          <q-avatar size="xl">
+            <img src="icons/MR-logo.svg" >
+          </q-avatar>
+    
+        </div>
 
+        
+        
         <q-toolbar-title
           class="text-dark text-center">
-          Rios Matias
         </q-toolbar-title>
+
+        <div class="right q-mr-md">
+          <q-btn size="md" icon="message"  color="dark" label="Contáctame" class="bg-accent" text-color="dark" style="border-radius: 50px"/>
+        </div>
       </q-toolbar>
+      
     </q-header>
 
     <!--q-drawer
@@ -36,6 +48,7 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+    
   </q-layout>
 </template>
 
@@ -98,3 +111,4 @@ export default {
   }
 }
 </script>
+
