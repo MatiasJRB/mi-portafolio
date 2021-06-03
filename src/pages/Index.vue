@@ -1,68 +1,69 @@
 <template>
   <q-page class="flex flex-center bg-info">
-    <div class="bg-info" >
-      <div class="q-my-xl row full-height absolute-top">
+    <div class="bg-info "  style="margin: 0px">
+      <div class=" row q-gutter-md " style="margin: 0px">
 
          
-      <div class="col-5 bg-info">
-          <q-card
-          flat
-          class="bg-info">
-            <div class="row justify-center right">
-              <div >
-                <div class="text-h6 text-weight-thin">
-                  Fullstack developer
-                </div>
-                <div class="text-h3 text-weight-bold">
-                  Rios <br>Matias
-                </div>
-                <div class="bg-info q-my-md">
-                  <img src="https://res.cloudinary.com/geome7ric-weasel/image/upload/v1622690940/MVIMG_20210420_174739_ryzkpg.png"
-                  style="width: 250px">
-                </div>
-                <div class="row justify-center">
-                  <div class="col" >
-                    <q-btn class="col bg-dark full-height"  color="bg-dark" icon="location_on"></q-btn>
+        <div class="col-12 bg-info q-pa-xs col-md" style="margin: 0px">
+            <q-card
+            flat
+            class="bg-info q-pa-xs">
+              <div class="row justify-center right q-pa-xs " style=" ">
+                <div >
+                  <div class="text-h6 text-weight-thin">
+                    Fullstack developer
                   </div>
-                  <div class="col-9 bg-dark" style="border-radius: 3px;">
-                    <div class="text-white text-weight-thin q-ml-md q-my-md" style="" >
-                      Buenos Aires, Argentina
+                  <div class="text-h3 text-weight-bold">
+                    Rios <br>Matias
+                  </div>
+                  <div class="bg-info q-my-md">
+                    <img src="https://res.cloudinary.com/geome7ric-weasel/image/upload/v1622690940/MVIMG_20210420_174739_ryzkpg.png"
+                    style="width: 250px">
+                  </div>
+                  <div class="row justify-center " style=" ">
+                    <div class="col" >
+                      <q-btn class="col bg-dark full-height"  color="bg-dark" icon="location_on"></q-btn>
                     </div>
-                  </div>                  
+                    <div class="col-9 bg-dark" style="border-radius: 3px;">
+                      <div class="text-white text-weight-thin q-ml-md q-my-md" style="" >
+                        Buenos Aires, Argentina
+                      </div>
+                    </div>                  
+                  </div>
+                  <div class="text-overline full-width q-my-sm">
+                    Disponible para relocación
+                  </div>
                 </div>
-                <div class="text-overline full-width q-my-sm">
-                  Disponible para relocación
-                </div>
-              </div>
-              
-            </div>            
-            
-          </q-card>  
-          <!--div class="row justify-center relative-bottom q-pb-xs q-mt-xl">
-            <div class="row justify-center">
-              Connect
-            </div>
-            <div class="row justify-center">
-              <q-avatar>
-                <img src="https://cdn.quasar.dev/img/avatar.png">
-              </q-avatar>
-            </div>
-          </div-->  
-          
                 
+              </div>            
+              
+            </q-card>  
+            <!--div class="row justify-center relative-bottom q-pb-xs q-mt-xl">
+              <div class="row justify-center">
+                Connect
+              </div>
+              <div class="row justify-center">
+                <q-avatar>
+                  <img src="https://cdn.quasar.dev/img/avatar.png">
+                </q-avatar>
+              </div>
+            </div-->  
+            
+                  
         </div>
-        <q-separator vertical color="dark"   />
+        
+        <q-separator size="xs" vertical color="dark"/>
 
-        <div class="col-5 bg-info">
-          <div class="row justify-around q-ma-lg">
+        <div class="col-12 bg-info q-pa-xs col-md" >
+          <div class="row justify-around q-ma-lg q-pa-xs" style=" ">
             <div class="col">
               <div class="text-overline">
                 COMPAÑIA
               </div>
-              <div class="text-weight-thin text-h4">
+              <div class="text-weight-thin text-h4 q-pa-xs">
                 Nuqlea
               </div>
-              <div class="text-caption q-my-sm">
+              <div class="text-caption q-my-sm q-pa-xs">
                 No disponible para contratar
               </div>
             </div>
@@ -79,16 +80,16 @@
               </div>
             </div>
           </div>
-          <div class="row justify-around q-ma-lg">
+          <div class="row justify-around q-ma-lg q-mt-xl" style=" ">
             <div class="col-8">
               <div class="text-overline">
                 TOP SKILLS
               </div>
-              <div class="row justify-around q-ma-lg text-weight-thin ">
+              <div class="row justify-around q-mt-lg q-mb-sm text-weight-thin " style=" ">
                 <div class="bg-accent" style="border-radius: 3px; ">
-                  <q-card class="my-card bg-accent"  flat > 
+                  <q-card class="my-card bg-accent q-px-xs"  flat > 
                     <q-card-section>
-                      <div class="text-h5 text-weight-thin q-mt-sm q-mb-xs text-center q-mt-md">VueJS</div>                      
+                      <div class="text-h5 text-weight-thin q-mt-sm q-mb-xs text-center q-mt-md" >VueJS</div>                      
                     </q-card-section>
 
                     <q-card-actions>           
@@ -107,18 +108,19 @@
                       />
                     </q-card-actions>
 
-                    <q-slide-transition>
+                    <!--q-slide-transition>
                       <div v-show="more_skill1">
                         <q-separator />
                         <q-card-section class="text-subitle2">
                           {{ info_skill1 }}
                         </q-card-section>
                       </div>
-                    </q-slide-transition>
+                    </q-slide-transition-->
                   </q-card>
                 </div>
+                
                 <div class="bg-accent q-mx-sm" style="border-radius: 3px; width: 100px">
-                  <q-card class="my-card bg-accent"  flat > 
+                  <q-card class="my-card bg-accent q-px-xs"  flat > 
                     <q-card-section>
                       <div class="text-h5 text-weight-thin q-mt-sm q-mb-xs text-center q-mt-md">VScode</div>                      
                     </q-card-section>
@@ -139,18 +141,12 @@
                       />
                     </q-card-actions>
 
-                    <q-slide-transition>
-                      <div v-show="more_skill1">
-                        <q-separator />
-                        <q-card-section class="text-subitle2">
-                          {{ info_skill1 }}
-                        </q-card-section>
-                      </div>
-                    </q-slide-transition>
+                    
                   </q-card>
                 </div>
+
                 <div class="bg-accent " style="border-radius: 3px; width: 100px">
-                  <q-card class="my-card bg-accent"  flat > 
+                  <q-card class="my-card bg-accent q-px-xs"  flat > 
                     <q-card-section>
                       <div class="text-h5 text-weight-thin q-mt-sm q-mb-xs text-center q-mt-md">Github</div>                      
                     </q-card-section>
@@ -171,16 +167,27 @@
                       />
                     </q-card-actions>
 
-                    <q-slide-transition>
+                    <!--q-slide-transition>
                       <div v-show="more_skill1">
                         <q-separator />
                         <q-card-section class="text-subitle2">
                           {{ info_skill1 }}
                         </q-card-section>
                       </div>
-                    </q-slide-transition>
+                    </q-slide-transition-->
                   </q-card>
                 </div>
+              </div>
+
+              <div class="row bg-accent text-dark text-body2" v-show="more_skill1" style=" ">
+                <q-slide-transition>
+                  <div >
+                    <q-separator />
+                    <q-card-section class="text-subitle2">
+                      {{ info_skill1 }}
+                    </q-card-section>
+                  </div>
+                </q-slide-transition>
               </div>
             </div>
             <div class="col text-weight-thin text-h5">
@@ -205,77 +212,38 @@
             </div>
           </div>
 
-          <div class="row justify-around q-ma-lg">
+          <div class="row justify-around q-ma-lg" style=" ">
             <div class="col">
               <div class="text-overline">
                 SOBRE MÍ
 
               </div>
               <div class="text-body2 q-my-md">
-                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soy Ingeniero en Computación graduado de la Universidad Nacional del Sur, y me encuentro trabajando a jornada completa. Suelo aceptar diferentes trabajos freelance que me obligan a aprender nuevas cosas de manera autodidacta. Me apasiona el entrenamiento y el deporte (guerrero educado), la creación y edición de fotos y videos y determinados e-sports.
-
-Actualmente me encuentro desarrollando a modo freelance, <a href="https://jmpuhl.web.app/" target="_blank">junto a un compañero</a>, un producto de software multiplataforma (Web, Android, Windows, Linux) que provee un sistema de turnos y seguimiento para gimnasios. Quasar para el frontend (JS,VueJS,CSS,HTML) y Laravel para backend.
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soy Ingeniero en Computación graduado de la Universidad Nacional del Sur, y me encuentro trabajando a jornada completa. Suelo aceptar diferentes trabajos freelance que me obligan a aprender nuevas cosas de manera autodidacta. Me apasiona el entrenamiento y el deporte (guerrero educado), la creación y edición de fotos y videos y determinados e-sports.
+                <br>
               </div>
             </div>
           </div>
 
-          <div class="row justify-around q-ma-lg">
+          <div class="row justify-around q-ma-lg" style=" ">
             <div class="col">
               <div class="text-overline">
                 PROYECTOS
               </div>
-              <q-card>
-                <div class="row justify-around q-ma-lg">
-                  <div class="col">JS GraphQL library</div>
-                </div>
-                <div class="row justify-around q-ma-lg">
-                  <div class="col">https://github.com</div>
-                </div>
-                <div class="row justify-around q-ma-lg">
-                  <div class="col">Override the digital divide with additional clickthroughs from DevOps. User generated content in real-time will have multiple touchpoints for offshoring.</div>
-                </div>
-                <div class="row justify-around q-ma-lg">
-                  <div class="col"> Status: in progress. JavaScript. GraphQL</div>
-                </div>
-              </q-card>
-
-              <q-card>
-                <div class="row justify-around q-ma-lg">
-                  <div class="col">Running Lists</div>
-                </div>
-                <div class="row justify-around q-ma-lg">
-                  <div class="col">https://running-lists.com</div>
-                </div>
-                <div class="row justify-around q-ma-lg">
-                  <div class="col">Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</div>
-                </div>
-                <div class="row justify-around q-ma-lg">
-                  <div class="col">  Status: live. RoR. HTML. CSS</div>
-                </div>
-              </q-card>
-
-              <q-card>
-                <div class="row justify-around q-ma-lg">
-                  <div class="col">Northwest Podcast</div>
-                </div>
-                <div class="row justify-around q-ma-lg">
-                  <div class="col">https://npodcast.com</div>
-                </div>
-                <div class="row justify-around q-ma-lg">
-                  <div class="col">Leverage agile frameworks to provide a robust synopsis for high level overviews.</div>
-                </div>
-                <div class="row justify-around q-ma-lg">
-                  <div class="col">  Status: live. JavaScript. HTML</div>
-                </div>
-              </q-card>
+              <Proyecto class="q-my-md"></Proyecto>
+              <Proyecto class="q-my-md"></Proyecto>
+              <Proyecto class="q-my-md"></Proyecto>
+              <Proyecto class="q-my-md"></Proyecto>
             </div>
           </div>
 
-          <div class="row justify-around q-ma-lg">
-            <div class="row justify-around q-ma-lg">
-                Work history
+          <div class="row justify-around q-ma-lg" style=" ">
+            <div class="row justify-around q-ma-lg" style=" ">
+                <div class="text-overline">
+                  HISTORIA
+              </div>
             </div>
-            <div class="row justify-around q-ma-lg">
+            <div class="row justify-around q-ma-lg" style=" ">
                 <q-timeline :layout="layout" color="dark">
                   <q-timeline-entry heading>
                     Timeline heading
@@ -362,12 +330,15 @@ Actualmente me encuentro desarrollando a modo freelance, <a href="https://jmpuhl
           </div>
 
 
-          <div class="row justify-around q-ma-lg">
-            <div class="row text-h6 justify-around q-ma-lg text-center text-weight-regular">
-              Contacto
+          <div class="row justify-around q-ma-lg" style=" ">
+            <div class="row text-h6 justify-around q-ma-lg text-center text-weight-regular" style=" ">
+              <div class="text-overline">
+                CONTACTO
+
+              </div>
             </div>                        
           </div>
-          <div class="row justify-around q-ma-lg">
+          <div class="row justify-around q-ma-lg" style=" ">
             <div class="col">
               <q-input color="dark" v-model="tipo_proyecto" hint="Tipo de proyecto"  class="full-width"/>
             </div>
@@ -375,22 +346,22 @@ Actualmente me encuentro desarrollando a modo freelance, <a href="https://jmpuhl
               <q-input color="dark" v-model="tipo_proyecto" hint="Numero de telefono" type="phone-number" class="full-width"/>
             </div>
             <div class="col">
-              <q-btn flat label="Consulta" class="full-width full-height" @click="mostrar_datos_consulta = !mostrar_datos_consulta">
-
+              <q-btn flat label="Consulta" size="md" disable class="full-width full-height" @click="mostrar_datos_consulta = !mostrar_datos_consulta">
+                
               </q-btn>
             </div>
           </div>
-          <div class="row justify-around q-ma-lg" v-show="mostrar_datos_consulta">
-            <div class="row justify-around full-width">
-               <div class="q-pa-md full-width">
+          <div class="row justify-around q-ma-lg" v-show="mostrar_datos_consulta" style=" ">
+            <div class="row justify-around full-width" style=" ">
+                <div class="q-pa-md full-width">
                   <q-badge color="dark">
-                    Presupuesto: {{ presupuesto }} 
+                    Presupuesto: $ {{ presupuesto }}.000 pesos
                   </q-badge>
                   <q-slider
                     v-model="presupuesto"
                     class="full-width"
                     :min="0"
-                    :max="150"
+                    :max="500"
                     :step="5"
                     label
                     label-always
@@ -400,14 +371,14 @@ Actualmente me encuentro desarrollando a modo freelance, <a href="https://jmpuhl
                 </div>
               <div class="col"></div>
             </div>
-            <div class="row justify-around full-width">
+            <div class="row justify-around full-width" style=" "> 
               <q-input color="dark" v-model="tipo_proyecto" hint="Tipo de proyecto"    class="full-width"/>
             </div>
-            <div class="row justify-around full-width">
+            <div class="row justify-around full-width" style=" ">
               <q-input color="dark" v-model="tipo_proyecto" hint="Numero de telefono" type="phone-number" class="full-width"/>
             </div>
           </div>
-          <div class="row justify-around q-ma-lg">
+          <div class="row justify-around q-ma-lg" style=" ">
             <q-input
               color="dark"
               hint="Tu mensaje"
@@ -418,8 +389,8 @@ Actualmente me encuentro desarrollando a modo freelance, <a href="https://jmpuhl
               autogrow                     
             ></q-input>
           </div>
-          <div class="row justify-end q-ma-lg ">
-             <q-btn flat label="Enviar"  class="q-mr-md" @click="mostrar_datos_consulta = !mostrar_datos_consulta">
+          <div class="row justify-end q-ma-lg " style=" ">
+              <q-btn flat label="Enviar"  class="q-mr-md" @click="mostrar_datos_consulta = !mostrar_datos_consulta">
 
               </q-btn>
           </div>
@@ -429,25 +400,50 @@ Actualmente me encuentro desarrollando a modo freelance, <a href="https://jmpuhl
 
         </div>
 
+         <div class="col-12 bg-info q-pa-xs col-md" style="width: 300px">
+         </div>
 
-
-
-        <div class="col bg-info">
-          .col c
+        <!--Footer-->
+        <div class="row full-width bg-dark justify-around" style="height: 130px;  ">
+          <div class="col">
+            <div class=" q-ml-xl q-mt-sm">
+              <q-avatar size="xl" style="margin-left: -4px">
+                <img src="icons/FVE-image-accent.svg" >
+              </q-avatar>  
+              <div class="text-accent text-weigth-regular">
+                2021 - Matias Rios <br>Todos los derechos reservados
+              </div>    
+            </div>
+          </div>        
         </div>
-      </div>
+        
+      </div>    
+
+      
     </div>
+    
+
+    
+
+
+
+    
+    
   </q-page>
 </template>
 
 <script>
+
+
+import Proyecto from 'components/Proyecto.vue'
+
 export default {
   name: 'PageIndex',
   data()
   {
     return{
       mostrar_datos_consulta: false,
-      presupuesto: 40,
+      presupuesto: 50,
       tipo_proyecto: '',
       texto_descripcion: '',
       more_skill1: false,
@@ -455,6 +451,10 @@ export default {
       more_skill3: false,
       info_skill1: 'Lo uso hace años y tengo mas de tres proyectos',
     }
+  },  
+  components:
+  {
+    Proyecto
   },
   computed: {
     layout () {

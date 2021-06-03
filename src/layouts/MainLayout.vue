@@ -21,6 +21,19 @@
           <q-btn size="md" icon="message"  color="dark" label="Contáctame" class="bg-accent" text-color="dark" style="border-radius: 50px"/>
         </div>
       </q-toolbar>
+
+      <q-page-sticky style="z-index: 5000" :offset="[18, 18]">
+        <div class="q-px-sm q-py-lg">
+          <div class="column items-center"  position="bottom-rigth">
+            <q-fab color="accent" text-color="dark" icon="keyboard_arrow_up" direction="up">
+              <q-fab-action color="dark" icon="email" />
+              <q-fab-action color="dark"  icon="fab fa-whatsapp" />
+                          
+            </q-fab>
+          </div>
+      </div>
+      <!--q-btn @click="enviar_iniciar_nuevo_movimiento" fab icon="add" color="primary" /-->
+    </q-page-sticky>
       
     </q-header>
 
@@ -54,7 +67,7 @@
 
 <script>
 import EssentialLink from 'components/EssentialLink.vue'
-
+import { fasAirFreshener } from '@quasar/extras/fontawesome-v5'
 const linksData = [
   {
     title: 'Docs',
