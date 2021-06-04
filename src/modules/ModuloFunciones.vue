@@ -4,7 +4,6 @@
 
 <script>
 
-import firebase from 'firebase/app';
 
 /*
 
@@ -50,8 +49,8 @@ export default {
     alerta_positiva_home(msg)
     {
       this.$q.notify({
-                        color: 'primary',
-                        textColor: 'white',
+                        color: 'accent',
+                        textColor: 'dark',
                         icon: 'home',
                         message: msg
                       })

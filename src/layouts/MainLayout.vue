@@ -6,7 +6,7 @@
         class="bg-info ">     
         <div class="left q-ml-xl">
           <q-avatar size="xl">
-            <img src="icons/MR-logo.svg" >
+            <img src="../assets/MR-logo.svg" >
           </q-avatar>
     
         </div>
@@ -17,7 +17,7 @@
           class="text-dark text-center">
         </q-toolbar-title>
 
-        <div class="right q-mr-md">
+        <div class="right q-mr-xl">
           <q-btn size="md" icon="message"  color="dark" label="Contáctame" class="bg-accent" text-color="dark" style="border-radius: 50px"/>
         </div>
       </q-toolbar>

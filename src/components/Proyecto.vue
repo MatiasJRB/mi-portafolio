@@ -12,10 +12,10 @@
         </q-card-section>
 
         <q-card-section horizontal>
-          <div class="row" style="margin: 0px">
-            <div class="col-12 col-md">
+          <div class="row q-pa-xs" style="margin: 0px">
+            <div class="col-12 col-md flex flex-center">
               <q-img
-                class="rounded-borders q-ma-xs"
+                class="rounded-borders "
                 style="max-width: 400px"            
                 :src="imagen"
                 spinner-color="dark"
@@ -28,8 +28,8 @@
                 </div>
               </q-img>
             </div>
-            <div class="col-12 col-md">
-              <div class="text-body1  text-dark q-ma-xs">
+            <div class="col-12 col-md q-ma-md">
+              <div class="text-body1  text-dark ">
                 {{descripcion}}
               </div>
             </div>

@@ -1,7 +1,7 @@
 {
   "name": "mi-portafolio",
   "version": "0.0.1",
-  "description": "El portafolio de Matias Rios",
+  "description": "Bievenido a mi portafolio",
   "productName": "Matias Rios",
   "author": "MatiasJRB <mjrcal95@hotmail.com.ar>",
   "private": true,
@@ -25,7 +25,8 @@
     "eslint": "^7.21.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-vue": "^7.7.0",
-    "eslint-webpack-plugin": "^2.4.0"
+    "eslint-webpack-plugin": "^2.4.0",
+    "workbox-webpack-plugin": "^5.1.4"
   },
   "browserslist": [
     "last 10 Chrome versions",
