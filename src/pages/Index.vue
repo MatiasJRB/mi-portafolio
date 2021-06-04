@@ -88,7 +88,7 @@
 
             <!-- Skills -->
             <div class="row justify-around q-ma-lg" style=" ">
-              <div class="col-8">
+              <div class="col-12 col-md-7">
                 <div class="text-overline">
                   TOP SKILLS
                 </div>
@@ -197,7 +197,8 @@
                   </q-slide-transition>
                 </div>
               </div>
-              <div class="col text-weight-thin text-h5">
+
+              <div class="col-12 col-md-3 text-weight-thin text-h5">
                 <div class="text-overline">
                   MAIN TOOLS
                 </div>
@@ -257,20 +258,34 @@
                 </div>
               </div>
               <div class="row justify-around q-ma-lg" style=" ">
+                VERSION CORTA O LARGA?
+              </div>
+              <div class="row justify-around q-ma-lg" style=" ">
                   <q-timeline :layout="layout" color="dark">
-                    <q-timeline-entry heading>
+                    <!--q-timeline-entry heading>
                       Timeline heading
                       <br>
                       ({{$q.screen.lt.sm ? 'Dense' : ($q.screen.lt.md ? 'Comfortable' : 'Loose')}} layout)
-                    </q-timeline-entry>
+                    </q-timeline-entry-->
 
                     <q-timeline-entry
-                      title="Event Title"
-                      subtitle="February 22, 1986"
+                      title="Me egreso del secundario"
+                      subtitle="12 de Diciembre, 2012"
                       side="left"
+                      icon="school"
                     >
                       <div>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        Termino el secundario en el Colecio Nacional con un promedio de 8.33
+                      </div>
+                    </q-timeline-entry>
+                    <q-timeline-entry
+                      title="Me convierto en técnico en armado y reparación de PC"
+                      subtitle="20 de Noviembre, 2013"
+                      side="left"                      
+                      icon="school"
+                    >
+                      <div>
+                        Certificado por la Escuela Argentina de Idiomas y Tecnología
                       </div>
                     </q-timeline-entry>
 
@@ -353,13 +368,13 @@
             </div>
             <div class="row justify-around q-ma-lg" style=" ">
               <div class="col">
-                <q-input color="dark" v-model="tipo_proyecto" hint="Tipo de proyecto"  class="full-width"/>
+                <q-input color="dark" v-model="tipo_proyecto" hint="Nombre"  class=" q-mr-xs"/>
               </div>
               <div class="col">
-                <q-input color="dark" v-model="tipo_proyecto" hint="Numero de telefono" type="phone-number" class="full-width"/>
+                <q-input color="dark" v-model="tipo_proyecto" hint="Email" type="phone-number" class="q-ml-xs"/>
               </div>
               <div class="col">
-                <q-btn flat label="Consulta" size="md" disable class="full-width full-height" @click="mostrar_datos_consulta = !mostrar_datos_consulta">
+                <q-btn flat label="Consulta" size="md"  class="full-width full-height" @click="mostrar_datos_consulta = !mostrar_datos_consulta">
                   
                 </q-btn>
               </div>
@@ -372,7 +387,7 @@
                     </q-badge>
                     <q-slider
                       v-model="presupuesto"
-                      class="full-width"
+                      class="full-width q-mt-xl"
                       :min="0"
                       :max="500"
                       :step="5"

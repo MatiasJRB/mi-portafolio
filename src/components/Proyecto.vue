@@ -3,9 +3,17 @@
       <q-card-section vertical>
 
         <q-card-section class="q-pt-xs text-center q-mt-md">
-          <q-separator color="dark"/>
-          <div class="text-caption q-mt-sm q-mb-xs">{{fecha}}</div>
-          <q-separator color="dark"/>
+          
+          <div class="row">
+            <div class="col q-mt-sm q-mx-md">
+              <q-separator color="dark"/>
+            </div>
+            <div class="col">
+              <div class="text-caption">{{fecha}}</div></div>
+            <div class="col q-mt-sm q-mx-md">
+              <q-separator color="dark"/>
+            </div>
+          </div>
           <div class="text-h6 text-dark  q-my-sm">
             {{nombre}}
           </div>          
@@ -33,9 +41,15 @@
                 {{descripcion}}
               </div>
             </div>
+          </div>      
+          
+          
+        </q-card-section>
+        <q-card-section vertical v-show="mostrar_saber_mas">
+          <div class="row q-pa-xs flex flex-center " style="margin: 0px">
+            <q-btn flat class="bg-accent full-width" borderer text-color="dark" label="Saber más">
+               </q-btn>
           </div>
-          
-          
         </q-card-section>
       </q-card-section>
 
@@ -58,6 +72,11 @@ import Vue from 'vue'; // es6 syntax
 
 export default({
   props:{
+    mostrar_saber_mas:
+    {
+      type: String,
+      default: "false"
+    },
     transition:
     {
       type: String,
@@ -76,7 +95,7 @@ export default({
     fecha:
     {
       type: String,
-      default: "FECHA DEL PROYECTO"
+      default: "4 de Junio, 2021"
     },  
     descripcion:
     {
