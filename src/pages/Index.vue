@@ -252,22 +252,21 @@
 
             <!-- History -->
             <div class="row justify-around q-ma-lg" style=" ">
-              <div class="row justify-around q-ma-lg" style=" ">
-                <div class="text-overline">
-                    HISTORIA
-                </div>
-              </div>
+              
               <div class="row justify-center flex flex-center q-pa-xs q-ma-lg full-width" style=" ">
+                 <div class="text-dark text-overline">
+                   HISTORIA PRINCIPAL
+                 </div>
                  <div class="">
                    <q-toggle
                       v-model="mostrar_historia_version_larga"
                       checked-icon="check"
                       color="accent"
-                      unchecked-icon="clear"
+                      unchecked-icon=""
                     />
                  </div>
                  <div class="text-dark text-overline">
-                  MOSTRAR HISTORIA DETALLADA
+                  HISTORIA DETALLADA
                  </div>
               </div>      
 
@@ -300,7 +299,7 @@
                       v-show="mostrar_historia_version_larga"
                       title="Me convierto en técnico en armado y reparación de PC"
                       subtitle="20 de Noviembre, 2013"
-                      side="left"                      
+                      side="right"                      
                       icon="school"
                     >
                       <div>
@@ -310,15 +309,16 @@
 
                     <q-timeline-entry
                       v-show="mostrar_historia_version_larga"
-                      title="Me conviertaración de PC"
-                      subtitle="20 de Noviembre, 2013"
+                      title="Vendo mi primer software, Geome7ric 1.0"
+                      subtitle="12 de junio, 2018"
                       side="left"                      
                       icon="school"
                     >
                       <div>
-                        Certificado por la Escuela Argentina de Idiomas y Tecnología
+                        Solucioné el problema de stock, ventas y manejo de clientela a una forrajería. Un evento que marcó mi inicio en el mundo freelance
                       </div>
                     </q-timeline-entry>
+
 
                     <q-timeline-entry
                       title="Comienzan mi pasantía en Profertil S.A. "
@@ -340,13 +340,13 @@
                       side="left"
                     >
                       <div class="">
-                        Prensento mi proyecto final frente a amigos y familiares. Los detalles en el apartado Proyectos
+                        Prensento mi proyecto final frente a amigos y familiares, para poner un fin a mi carrera de ingeniero
                       </div>
                     </q-timeline-entry>
 
                     <q-timeline-entry
                       title="Comienzo a brindar servicios con dedicación exclusiva a Profertil S.A."
-                      subtitle="10 de abril, 2021"
+                      subtitle="12 de abril, 2021"
                       side="right"
                     >
                       <div>
@@ -355,36 +355,17 @@
                     </q-timeline-entry>
 
                     <q-timeline-entry
-                      title="Me contratan en Nuqlea"
+                      title="Adquiero mi primer contrato"
                       subtitle="7 de junio, 2021"
                       side="left"                      
                       color="accent"
                       icon="work"
                     >
                       <div>
-                        Comienzo como Fullstack developer
+                        Comienzo como Fullstack developer en Nuqlea, la evolución de CAPP, la plataforma líder en construcción
                       </div>
                     </q-timeline-entry>
 
-                    <q-timeline-entry
-                      title="Event Title"
-                      subtitle="February 22, 1986"
-                      side="right"
-                    >
-                      <div>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                      </div>
-                    </q-timeline-entry>
-
-                    <q-timeline-entry
-                      title="Event Title"
-                      subtitle="February 22, 1986"
-                      side="left"
-                    >
-                      <div>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                      </div>
-                    </q-timeline-entry>
                   </q-timeline>
               </div>
             </div>
@@ -405,8 +386,8 @@
               <div class="col">
                 <q-input color="dark" v-model="tipo_proyecto" hint="Email" type="phone-number" class="q-ml-xs"/>
               </div>
-              <div class="col">
-                <q-btn flat label="Consulta" size="md"  class="full-width full-height" @click="mostrar_datos_consulta = !mostrar_datos_consulta">
+              <div class="col flex flex-center">
+                <q-btn flat label="Consulta" size="md"  class="full-width"  @click="mostrar_datos_consulta = !mostrar_datos_consulta">
                   
                 </q-btn>
               </div>
@@ -521,7 +502,13 @@ export default {
   created()
   {
     this.funciones= new Vue(ModuloFunciones);
-    this.funciones.alerta_positiva_home("Bienvenido :)");
+    this.funciones.mostrar_cargando_temporal(""); 
+    console.log("Nope, u won't find any errors here :)")
+    //this.funciones.alerta_positiva_home("Bienvenido");
+  },
+  mounted()
+  {
+    
   },
   computed: {
     layout () {

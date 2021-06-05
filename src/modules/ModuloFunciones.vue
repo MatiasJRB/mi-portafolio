@@ -73,6 +73,23 @@ export default {
                         message: msg
                       })
     },
+    mostrar_cargando_temporal (tiempo_en_ms) {
+      this.$q.loading.show()
+
+        // hiding in 2s
+        this.timer = setTimeout(() => {
+          this.$q.loading.hide()
+          this.timer = void 0
+        }, tiempo_en_ms)
+      },
+    
+
+    beforeDestroy () {
+      if (this.timer !== void 0) {
+        clearTimeout(this.timer)
+        this.$q.loading.hide()
+      }
+    },
     hoy(dias)
     {
       if (dias==null)
@@ -97,10 +114,11 @@ export default {
         hoy = yyyy + '-' + MM + '-' + dd;
         return hoy;
       }      
-    },
+    },    
     mostrar_cargando(msg) {
       this.$q.loading.show({
-        message: msg
+        message: msg,
+        spinnerColor: 'accent'
       })      
     },
     ocultar_cargando()

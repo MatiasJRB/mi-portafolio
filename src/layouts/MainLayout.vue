@@ -18,7 +18,8 @@
         </q-toolbar-title>
 
         <div class="right q-mr-xl">
-          <q-btn size="md" icon="message"  color="dark" label="Contáctame" class="bg-accent" text-color="dark" style="border-radius: 50px"/>
+          <q-btn size="md" icon="work"  @click="click_toolbar_porfolio" active color="dark" label="Porfolio" :class="class_button_porfolio" text-color="dark" style="border-radius: 50px"/>
+          <q-btn size="md" icon="article" @click="toolbar_click" color="dark" label="Blog" :class="class_button_toolbar" text-color="dark" style="border-radius: 50px"/>
         </div>
       </q-toolbar>
 
@@ -118,8 +119,40 @@ export default {
   components: {  },
   data () {
     return {
+      class_button_toolbar: this.mostrando_porfolio? 'bg-info q-mx-xs' : 'bg-accent q-mx-xs',
+      class_button_porfolio: this.mostrando_porfolio? 'bg-accent q-mx-xs' : 'bg-info q-mx-xs',
+      mostrando_porfolio: true,
       leftDrawerOpen: false,
       essentialLinks: linksData
+    }
+  },
+  created()
+  {
+    this.class_button_toolbar=this.mostrando_porfolio? 'bg-info q-mx-xs' : 'bg-accent q-mx-xs';
+    
+    this.class_button_porfolio= this.mostrando_porfolio? 'bg-accent q-mx-xs' : 'bg-info q-mx-xs';
+    
+  },
+  methods:
+  {
+    toolbar_click()
+    {
+      if (this.mostrando_porfolio)
+      {
+          
+        this.mostrando_porfolio=false;
+        this.class_button_toolbar=this.mostrando_porfolio? 'bg-info q-mx-xs' : 'bg-accent q-mx-xs';   
+        this.class_button_porfolio= this.mostrando_porfolio? 'bg-accent q-mx-xs' : 'bg-info q-mx-xs';
+
+      }
+    },
+    click_toolbar_porfolio()
+    {
+      // enviar que clicklie el porfolio
+      if (!this.mostrando_porfolio)
+        this.toolbar_click();
+      else
+        console.log("wtf")
     }
   }
 }
