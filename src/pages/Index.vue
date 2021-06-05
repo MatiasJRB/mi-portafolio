@@ -253,15 +253,31 @@
             <!-- History -->
             <div class="row justify-around q-ma-lg" style=" ">
               <div class="row justify-around q-ma-lg" style=" ">
-                  <div class="text-overline">
+                <div class="text-overline">
                     HISTORIA
                 </div>
               </div>
+              <div class="row justify-center flex flex-center q-pa-xs q-ma-lg full-width" style=" ">
+                 <div class="">
+                   <q-toggle
+                      v-model="mostrar_historia_version_larga"
+                      checked-icon="check"
+                      color="accent"
+                      unchecked-icon="clear"
+                    />
+                 </div>
+                 <div class="text-dark text-overline">
+                  MOSTRAR HISTORIA DETALLADA
+                 </div>
+              </div>      
+
+
               <div class="row justify-around q-ma-lg" style=" ">
-                VERSION CORTA O LARGA?
-              </div>
-              <div class="row justify-around q-ma-lg" style=" ">
+
+
+
                   <q-timeline :layout="layout" color="dark">
+
                     <!--q-timeline-entry heading>
                       Timeline heading
                       <br>
@@ -269,16 +285,19 @@
                     </q-timeline-entry-->
 
                     <q-timeline-entry
+                      v-show="mostrar_historia_version_larga"
                       title="Me egreso del secundario"
                       subtitle="12 de Diciembre, 2012"
                       side="left"
                       icon="school"
                     >
                       <div>
-                        Termino el secundario en el Colecio Nacional con un promedio de 8.33
+                        Termino el secundario en el Colegio Nacional
                       </div>
                     </q-timeline-entry>
+
                     <q-timeline-entry
+                      v-show="mostrar_historia_version_larga"
                       title="Me convierto en técnico en armado y reparación de PC"
                       subtitle="20 de Noviembre, 2013"
                       side="left"                      
@@ -290,47 +309,60 @@
                     </q-timeline-entry>
 
                     <q-timeline-entry
-                      title="Event Title"
-                      subtitle="February 21, 1986"
-                      side="right"
-                      icon="delete"
+                      v-show="mostrar_historia_version_larga"
+                      title="Me conviertaración de PC"
+                      subtitle="20 de Noviembre, 2013"
+                      side="left"                      
+                      icon="school"
                     >
                       <div>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        Certificado por la Escuela Argentina de Idiomas y Tecnología
                       </div>
                     </q-timeline-entry>
 
-                    <q-timeline-entry heading>November, 2017</q-timeline-entry>
+                    <q-timeline-entry
+                      title="Comienzan mi pasantía en Profertil S.A. "
+                      subtitle="1 de octubre, 2020"
+                      side="right"
+                      icon="work"
+                    >
+                      <div>
+                        Trabajo a jornada parcial, como administrador de redes y sistemas Windows, dando soporte a productos ASPEN y desarrollando
+                      </div>
+                    </q-timeline-entry>
+
+                    <!--q-timeline-entry heading>November, 2017</q-timeline-entry-->
 
                     <q-timeline-entry
-                      title="Event Title"
-                      subtitle="February 22, 1986"
+                      title="Me recibo de Ingeniero en Computación"
+                      subtitle="9 de abril, 2021"
+                      icon="school"
                       side="left"
                     >
-                      <div>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                      <div class="">
+                        Prensento mi proyecto final frente a amigos y familiares. Los detalles en el apartado Proyectos
                       </div>
                     </q-timeline-entry>
 
                     <q-timeline-entry
-                      title="Event Title"
-                      subtitle="February 22, 1986"
+                      title="Comienzo a brindar servicios con dedicación exclusiva a Profertil S.A."
+                      subtitle="10 de abril, 2021"
                       side="right"
                     >
                       <div>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        Trabajo a jornada completa, como administrador de redes y sistemas Windows, y dando soportes a productos ASPEN
                       </div>
                     </q-timeline-entry>
 
                     <q-timeline-entry
-                      title="Event Title"
-                      subtitle="February 22, 1986"
-                      side="left"
+                      title="Me contratan en Nuqlea"
+                      subtitle="7 de junio, 2021"
+                      side="left"                      
                       color="accent"
-                      icon="done_all"
+                      icon="work"
                     >
                       <div>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        Comienzo como Fullstack developer
                       </div>
                     </q-timeline-entry>
 
@@ -470,6 +502,7 @@ export default {
   data()
   {
     return{
+      mostrar_historia_version_larga: false,
       mostrar_datos_consulta: false,
       funciones: null,
       presupuesto: 50,
