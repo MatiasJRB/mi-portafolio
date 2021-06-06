@@ -59,10 +59,10 @@
           <div class="col-12 bg-info col-md-7 q-pa-lg" style="margin: 0px">
 
             <!-- Company | Focused on -->
-            <div class="row justify-around  q-ma-lg q-pa-md" style=" ">
-              <div class="col">
+            <div class="row justify-center q-ma-lg q-pa-xs" style=" ">
+              <div class="col-12 col-md ">
                 <div class="text-overline">
-                  COMPAÑIA
+                  COMPAÑÍA
                 </div>
                 <div class="text-weight-thin text-h4  ">
                   Nuqlea
@@ -71,14 +71,17 @@
                   No disponible para contratar
                 </div>
               </div>
-              <q-separator vertical color="dark"   />
-              <div class="col q-ml-xl">
+              <q-separator vertical color="dark"  class="q-ml-xl" />
+              <div class="col-12 col-md">
                 <div class="text-overline">
                   CONCENTRADO EN
                 </div>
                 <div class="text-weight-thin text-h4" >
-                  Quasar Framework
+                  Quasar
                 </div>
+                <div class="text-caption text-h4" >
+                  Framework 
+                </div>                
                 <div>
                   <q-btn size="xs" flat icon="help" style="margin-left: -10px" />
                 </div>
