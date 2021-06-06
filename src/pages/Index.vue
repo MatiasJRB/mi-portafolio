@@ -54,9 +54,27 @@
           </div>
           
           <q-separator size="xl" class="q-mt-lg" vertical color="dark"/>
+
+          <!-- Column B -- Blog -->
+
+          <div class="col-12 bg-info col-md-7 q-pa-lg" v-show="mostrar_blog" style="margin: 0px">
+            <div class="row justify-center q-ma-lg q-pa-xs">
+              
+              <div class="col-12 col-md text-center">
+                <Proyecto></Proyecto>
+                <Proyecto></Proyecto>
+                <Proyecto></Proyecto>
+                <Proyecto></Proyecto>
+                <Proyecto></Proyecto>
+                <Proyecto></Proyecto>
+                <Proyecto></Proyecto>
+
+              </div>
+            </div>
+          </div>
           
-          <!-- Column B -->
-          <div class="col-12 bg-info col-md-7 q-pa-lg" style="margin: 0px">
+          <!-- Column B -- Porfolio -->
+          <div class="col-12 bg-info col-md-7 q-pa-lg" v-show="mostrar_portfolio" style="margin: 0px">
 
             <!-- Company | Focused on -->
             <div class="row justify-center q-ma-lg q-pa-xs" style=" ">
@@ -71,7 +89,7 @@
                   No disponible para contratar
                 </div>
               </div>
-              <q-separator vertical color="dark"  class="q-ml-xl" />
+              <!--q-separator vertical color="dark"  class="q-ml-xl" /-->
               <div class="col-12 col-md">
                 <div class="text-overline">
                   CONCENTRADO EN
@@ -486,6 +504,14 @@ export default {
   data()
   {
     return{
+      
+      metodos_listener_principal:
+      {
+        'mostrar_blog': (data) => this.manejador_mostrar_blog(data),
+        'mostrar_portfolio' : (data) => this.manejador_mostrar_porftolio(data)
+      },
+      mostrar_blog: false,
+      mostrar_portfolio: true,
       mostrar_historia_version_larga: false,
       mostrar_datos_consulta: false,
       funciones: null,
@@ -504,14 +530,38 @@ export default {
   },
   created()
   {
+    
+    this.$root.$on('listener_principal', (param) => this.listener(param));
     this.funciones= new Vue(ModuloFunciones);
-    this.funciones.mostrar_cargando_temporal(""); 
     console.log("Nope, u won't find any errors here :)")
     //this.funciones.alerta_positiva_home("Bienvenido");
+  },  
+  beforeMount()
+  {
+    this.funciones.mostrar_cargando_tiempo(2000);
   },
   mounted()
+  { 
+  },
+  methods:
   {
-    
+    manejador_mostrar_blog(data)
+    {
+      this.mostrar_portfolio=false;
+      this.mostrar_blog=true;
+    },
+    manejador_mostrar_porftolio(data)
+    {
+      this.mostrar_blog=false;
+      this.mostrar_portfolio=true;
+    },    
+    listener(param)
+    {
+      const funcion = this.metodos_listener_principal[param.function] 
+        ? this.metodos_listener_principal[param.function](param)
+        : this.funciones.alerta_negativa_default(param.function);
+      
+    }
   },
   computed: {
     layout () {

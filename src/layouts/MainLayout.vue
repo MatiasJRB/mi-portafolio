@@ -19,7 +19,7 @@
 
         <div class="right q-mr-xl">
           <q-btn size="md" icon="work"  @click="click_toolbar_porfolio" active color="dark" label="Porfolio" :class="class_button_porfolio" text-color="dark" style="border-radius: 50px"/>
-          <q-btn size="md" icon="article" @click="toolbar_click" color="dark" label="Blog" :class="class_button_toolbar" text-color="dark" style="border-radius: 50px"/>
+          <q-btn size="md" icon="article" @click="click_toolbar_blog" color="dark" label="Blog" :class="class_button_toolbar" text-color="dark" style="border-radius: 50px"/>
         </div>
       </q-toolbar>
 
@@ -149,8 +149,38 @@ export default {
     click_toolbar_porfolio()
     {
       // enviar que clicklie el porfolio
+
       if (!this.mostrando_porfolio)
-        this.toolbar_click();
+      {
+        this.mostrando_porfolio=true;
+        this.class_button_toolbar='bg-info q-mx-xs';
+        this.class_button_porfolio='bg-accent q-mx-xs';
+        var data;
+        data=
+        {
+          function: 'mostrar_portfolio'
+        }
+        this.$root.$emit('listener_principal',data);
+      }
+      else
+        console.log("wtf")
+    },
+    click_toolbar_blog()
+    {
+      // enviar que clicklie el porfolio
+
+      if (this.mostrando_porfolio)
+      {
+        this.mostrando_porfolio=false;
+        this.class_button_toolbar='bg-accent q-mx-xs';
+        this.class_button_porfolio='bg-info q-mx-xs';
+        var data;
+        data=
+        {
+          function: 'mostrar_blog'
+        }
+        this.$root.$emit('listener_principal',data);
+      }
       else
         console.log("wtf")
     }

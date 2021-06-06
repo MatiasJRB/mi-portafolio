@@ -73,7 +73,7 @@ export default {
                         message: msg
                       })
     },
-    mostrar_cargando_temporal (tiempo_en_ms) {
+    mostrar_cargando_tiempo (tiempo_en_ms) {
       this.$q.loading.show()
 
         // hiding in 2s
