@@ -37,8 +37,8 @@
               </q-img>
             </div>
             <div class="col-12 col-md q-ma-md">
-              <div class="text-body1  text-dark ">
-                {{descripcion}}
+              <div class="text-body1  text-dark " v-html="contenido">
+                <!-- {{descripcion}} -->
               </div>
             </div>
           </div>      
@@ -97,6 +97,10 @@ export default({
       type: String,
       default: "4 de Junio, 2021"
     },  
+    contenido: {
+      type: String,
+      default: ""
+    },
     descripcion:
     {
       type: String,
@@ -108,6 +112,9 @@ export default({
     return{
       mostrar_info_detalleada: false
     }
+  },
+  mounted () {
+    console.log(this.contenido)
   }
 })
 </script>
