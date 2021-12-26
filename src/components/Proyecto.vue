@@ -112,6 +112,9 @@ export default({
     return{
       mostrar_info_detalleada: false
     }
+  },
+  mounted () {
+    console.log(this.contenido)
   }
 })
 </script>
