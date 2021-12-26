@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center bg-info">
+  <q-page class="flex flex-center bg-info" >
     <!-- Contenedor de principal -->
     <div class="row">
       <div class="col">
@@ -60,14 +60,10 @@
           <div class="col-12 bg-info col-md-7 q-pa-lg" v-show="mostrar_blog" style="margin: 0px">
             <div class="row justify-center q-ma-lg q-pa-xs">
               
-              <div class="col-12 col-md text-center">
-                <Proyecto></Proyecto>
-                <Proyecto></Proyecto>
-                <Proyecto></Proyecto>
-                <Proyecto></Proyecto>
-                <Proyecto></Proyecto>
-                <Proyecto></Proyecto>
-                <Proyecto></Proyecto>
+              <div v-for="project in projects" :key="project.id" class="col-12 col-md text-center">
+
+                <Proyecto
+                :contenido="project.content"></Proyecto>
 
               </div>
             </div>
@@ -263,10 +259,16 @@
                 <div class="text-overline">
                   PROYECTOS
                 </div>
-                <Proyecto class="q-my-md"></Proyecto>
-                <Proyecto class="q-my-md"></Proyecto>
-                <Proyecto class="q-my-md"></Proyecto>
-                <Proyecto class="q-my-md"></Proyecto>
+                <div v-for="project in projects" :key="project.id">
+
+                  <Proyecto
+                  :imagen="project.imagen"
+                  :contenido="project.content"
+                  :fecha="project.fecha"
+                  :descripcion="project.descripcion"
+                  :nombre="project.nombre"></Proyecto>
+
+                </div>
               </div>
             </div>
 
@@ -402,7 +404,7 @@
             </div>
             <div class="row justify-around q-ma-lg" style=" ">
               <div class="col">
-                <q-input color="dark" v-model="tipo_proyecto" hint="Nombre"  class=" q-mr-xs"/>
+                <q-input v-on:keyup.55="showAddNewPost" color="dark" v-model="tipo_proyecto" hint="Nombre"  class=" q-mr-xs"/>
               </div>
               <div class="col">
                 <q-input color="dark" v-model="tipo_proyecto" hint="Email" type="phone-number" class="q-ml-xs"/>
@@ -468,6 +470,20 @@
         </div>
       </div>
     </div>
+
+    <q-dialog v-model="mostrar_formulario_new_post" position="bottom">
+      <div class="bg-white full-width">
+        <div class="row">Añadir un nuevo post</div>
+        <q-input label="Título"/>
+        <q-input autogrow label="Descripción"/>
+        <q-uploader
+          label="Portada"
+          url="http://localhost:4444/upload"
+          style="max-width: 300px"
+        />
+        <q-editor></q-editor>
+      </div>
+    </q-dialog>
     
     
     <!--Footer-->
@@ -497,6 +513,7 @@
 
 import Proyecto from 'components/Proyecto.vue'
 import ModuloFunciones from '../modules/ModuloFunciones.vue'
+import ModuloNetwork from '../modules/ModuloNetwork.vue'
 import Vue from 'vue'; // es6 syntax
 
 export default {
@@ -504,6 +521,7 @@ export default {
   data()
   {
     return{
+      mostrar_formulario_new_post: false,
       
       metodos_listener_principal:
       {
@@ -522,6 +540,8 @@ export default {
       more_skill2: false,
       more_skill3: false,
       info_skill1: 'Lo uso hace años y tengo mas de tres proyectos',
+      network: null,
+      projects: null
     }
   },  
   components:
@@ -530,9 +550,20 @@ export default {
   },
   created()
   {
+    console.log('Holissssss')
     
-    this.$root.$on('listener_principal', (param) => this.listener(param));
     this.funciones= new Vue(ModuloFunciones);
+    this.network = new Vue(ModuloNetwork)
+    this.network.getProjects()    
+      .then(response=>response.json())
+      .then(resp=> {
+        console.log(resp)
+        this.projects = resp["items"]
+        // console.log('Los proyectos son estos: ')
+        // console.log(this.projects)        
+    });
+    // this.setear_projects()
+    this.$root.$on('listener_principal', (param) => this.listener(param));
     console.log("Nope, u won't find any errors here :)")
     //this.funciones.alerta_positiva_home("Bienvenido");
   },  
@@ -545,6 +576,20 @@ export default {
   },
   methods:
   {
+    setear_projects(){
+      this.projects = [
+        {
+          "nombre": "Going Back Home",
+          "descripcion": "Projecto para la material computación gráfica",
+          "fecha": "4 de junio, 2020",
+          "imagen": null
+        }
+      ]
+    },
+    showAddNewPost(){
+      console.log('Apretaste el 7')
+      this.mostrar_formulario_new_post = true
+    },
     manejador_mostrar_blog(data)
     {
       this.mostrar_portfolio=false;

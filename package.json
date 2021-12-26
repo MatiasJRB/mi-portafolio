@@ -13,12 +13,12 @@
   "dependencies": {
     "@mdi/js": "^5.9.55",
     "@mdi/react": "^1.5.0",
-    "@quasar/cli": "^1.2.0",
+    "@quasar/cli": "^1.2.1",
     "@quasar/extras": "^1.0.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "git": "^0.1.5",
-    "quasar": "^1.0.0"
+    "quasar": "^1.15.21"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",
