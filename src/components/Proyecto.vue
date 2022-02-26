@@ -1,4 +1,6 @@
+
 <template>
+
     <q-card  class=""  flat bordered style="border-radius: 15px">
       <q-card-section vertical>
 
@@ -25,6 +27,7 @@
         <q-card-section horizontal >
           <div class="row q-pa-xs full-width" style="margin: 0px">
             <div class="col-md-12 col-xs-12 flex flex-center">
+              
               <q-carousel
                 @click.stop=""
                 swipeable
@@ -32,8 +35,8 @@
                 v-model="slide"
                 class="full-width"
                 thumbnails
-                infinite
-                
+                infinite            
+
                 style="border-radius: 15px"
               >
               <q-carousel-slide
@@ -123,6 +126,7 @@ export default({
   data()
   {
     return{
+      isFullscreen: false,
       showMore: false,
       mostrar_info_detalleada: false,
       slide: 0

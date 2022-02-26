@@ -240,27 +240,6 @@
               </div>
             </div>
 
-            <!-- Projects -->
-            <div class="row justify-around q-ma-lg" >
-              <div class="col" >
-                <div class="text-overline">
-                  PORTFOLIO
-                </div>
-                <div v-for="project in projects" :key="project.id"
-                  class="q-mt-md" >
-
-                  <Proyecto
-                    :imagen="project.imagen"
-                    :project="project"
-                    :fecha="project.fecha"
-                    :descripcion="project.descripcion"
-                    :nombre="project.nombre"/>
-
-                </div>
-              </div>
-            </div>
-
-
             <!-- History -->
             <div class="row justify-around q-ma-lg" style=" ">
               
@@ -380,6 +359,44 @@
                   </q-timeline>
               </div>
             </div>
+
+            <!-- Projects -->
+            <div class="row justify-around q-ma-lg" >
+              <div class="col" >
+                <div class="text-overline">
+                  <div class="row justify-center flex flex-center q-pa-xs q-ma-lg full-width" style=" ">
+                    <div class="text-dark text-overline">
+                      PORTFOLIO PERSONAL
+                    </div>
+                    <div class="">
+                      <q-toggle
+                          v-model="showGeome7ricPortfolio"
+                          checked-icon="check"
+                          color="accent"
+                          unchecked-icon=""
+                        />
+                    </div>
+                    <div class="text-dark text-overline">
+                      PORFOLIO GEOME7RIC
+                    </div>
+                  </div>     
+                </div>
+                <div v-for="project in projects" :key="project.id"
+                  class="q-mt-md" >
+
+                  <Proyecto
+                    :imagen="project.imagen"
+                    :project="project"
+                    :fecha="project.fecha"
+                    :descripcion="project.descripcion"
+                    :nombre="project.nombre"/>
+
+                </div>
+              </div>
+            </div>
+
+
+            
 
             <!-- Contact -->  
             <div class="row justify-around q-ma-lg" style=" ">
@@ -506,11 +523,13 @@ import Vue from 'vue'; // es6 syntax
 
 export default {
   name: 'PageIndex',
-  data()
+  data ()
   {
     return{
       mostrar_formulario_new_post: false,
-      
+      showGeome7ricPortfolio: false,
+      geome7rcProjects: {},
+      personalProjects: {},
       metodos_listener_principal:
       {
         'mostrar_blog': (data) => this.manejador_mostrar_blog(data),
@@ -551,24 +570,243 @@ export default {
     //     // console.log(this.projects)        
     // });
     this.setear_projects()
+    this.personalProjects = this.projects
     this.$root.$on('listener_principal', (param) => this.listener(param));
     console.log("Nope, u won't find any errors here :)")
     //this.funciones.alerta_positiva_home("Bienvenido");
   },  
   beforeMount()
   {
-    this.funciones.mostrar_cargando_tiempo(2000);
+    // this.funciones.mostrar_cargando_tiempo(2000);
   },
   mounted()
   { 
   },
+
+  watch: {
+    showGeome7ricPortfolio: function (val) {
+      this.handleChangePortfolio()
+    }
+  },
   methods:
   {
+
+    handleChangePortfolio () {
+      alert('asd')
+      if (this.showGeome7ricPortfolio) {
+        this.projects = this.geome7rcProjects
+      } else {
+        this.projects = this.personalProjects
+      }
+    },
     setear_projects(){
       this.projects = []
       
       let project = {}
+
+
       
+      // PROMOCION GEOME7RIC
+            
+      project = {}
+      project.title =  "SISTEMA DE ARCHIVOS DISTRIBUIDO"
+      project.description =  "Para la materia Sistemas Distribuidos, desarrollamos con compañeros un programa de archivos distribuido y llevamos a cabo un paper que fue aceptado en formato poster por la CONAIISI 2020. Trabajo supervisado por la Mg. Karina Cenci."
+      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integrantes:  Catalfamo, Salvador. Universidad Nacional del Sur. 8000. Meneses, Christian. Universidad Nacional del Sur. 8000. Mignucci, Bruno. Universidad Nacional del Sur. 8000. Puhl, Juan Manuel. Universidad Nacional del Sur. 8000. Rios, Matias. Universidad Nacional del Sur. 8000..'
+      
+      project.media = [
+        {
+          type: 'url',
+          title: 'Documento PDF',
+          src: 'https://docs.google.com/viewerng/viewer?url=https://matiasjrb.com.ar/documentos/sistemaArchivosDistribuidos/Paper-Distributed_file_system.pdf'
+        },
+        {
+          type: 'url',
+          title: 'Karina Cenci',
+          src: 'https://lissi.cs.uns.edu.ar/integrantes/karina-cenci/'
+        },
+        {
+          type: 'url',
+          title: 'CONAIISI 2020',
+          src: 'http://conaiisi2020.frsfco.utn.edu.ar/'
+        },
+      ]
+      project.date =  "14 de diciembre, 2020"
+      project.status =  "Terminado"
+      project.tags =  ['CONAIISI 2020','Sistemas distribuidos','Distribuidora Amusquibar']      
+      project.images = [
+        'https://matiasjrb.com.ar/images/sistemaArchivosDistribuido/imagena.jpg'
+      ]
+      
+      project.showMore = false
+      this.projects.push(project)
+
+
+      // PROMOCION GEOME7RIC
+            
+      project = {}
+      project.title =  "APLICACIÓN ANDROID + MÓDULO DE ESCRITORIO"
+      project.description =  "Desarrollé una aplicación para las plataformas Android y Windows a pedido de Distribuidora Amusquibar."
+      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Se me solicitó un programa de control de pedidos para una distribuidora local. Constará de una aplicación Android para realizar y gestionar pedidos de preventistas o clientes. Se dispone de una aplicación de escritorio Windows, para facilitar la administración de productos y clientes.'
+      
+      project.media = [
+        {
+          type: 'url',
+          title: 'PlayStore',
+          src: 'https://play.google.com/store/apps/details?id=com.amusquibarapp.loginactivity&hl=es_AR'
+        }
+      ]
+      project.date =  "23 de julio, 2020"
+      project.status =  "Terminado"
+      project.tags =  ['Android','Backoffice','Distribuidora Amusquibar']      
+      project.images = [
+        'https://matiasjrb.com.ar/images/distribuidoraAmusquibar/android1.jpg',
+        'https://matiasjrb.com.ar/images/distribuidoraAmusquibar/android2.jpg',
+        'https://matiasjrb.com.ar/images/distribuidoraAmusquibar/android3.jpg',
+        'https://matiasjrb.com.ar/images/distribuidoraAmusquibar/android4.jpg',
+        'https://matiasjrb.com.ar/images/distribuidoraAmusquibar/windows1.jpg',
+        'https://matiasjrb.com.ar/images/distribuidoraAmusquibar/windows2.jpg'
+      ]
+      
+      project.showMore = false
+      this.projects.push(project)
+
+
+
+
+
+      // PROMOCION GEOME7RIC
+            
+      project = {}
+      project.title =  "APARTADO PARA PROMOCIÓN DE GEOME7RIC"
+      project.description =  "Un sofware para tu comercio."
+      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Geome7ric es un programa para poder llevar el control del stock de tu comercio, así como registro de venta, clientela y proveduría. Ya no más utilizar lapiz y papel para cerrar el día, o siquiera tener registro alguno de las ventas o el stock restante. Es cómodo, fácil de usar e intuitivo, lo que lo convierte en una concreta opción frente a programas como Tango, programas más complejos que requieren de cursos y horas invertidas para comprender como usarlo.   Le permitirá registrar los ingresos del día a día, agilizar las ventas sin tener que memorizar o buscar un precio en un papel y poder estar frente a una computadora y decidir en que consistirá su próxima compra al proveedor sin necesidad de ir a observar el depósito o recontar elementos de su comercio.'
+      
+      project.media = [
+        {
+          type: 'video',
+          title: 'Demostración',
+          src: 'https://www.youtube.com/watch?v=5eG9r3R7iPc'
+        }
+      ]
+      project.date =  "14 de abril, 2020"
+      project.status =  "Terminado"
+      project.tags =  ['Geome7ric 1.1','Software',' Demostración','Discontinuado']      
+      project.images = [
+        'https://matiasjrb.com.ar/images/geome7ric/portada.jpg'
+      ]
+      
+      project.showMore = false
+      this.projects.push(project)
+
+      // SIGNOS
+            
+      project = {}
+      project.title =  "PROGRAMA DE INVENTARIO Y PÁGINA WEB CON TIENDA"
+      project.description =  "Actualización de Geome7ric 1.0 para Signos Indumentaria."
+      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Se me solicitó un programa de control de stock y ventas para un local de ropa del centro bahiense. El mismo ya lo había desarrollado, pero decidí darle una actualización para mejorar el rendimiento en cuanto a velocidad de respuestas y estética del programa..'
+      
+      project.media = [
+        {
+          type: 'url',
+          title: 'Web',
+          src: 'https://budapesttrio.com.ar/'
+        },
+        {
+          type: 'url',
+          title: 'Budapest Ig',
+          src: 'https://www.instagram.com/budapest.trio/'
+        }
+      ]
+      project.date =  "11 de marzo, 2020"
+      project.status =  "Terminado"
+      project.tags =  ['Signos indumentaria','Software',' Actualizacion','Geome7ric 1.1']      
+      project.images = [
+        'https://matiasjrb.com.ar/images/signos/logo.png',
+        'https://matiasjrb.com.ar/images/signos/programa1.png',
+        'https://matiasjrb.com.ar/images/signos/programa2.png',
+        'https://matiasjrb.com.ar/images/signos/programa3.png',
+        'https://matiasjrb.com.ar/images/signos/programa4.png',
+        'https://matiasjrb.com.ar/images/signos/programa5.png'
+      ]
+      
+      project.showMore = false
+      this.projects.push(project)
+
+      // BUDAPEST
+            
+      project = {}
+      project.title =  "PÁGINA WEB PARA BUDAPEST"
+      project.description =  "Página web para una banda amiga hecha a base de código HTML, CSS y JS."
+      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Es posible descargar sus canciones y reproducirlas online. Además, se pueden encontrar las letras de las mismas.'
+      
+      project.media = [
+        {
+          type: 'url',
+          title: 'Web',
+          src: 'https://budapesttrio.com.ar/'
+        },
+        {
+          type: 'url',
+          title: 'Budapest Ig',
+          src: 'https://www.instagram.com/budapest.trio/'
+        }
+      ]
+      project.date =  "9 de marzo, 2020"
+      project.status =  "Terminado"
+      project.tags =  ['Budapest','Web']      
+      project.images = [
+        'https://matiasjrb.com.ar/images/budapest/logo.png',
+        'https://matiasjrb.com.ar/images/budapest/portada.jpg'
+      ]
+      project.showMore = false
+      this.projects.push(project)
+
+      // NORTE BUS
+            
+      project = {}
+      project.title =  "PÁGINA WEB PARA NORTEBUS BB"
+      project.description =  "Página web para una empresa de transporte hecha a base de código HTML, CSS y JS. Pasá a escucharlos"
+      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Una página de contacto responsiva hecha a la velocidad de la luz.  '
+      project.media = [
+        {
+          type: 'url',
+          title: 'NorteBus BB',
+          src: 'https://nortebusbb.com/'
+        }
+      ]
+      project.date =  "1 de marzo, 2020"
+      project.status =  "Terminado"
+      project.tags =  ['NorteBus','Web']      
+      project.images = [
+        'https://matiasjrb.com.ar/images/nortebus/logo.jpg',
+        'https://matiasjrb.com.ar/images/nortebus/portada.jpg'
+      ]
+      project.showMore = false
+      this.projects.push(project)
+
+      // EATI 2020
+            
+      project = {}
+      project.title =  "CURSO EATI 2020: DE 0 A NINJA CON COLLECTD, INFLUXDB Y GRAFANA"
+      project.description =  "Curso de verano dictado por la Escuela de Actualización en Tecnologías de Informática (EATI) a cargo de Emiliano Marini."
+      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Un curso en donde nos acercamos un poco al trabajo que lleva a cabo un SysAdmin en una empresa. Se utilizaron máquinas virtuales donde corrían servidores y monitores los cuales eran accedidos mediante SSH. Se instalaron y configuraron diferentes librerías para poder visualizar adecuadamente en Grafana recursos de la computadora (memoria RAM, uso de disco, etc.) y servicios como MySQL, apache y nginx..'
+      project.media = [
+        {
+          type: 'url',
+          title: 'Emiliano Marini',
+          src: 'https://www.linkedin.com/in/emarini/'
+        }
+      ]
+      project.date =  "21 de febrero, 2020"
+      project.status =  "Terminado"
+      project.tags =  ['Emiliano Marini', 'EATI 2020', 'Grafana','CollectD','InfluxDB']      
+      project.images = [
+        'https://matiasjrb.com.ar/images/eati2020/logo.png',
+        'https://matiasjrb.com.ar/images/eati2020/portada.png'
+      ]
+      project.showMore = false
+      this.projects.push(project)
+
       // PROYECTO LEAP MOTION
             
       project = {}
@@ -599,6 +837,8 @@ export default {
       ]
       project.showMore = false
       this.projects.push(project)
+
+
 
 
       // PARRILLA AUTOMATICA
