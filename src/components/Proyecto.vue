@@ -1,27 +1,21 @@
 
 <template>
 
-    <q-card  class=""  flat bordered style="border-radius: 15px">
+    <q-card flat class="no-shadow "    >
       <q-card-section vertical>
 
-        <q-card-section class="q-pt-xs text-center q-mt-md">
+        <q-card-section class="q-pt-xs  q-mt-md">
           
           <div class="row">
-            <div class="col q-mt-sm q-mx-md">
-              <q-separator color="dark"/>
-            </div>
-            <div class="col">
-              <div class="text-caption">{{ project.date }}</div></div>
-            <div class="col q-mt-sm q-mx-md">
-              <q-separator color="dark"/>
-            </div>
+            <div class="text-caption "
+              style="margin-top:-10px">{{ project.date }}</div>
           </div>
           <div class="text-h6 text-dark  q-my-sm">
             {{project.title}}
           </div>          
-          <div class=" text-dark full-width q-my-sm">
-            {{project.description}}
-          </div>          
+          <div class="" v-html="project.description">
+            <!-- {{descripcion}} -->
+          </div>         
         </q-card-section>
 
         <q-card-section horizontal >
@@ -31,13 +25,11 @@
               <q-carousel
                 @click.stop=""
                 swipeable
-                animated
+                control-color="accent"
                 v-model="slide"
+                arrows 
                 class="full-width"
-                thumbnails
                 infinite            
-
-                style="border-radius: 15px"
               >
               <q-carousel-slide
                class="full-width"
@@ -45,7 +37,6 @@
                 :key="index"
                 :name="index"
                 :img-src="image"
-                style="border-radius: 15px"
                />
 
               </q-carousel>
@@ -61,15 +52,21 @@
         </q-card-section>
         <q-card-section class="row">
           <div  v-for="(media,index) in project.media" :key="index">
-            <q-btn class="q-ml-sm" :label="media.title" @click="handleMedia(media)" rounded/>
+            <q-btn  color="" flat class="q-ml-sm bg-primary text-white" :label="media.title" @click="handleMedia(media)" />
           </div>
         </q-card-section>
-        <q-separator color="accent"/>
+        <q-separator color="secondary"/>
 
         <q-card-actions vertical v-show="showMore">
-          <div class="row q-pa-xs flex flex-center " style="margin: 0px">
+          <div class="row  flex flex-center " style="margin: 0px">
             <q-btn @click.stop="goToProjectPage" flat class="bg-accent full-width" borderer text-color="dark" label="Saber más" rounded>
                </q-btn>
+          </div>
+        </q-card-actions>
+        <q-card-actions class="q-ml-md " style="">
+          <q-badge outlined  color="dark" text-color="white" :label="'Status: ' + project.status" class="q-mx-xs" />
+          <div class="" v-for="(tag,index) in project.tags" :key="index" >
+            <q-badge outlined color="dark" :label="tag" class="q-mx-xs" />
           </div>
         </q-card-actions>
       </q-card-section>
@@ -78,12 +75,7 @@
 
       
 
-      <q-card-actions class="q-ml-md q-my-sm">
-        <q-badge outline color="dark" text-color="dark" :label="'Status:' + project.status" class="q-mx-xs" />
-        <div class="" v-for="(tag,index) in project.tags" :key="index" >
-          <q-badge outline color="dark" :label="tag" class="q-mx-xs" />
-        </div>
-      </q-card-actions>
+      
     </q-card>
 </template>
 

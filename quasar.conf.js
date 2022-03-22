@@ -19,9 +19,9 @@ module.exports = function (ctx) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v1.quasar.dev/quasar-cli/boot-files
-    boot: [
-      
+    boot: [      
       'axios',
+      'emitter'
     ],
 
     // https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -42,11 +42,11 @@ module.exports = function (ctx) {
       'roboto-font', // optional, you are not bound to it
       'material-icons', // optional, you are not bound to it
     ],
+    
 
     // Full list of options: https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
       vueRouterMode: 'hash', // available values: 'hash', 'history'
-      distDir: ctx.mode.spa ? 'public' : null,
       // transpile: false,
 
       // Add dependencies for transpiling with Babel (Array of string/regex)
@@ -69,12 +69,24 @@ module.exports = function (ctx) {
         chain.plugin('eslint-webpack-plugin')
           .use(ESLintPlugin, [{ extensions: [ 'js', 'vue' ] }])
       },
+      // extendWebpack (cfg) {
+      //   cfg.module.rules.push({
+      //     enforce: 'pre',
+      //     test: /\.(js|vue)$/,
+      //     loader: 'eslint-loader',
+      //     exclude: /node_modules/,
+      //     options: {
+      //       formatter: require('eslint').CLIEngine.getFormatter('stylish')
+      //     }
+      //   })
+      // }
     },
+    
 
     // Full list of options: https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
-      https: false,
-      port: 8080,
+      // https: true,
+      // port: 8080,
       open: true // opens browser window automatically
     },
 
@@ -83,6 +95,7 @@ module.exports = function (ctx) {
       iconSet: 'material-icons', // Quasar icon set
       lang: 'es', // Quasar language pack
       config: {},
+      bodyClasses: true,
 
       // Possible values for "importStrategy":
       // * 'auto' - (DEFAULT) Auto-import needed Quasar components & directives
@@ -103,9 +116,26 @@ module.exports = function (ctx) {
       ]
     },
 
-    // animations: 'all', // --- includes all animations
+    animations: 'all', // --- includes all animations
     // https://v1.quasar.dev/options/animations
-    animations: [],
+    animations: [
+      'fadeIn',
+      'fadeOut',
+      'fadeInLeft',
+      'fadeOutLeft',
+      'fadeInLeftBig',
+      'fadeOutLeftBig',
+      'fadeInRight',
+      'fadeOutRight',
+      'slideInLeft',
+      'slideOutLeft',
+      'slideInRight',
+      'slideOutRight',
+      'backInRight',
+      'backOutRight',
+      'backInLeft',
+      'backOutLeft'
+    ],
 
     // https://v1.quasar.dev/quasar-cli/developing-ssr/configuring-ssr
     ssr: {

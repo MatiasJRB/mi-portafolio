@@ -1,50 +1,198 @@
 <template>
-  <q-page class="flex flex-center bg-info" >
-    <!-- Contenedor de principal -->
-    <div class="row">
-      <div class="col">
-        <div class=" row q-gutter-md q-mx-md bg-info" style="margin: 0px;max-width: 1200px" >         
-          <!-- Column A -->
-          <div class="col-12 bg-info col-md-4 " style="margin: 0px">
-              <q-card
-              flat
-              class="bg-info " >
-                <div class="row justify-center  q-my-xl " style=" ">
-                  <div >
-                    <div class="text-h6 text-weight-thin">
-                      Full Stack Engineer
-                    </div>
-                    <div class="text-h3 text-weight-bold q-my-sm">
-                      Rios <br>Matias
-                    </div>
-                    <div class="bg-info q-my-lg">
-                      <img src="https://res.cloudinary.com/geome7ric-weasel/image/upload/v1622690940/MVIMG_20210420_174739_ryzkpg.png"
-                      style="width: 250px">
-                    </div>
-                    <div class="row justify-center " style=" ">
-                      <div class="col">
-                        <q-btn class="col bg-dark full-height" text-color="accent"  color="bg-dark" icon="location_on"></q-btn>
-                      </div>
-                      <div class="col-9 bg-dark" style="border-radius: 3px;">
-                        <div class="text-white text-weight-thin q-ml-md q-my-md" style="" >
-                          Buenos Aires, Argentina
-                        </div>
-                      </div>                  
-                    </div>
+  <q-page class="flex flex-center 	" 
+  :style="( $q.screen.lg || $q.screen.xl )? 'padding-left: 130px' : ''">
+    
+    <!-- Vista principal -->
+    <div class="full-width full-height ">
+      <div class="row justify-start ">
+        <div class="col-6 col-md-6 col-xs-12 col-sm-12  "  >
+          <transition
+              name="fade"
+              appear
+              :duration="2000"
+            >   
+            <div class="" style="margin-left: 10%">            
+              <div :class="getNameClass" style="margin-top:%;  line-height: 102%" >
+                <p>
+                   Hi,<br> I'm <span class="text-primary">Matias</span>, <br> Full Stack Engineer
+                </p>
+              </div>            
+              <div :class="getJobClass" >
+                Full Stack Hybrid Mobile App Developer
+              </div>
+              <div class="row full-width q-mt-xl ">
+                <q-btn @click="$router.push('/contact')" class="text-capitalize col-5 " outline color="secondary" label="Contact me!"/>
+              </div>
+            </div>
+          
+          </transition>
+        </div>
+        <div class="col-6 "  v-if="$q.screen.lg || $q.screen.xl">
+          <transition
+              name="fade"
+              appear
+            >   
+              <div class="row  justify-end" >                     
+              <q-img class="absolute-bottom-right" width="665px" style="margin-right: 5%;"  src="../assets/portfolio.png"></q-img>
+            </div>
+          
+          </transition>
+          
+        </div>        
+      </div>
+      
+    </div>
+
+    <!-- History -->
+            <!-- <div class="row justify-around q-ma-xl" style=" ">              
+              <div class="col  q-pa-xs q-ma-lg full-width" style=" ">
+                <div class="text-center row justify-center">
+                  HISTORIA
+                </div>
+                <div class="row justify-center flex flex-center">
+                   <div class="text-dark text-overline ">
+                      PRINCIPAL
                   </div>
-                  
-                </div>            
-                
-              </q-card> 
+                  <div class="">
+                    <q-toggle
+                        v-model="mostrar_historia_version_larga"
+                        checked-icon="check"
+                        color="accent"
+                        unchecked-icon=""
+                      />
+                  </div>
+                  <div class="text-dark text-overline">
+                    DETALLADA
+                  </div>
+                </div>
+              </div>      
+
+
+              <div class="row justify-around q-ma-lg" style=" ">
+                  <q-timeline :layout="layout" color="dark">
+
+                   
+
+                    <q-timeline-entry
+                      v-show="mostrar_historia_version_larga"
+                      title="Me egreso del secundario"
+                      subtitle="12 de Diciembre, 2012"
+                      side="left"
+                      icon="school"
+                    >
+                      <div>
+                        Termino el secundario en el Colegio Nacional
+                      </div>
+                    </q-timeline-entry>
+
+                    <q-timeline-entry
+                      v-show="mostrar_historia_version_larga"
+                      title="Me convierto en técnico en armado y reparación de PC"
+                      subtitle="20 de Noviembre, 2013"
+                      side="right"                      
+                      icon="school"
+                    >
+                      <div>
+                        Certificado por la Escuela Argentina de Idiomas y Tecnología
+                      </div>
+                    </q-timeline-entry>
+
+                    <q-timeline-entry
+                      v-show="mostrar_historia_version_larga"
+                      title="Vendo mi primer software, Geome7ric 1.0"
+                      subtitle="12 de junio, 2018"
+                      side="left"                      
+                      icon="school"
+                    >
+                      <div>
+                        Solucioné el problema de stock, ventas y manejo de clientela a una forrajería. Un evento que marcó mi inicio en el mundo freelance
+                      </div>
+                    </q-timeline-entry>
+
+
+                    <q-timeline-entry
+                      title="Comienzan mi pasantía en Profertil S.A. "
+                      subtitle="1 de octubre, 2020"
+                      side="right"
+                      icon="work"
+                    >
+                      <div>
+                        Trabajo a jornada parcial, como administrador de redes y sistemas Windows, dando soporte a productos ASPEN y desarrollando
+                      </div>
+                    </q-timeline-entry>
+
+                    <q-timeline-entry
+                      title="Me recibo de Ingeniero en Computación"
+                      subtitle="9 de abril, 2021"
+                      icon="school"
+                      side="left"
+                    >
+                      <div class="">
+                        Prensento mi proyecto final frente a amigos y familiares, para poner un fin a mi carrera de ingeniero
+                      </div>
+                    </q-timeline-entry>
+
+                    <q-timeline-entry
+                      title="Comienzo a brindar servicios con dedicación exclusiva a Profertil S.A."
+                      subtitle="12 de abril, 2021"
+                      side="right"
+                    >
+                      <div>
+                        Trabajo a jornada completa, como administrador de redes y sistemas Windows, y dando soportes a productos ASPEN
+                      </div>
+                    </q-timeline-entry>
+
+                    <q-timeline-entry
+                      title="Primer trabajo como desarrollador"
+                      subtitle="7 de junio, 2021"
+                      side="left"                      
+                      color="accent"
+                      icon="work"
+                    >
+                      <div>
+                        Comienzo como Fullstack Developer en Nuqlea, la evolución de CAPP, la plataforma líder en construcción
+                      </div>
+                    </q-timeline-entry>
+
+                  </q-timeline>
+              </div>
+            </div> -->
               
                     
+
+    <!-- <div class=" row justify-start "  >  
+          <div class=" bg-info col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12   " style="">
+            <q-card
+              flat
+              class="bg-info q-ma-xl flex flex-center" >
+              <div class=" col   q-my-xl " style=" ">
+                <div class="text-h1 text-weight-bold q-my-sm">
+                  Hi,<br> I'm <span class="text-primary">Matias</span>, <br> Full Stack Engineer
+                </div>
+                <div class="row justify-center">
+                  <div class="col-5 bg-info ">
+                    <img class="" src="../assets/portfolio.png">
+                  </div>
+                </div>
+                <div class="row justify-center q-mt-md text-white  " style=" margin-left: 0px; height: 50px; ">
+                  <div class="bg-dark flex flex-center " style="" >
+                    <q-icon class="q-mx-md" name="location_on" color="accent"/>
+                    
+                  </div>
+                  <div class="text-white text-weight-thin bg-dark flex flex-center " style="" >
+                      <span class="q-mx-md">Buenos Aires, Argentina</span>
+                    </div>
+                                    
+                </div>
+                
+              </div>            
+              
+            </q-card> 
+            
           </div>
           
-          <q-separator size="xl" class="q-mt-lg" vertical color="dark"/>
 
-          <!-- Column B -- Blog -->
-
-          <div class="col-12 bg-info col-md-7 q-pa-lg" v-show="mostrar_blog" style="margin: 0px">
+          <div class="col-12 bg-info col-md-5 q-pa-xs " v-show="mostrar_blog" style="margin: 0px">
             <div class="row justify-center q-ma-lg q-pa-xs">
               
               <div v-for="project in projects" :key="project.id" class="col-12 col-md text-center">
@@ -55,24 +203,20 @@
               </div>
             </div>
           </div>
-          
-          <!-- Column B -- Porfolio -->
-          <div class="col-12 bg-info col-md-7 q-pa-lg" v-show="mostrar_portfolio" style="margin: 0px">
+          <div class="col-12 bg-info col-md-5 q-pa-xs " v-show="mostrar_portfolio" style="margin: 0px">
 
-            <!-- Company | Focused on -->
             <div class="row justify-center q-ma-lg q-pa-xs" style=" ">
               <div class="col-12 col-md ">
                 <div class="text-overline">
                   COMPAÑÍA
                 </div>
-                <div class="text-weight-thin text-h4  ">
-                  Nuqlea
+                <div class="text-weight-thin text-h4 ">
+                  Nuqlea 
                 </div>
                 <div class="text-caption q-my-sm  ">
                   No disponible para contratar
                 </div>
               </div>
-              <!--q-separator vertical color="dark"  class="q-ml-xl" /-->
               <div class="col-12 col-md">
                 <div class="text-overline">
                   CONCENTRADO EN
@@ -82,15 +226,14 @@
                 </div>
                 <div class="text-caption text-h4" >
                   Framework 
+                  <q-btn size="xs" class="" flat icon="help" style="margin-left: 2px" />
                 </div>                
                 <div>
-                  <q-btn size="xs" flat icon="help" style="margin-left: -10px" />
+                  
                 </div>
               </div>
             </div>
 
-
-            <!-- Skills -->
             <div class="row justify-around q-ma-lg" style=" ">
               <div class="col-12 col-md-7">
                 <div class="text-overline">
@@ -119,14 +262,6 @@
                         />
                       </q-card-actions>
 
-                      <!--q-slide-transition>
-                        <div v-show="more_skill1">
-                          <q-separator />
-                          <q-card-section class="text-subitle2">
-                            {{ info_skill1 }}
-                          </q-card-section>
-                        </div>
-                      </q-slide-transition-->
                     </q-card>
                   </div>
                   
@@ -177,15 +312,6 @@
                           @click="more_skill1 = !more_skill1"
                         />
                       </q-card-actions>
-
-                      <!--q-slide-transition>
-                        <div v-show="more_skill1">
-                          <q-separator />
-                          <q-card-section class="text-subitle2">
-                            {{ info_skill1 }}
-                          </q-card-section>
-                        </div>
-                      </q-slide-transition-->
                     </q-card>
                   </div>
                 </div>
@@ -224,9 +350,6 @@
               </div>
             </div>
 
-
-
-            <!-- About -->
             <div class="row justify-around q-ma-lg" style=" ">
               <div class="col ">
                 <div class="text-overline">
@@ -240,127 +363,6 @@
               </div>
             </div>
 
-            <!-- History -->
-            <div class="row justify-around q-ma-lg" style=" ">
-              
-              <div class="row justify-center flex flex-center q-pa-xs q-ma-lg full-width" style=" ">
-                 <div class="text-dark text-overline">
-                   HISTORIA PRINCIPAL
-                 </div>
-                 <div class="">
-                   <q-toggle
-                      v-model="mostrar_historia_version_larga"
-                      checked-icon="check"
-                      color="accent"
-                      unchecked-icon=""
-                    />
-                 </div>
-                 <div class="text-dark text-overline">
-                  HISTORIA DETALLADA
-                 </div>
-              </div>      
-
-
-              <div class="row justify-around q-ma-lg" style=" ">
-
-
-
-                  <q-timeline :layout="layout" color="dark">
-
-                    <!--q-timeline-entry heading>
-                      Timeline heading
-                      <br>
-                      ({{$q.screen.lt.sm ? 'Dense' : ($q.screen.lt.md ? 'Comfortable' : 'Loose')}} layout)
-                    </q-timeline-entry-->
-
-                    <q-timeline-entry
-                      v-show="mostrar_historia_version_larga"
-                      title="Me egreso del secundario"
-                      subtitle="12 de Diciembre, 2012"
-                      side="left"
-                      icon="school"
-                    >
-                      <div>
-                        Termino el secundario en el Colegio Nacional
-                      </div>
-                    </q-timeline-entry>
-
-                    <q-timeline-entry
-                      v-show="mostrar_historia_version_larga"
-                      title="Me convierto en técnico en armado y reparación de PC"
-                      subtitle="20 de Noviembre, 2013"
-                      side="right"                      
-                      icon="school"
-                    >
-                      <div>
-                        Certificado por la Escuela Argentina de Idiomas y Tecnología
-                      </div>
-                    </q-timeline-entry>
-
-                    <q-timeline-entry
-                      v-show="mostrar_historia_version_larga"
-                      title="Vendo mi primer software, Geome7ric 1.0"
-                      subtitle="12 de junio, 2018"
-                      side="left"                      
-                      icon="school"
-                    >
-                      <div>
-                        Solucioné el problema de stock, ventas y manejo de clientela a una forrajería. Un evento que marcó mi inicio en el mundo freelance
-                      </div>
-                    </q-timeline-entry>
-
-
-                    <q-timeline-entry
-                      title="Comienzan mi pasantía en Profertil S.A. "
-                      subtitle="1 de octubre, 2020"
-                      side="right"
-                      icon="work"
-                    >
-                      <div>
-                        Trabajo a jornada parcial, como administrador de redes y sistemas Windows, dando soporte a productos ASPEN y desarrollando
-                      </div>
-                    </q-timeline-entry>
-
-                    <!--q-timeline-entry heading>November, 2017</q-timeline-entry-->
-
-                    <q-timeline-entry
-                      title="Me recibo de Ingeniero en Computación"
-                      subtitle="9 de abril, 2021"
-                      icon="school"
-                      side="left"
-                    >
-                      <div class="">
-                        Prensento mi proyecto final frente a amigos y familiares, para poner un fin a mi carrera de ingeniero
-                      </div>
-                    </q-timeline-entry>
-
-                    <q-timeline-entry
-                      title="Comienzo a brindar servicios con dedicación exclusiva a Profertil S.A."
-                      subtitle="12 de abril, 2021"
-                      side="right"
-                    >
-                      <div>
-                        Trabajo a jornada completa, como administrador de redes y sistemas Windows, y dando soportes a productos ASPEN
-                      </div>
-                    </q-timeline-entry>
-
-                    <q-timeline-entry
-                      title="Adquiero mi primer contrato"
-                      subtitle="7 de junio, 2021"
-                      side="left"                      
-                      color="accent"
-                      icon="work"
-                    >
-                      <div>
-                        Comienzo como Fullstack developer en Nuqlea, la evolución de CAPP, la plataforma líder en construcción
-                      </div>
-                    </q-timeline-entry>
-
-                  </q-timeline>
-              </div>
-            </div>
-
-            <!-- Projects -->
             <div class="row justify-around q-ma-lg" >
               <div class="col" >
                 <div class="text-overline">
@@ -377,7 +379,7 @@
                         />
                     </div>
                     <div class="text-dark text-overline">
-                      PORFOLIO GEOME7RIC
+                      PORTFOLIO GEOME7RIC
                     </div>
                   </div>     
                 </div>
@@ -396,9 +398,7 @@
             </div>
 
 
-            
-
-            <!-- Contact -->  
+             
             <div class="row justify-around q-ma-lg" style=" ">
               <div class="row text-h6 justify-around q-ma-lg text-center text-weight-regular" style=" ">
                 <div class="text-overline">
@@ -467,14 +467,8 @@
 
 
           </div>
-
-            <!--div class="col-12 bg-info   col-md" style="width: 300px">
-              asdasd
-            </div-->     
           
-        </div>
-      </div>
-    </div>
+    </div> -->
 
     <q-dialog v-model="mostrar_formulario_new_post" position="bottom">
       <div class="bg-white full-width">
@@ -492,7 +486,7 @@
     
     
     <!--Footer-->
-        <div class="row full-width bg-dark justify-around" style="height: 130px;  ">
+        <!-- <div class="row full-width bg-dark justify-around" style="height: 130px;  ">
           <div class="col">
             <div class=" q-ml-xl q-mt-sm">
               <q-avatar size="xl" style="margin-left: -4px">
@@ -503,7 +497,7 @@
               </div>    
             </div>
           </div>        
-        </div>
+        </div> -->
     
 
 
@@ -516,7 +510,7 @@
 <script>
 
 
-import Proyecto from 'components/Proyecto.vue'
+// import Proyecto from 'components/Proyecto.vue'
 import ModuloFunciones from '../modules/ModuloFunciones.vue'
 import ModuloNetwork from '../modules/ModuloNetwork.vue'
 import Vue from 'vue'; // es6 syntax
@@ -528,7 +522,7 @@ export default {
     return{
       mostrar_formulario_new_post: false,
       showGeome7ricPortfolio: false,
-      geome7rcProjects: {},
+      geome7ricProjects: [],
       personalProjects: {},
       metodos_listener_principal:
       {
@@ -553,11 +547,10 @@ export default {
   },  
   components:
   {
-    Proyecto
+    // Proyecto
   },
   created()
   {
-    console.log('Holissssss')
     
     this.funciones= new Vue(ModuloFunciones);
     this.network = new Vue(ModuloNetwork)
@@ -569,8 +562,9 @@ export default {
     //     // console.log('Los proyectos son estos: ')
     //     // console.log(this.projects)        
     // });
-    this.setear_projects()
+    this.setear_personal_projects()
     this.personalProjects = this.projects
+    this.loadGeome7ricProjects()
     this.$root.$on('listener_principal', (param) => this.listener(param));
     console.log("Nope, u won't find any errors here :)")
     //this.funciones.alerta_positiva_home("Bienvenido");
@@ -581,6 +575,7 @@ export default {
   },
   mounted()
   { 
+    this.showTitle()
   },
 
   watch: {
@@ -590,16 +585,60 @@ export default {
   },
   methods:
   {
+    
+   showTitle() {
+     
+      
+
+   },
+  
+   
+   
 
     handleChangePortfolio () {
-      alert('asd')
       if (this.showGeome7ricPortfolio) {
-        this.projects = this.geome7rcProjects
+        this.projects = this.geome7ricProjects
       } else {
         this.projects = this.personalProjects
       }
     },
-    setear_projects(){
+
+    loadGeome7ricProjects () {
+      let projects = []
+      let project = {}
+      project.title =  "SISTEMA DE TURNOS"
+      project.description =  "Para Iten Centro Integral, desarrollamos una aplicacicón con perfiles de administración, profesionales y alumnos, que administra turnos, cupos y más. Además, se confeccionó su landing webpage."
+      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integrantes:  Catalfamo, Salvador. Universidad Nacional del Sur. 8000. Meneses, Christian. Universidad Nacional del Sur. 8000. Mignucci, Bruno. Universidad Nacional del Sur. 8000. Puhl, Juan Manuel. Universidad Nacional del Sur. 8000. Rios, Matias. Universidad Nacional del Sur. 8000.'
+      
+      project.media = [
+        {
+          type: 'url',
+          title: 'Documento PDF',
+          src: 'https://docs.google.com/viewerng/viewer?url=https://matiasjrb.com.ar/documentos/sistemaArchivosDistribuidos/Paper-Distributed_file_system.pdf'
+        },
+        {
+          type: 'url',
+          title: 'Karina Cenci',
+          src: 'https://lissi.cs.uns.edu.ar/integrantes/karina-cenci/'
+        },
+        {
+          type: 'url',
+          title: 'CONAIISI 2020',
+          src: 'http://conaiisi2020.frsfco.utn.edu.ar/'
+        },
+      ]
+      project.date =  "14 de diciembre, 2020"
+      project.status =  "Terminado"
+      project.tags =  ['CONAIISI 2020','Sistemas distribuidos','Distribuidora Amusquibar']      
+      project.images = [
+        'https://res.cloudinary.com/geome7ric-weasel-iten/image/upload/v1623368617/assets/fondo_tisy68.jpg'
+      ]
+      
+      project.showMore = false
+      this.geome7ricProjects.push(project)
+    },
+    
+    setear_personal_projects(){
       this.projects = []
       
       let project = {}
@@ -610,8 +649,8 @@ export default {
             
       project = {}
       project.title =  "SISTEMA DE ARCHIVOS DISTRIBUIDO"
-      project.description =  "Para la materia Sistemas Distribuidos, desarrollamos con compañeros un programa de archivos distribuido y llevamos a cabo un paper que fue aceptado en formato poster por la CONAIISI 2020. Trabajo supervisado por la Mg. Karina Cenci."
-      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integrantes:  Catalfamo, Salvador. Universidad Nacional del Sur. 8000. Meneses, Christian. Universidad Nacional del Sur. 8000. Mignucci, Bruno. Universidad Nacional del Sur. 8000. Puhl, Juan Manuel. Universidad Nacional del Sur. 8000. Rios, Matias. Universidad Nacional del Sur. 8000..'
+      project.description =  "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Para la materia Sistemas Distribuidos, desarrollamos con compañeros un programa de archivos distribuido y llevamos a cabo un paper que fue aceptado en formato poster por la CONAIISI 2020. Trabajo supervisado por la Mg. Karina Cenci."
+      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integrantes:  Catalfamo, Salvador. Universidad Nacional del Sur. 8000. Meneses, Christian. Universidad Nacional del Sur. 8000. Mignucci, Bruno. Universidad Nacional del Sur. 8000. Puhl, Juan Manuel. Universidad Nacional del Sur. 8000. Rios, Matias. Universidad Nacional del Sur. 8000.'
       
       project.media = [
         {
@@ -663,8 +702,9 @@ export default {
         'https://matiasjrb.com.ar/images/distribuidoraAmusquibar/android2.jpg',
         'https://matiasjrb.com.ar/images/distribuidoraAmusquibar/android3.jpg',
         'https://matiasjrb.com.ar/images/distribuidoraAmusquibar/android4.jpg',
-        'https://matiasjrb.com.ar/images/distribuidoraAmusquibar/windows1.jpg',
-        'https://matiasjrb.com.ar/images/distribuidoraAmusquibar/windows2.jpg'
+        'https://res.cloudinary.com/geome7rc/image/upload/v1647737186/portfolio/amusquibar/backoffice1_yemwny.jpg',
+        'https://res.cloudinary.com/geome7rc/image/upload/v1647737185/portfolio/amusquibar/backoffice2_zyofkp.jpg',
+        '../assets/amusquibar/backoffice3.jpg'
       ]
       
       project.showMore = false
@@ -1008,13 +1048,30 @@ export default {
     layout () {
       return this.$q.screen.lt.sm ? 'dense' : (this.$q.screen.lt.md ? 'comfortable' : 'loose')
     },
+    getNameClass() {
+      let ret = 'text-weight-bold '
+      if (this.$q.screen.xl) {
+        ret = ret + ' text-h1'
+      } else {
+        ret = ret + ' text-h2'
+      }
+      return ret
+    },
+    getJobClass() {
+      let ret = 'q-mt-md'
+      if (this.$q.screen.xl) {
+        ret = ret + ' text-h6'
+      } else {
+        ret = ret + ' text-h6'
+      }
+      return ret
+    },
+
     
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.my-card
-  width: 100%
-  max-width: 100px
+<style scoped>
+
 </style>

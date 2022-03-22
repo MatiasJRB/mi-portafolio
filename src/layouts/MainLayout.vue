@@ -1,66 +1,106 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header class=" q-layout__section--marginal ">
-      <q-toolbar
-        style="height: 100px"
-        class="bg-info ">     
-        <div class="left q-ml-xl">
-          <q-avatar size="xl">
-            <img src="../assets/MR-logo.svg" >
-          </q-avatar>
-    
-        </div>
-
-        
-        
-        <q-toolbar-title
-          class="text-dark text-center">
-        </q-toolbar-title>
-
-        <div class="right q-mr-xl">
-          <q-btn size="md" icon="work"  @click="click_toolbar_porfolio" active color="dark" label="Porfolio" :class="class_button_porfolio" text-color="dark" style="border-radius: 50px"/>
-          <q-btn size="md" icon="article" @click="click_toolbar_blog" color="dark" label="Blog" :class="class_button_toolbar" text-color="dark" style="border-radius: 50px"/>
-        </div>
-      </q-toolbar>
-
-      <q-page-sticky style="z-index: 5000" :offset="[18, 18]">
-        <div class="q-px-sm q-py-lg">
-          <div class="column items-center"  position="bottom-rigth">
-            <q-fab color="accent" text-color="dark" icon="keyboard_arrow_up" direction="up">
-              <q-fab-action color="dark" icon="email" />
-              <q-fab-action color="dark"  icon="fab fa-whatsapp" />
-                          
-            </q-fab>
-          </div>
+  <q-layout view="lHh lpR lFf"  >
+    <div class="col fixed-left full-height" v-if="!$q.screen.lg || !$q.screen.xl">
+      <div class="row justify-end q-ma-md">
+        <q-btn flat icon="menu"/>
       </div>
-      <!--q-btn @click="enviar_iniciar_nuevo_movimiento" fab icon="add" color="primary" /-->
-    </q-page-sticky>
+    </div> 
+    <div class="col fixed-left full-height  bg-dark text-secondary"  style="width: 130px; z-index:1000; margin:0 "
+      v-if="($q.screen.lg || $q.screen.xl )" >
+      <q-card @click="$router.push('/')" flat v-ripple clickable class="bg-black text-grey-6 cursor-pointer " style="height: 170px">
+        <div class="row justify-center">
+          <q-img class="flex flex-center col-6 q-mt-xl" src="../assets/MR_LOGO_WHITE.svg" >        
+         </q-img>
+        </div>
+        <div class="q-ma-md text-center q-mb-lg">Full Stack<br> Enginner</div>
+      </q-card>
+      <div class="" style="margin-top: 120%">
+        <q-separator color="primary"  />
+        <div class="text-white">
+        </div>
+        <q-item 
+          clickable
+          style="height:45px"
+          @click="$router.push('/about')"
+          class="">
+            <q-item-section :class="$route.path.includes('about')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
+              About
+            </q-item-section>
+        </q-item>
+        <q-separator color="primary"/>
+        <q-item 
+          clickable
+          style="height:45px"
+          @click="$router.push('/skills')"
+          class="">
+            <q-item-section :class="$route.path.includes('skills')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
+              My skills
+            </q-item-section>
+        </q-item>
+        <q-separator color="primary"/>
+        <q-item 
+          clickable
+          @click="$router.push('/portfolio')"
+          style="height:45px"
+          class="">
+            <q-item-section :class="$route.path.includes('portfolio')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
+              Work
+            </q-item-section>
+        </q-item>
+        <q-separator color="primary"/>
+        <q-item 
+          clickable
+          style="height:45px"
+          @click="$router.push('/contact')"
+          class="">
+            <q-item-section :class="$route.path.includes('contact')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
+              Contact
+            </q-item-section>
+        </q-item>
+        <q-separator color="primary"/>
+        <q-item 
+          clickable
+          style="height:45px"
+          @click="$router.push('/blog')"
+          class="">
+            <q-item-section :class="$route.path.includes('blog')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
+              Blog
+            </q-item-section>
+        </q-item>
+        <q-separator color="primary"/>
+      </div>
+      <div class="row justify-center" style="margin-top: 120%" >
+       <q-btn flat size="xs">
+         <q-img src="../assets/social/linkdn.png" width="15px" style="filter: grayscale(1);"/>
+       </q-btn>
+       <q-btn flat size="xs">
+         <q-img src="../assets/social/instagram.png" width="15px" style="filter: grayscale(1);"/>
+       </q-btn>
+      </div>
+    </div>
+
+    <q-page-container style="margin: 0"  >
       
-    </q-header>
-
-    <!--q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      content-class="bg-grey-1"
-    >
-      <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          Essential Links
-        </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer-->
-
-    <q-page-container>
-      <router-view />
+      <transition
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
+        appear
+        :duration="animationTime"
+      >      
+        <router-view/>
+        <!-- <div class="">
+          <q-inner-loading 
+            label="Matias is thinking.."
+            label-class="text-dark"
+            class=" absolute-center" 
+            :showing="changingRoute" 
+          >
+             <q-spinner-oval color="" size="2em" />
+          </q-inner-loading>
+          <router-view>
+          </router-view>
+        </div> -->
+      </transition>
     </q-page-container>
     
   </q-layout>
@@ -69,50 +109,7 @@
 <script>
 import EssentialLink from 'components/EssentialLink.vue'
 import { fasAirFreshener } from '@quasar/extras/fontawesome-v5'
-const linksData = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-];
+
 
 export default {
   name: 'MainLayout',
@@ -123,7 +120,19 @@ export default {
       class_button_porfolio: this.mostrando_porfolio? 'bg-accent q-mx-xs' : 'bg-info q-mx-xs',
       mostrando_porfolio: true,
       leftDrawerOpen: false,
-      essentialLinks: linksData
+      changingRoute: false,
+      animationTime: 300
+    }
+  },
+  beforeRouteUpdate(to,from, next) {
+    next()
+  },
+  watch: {
+    leftDrawerOpen(oldValue, newValue) {
+      if (!this.leftDrawerOpen) {
+        // olvido el drwaer y muestro el boton :D
+        this.$emitter.emit('mobileVerstion', true)
+      }
     }
   },
   created()

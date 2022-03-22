@@ -1,1 +1,29 @@
 // app global css in SCSS form
+.element.style {
+    padding-left: 100px;
+}
+
+@font-face {
+    font-family: 'Syne';
+    src: url(./fonts/syne.ttf);
+}
+
+* {
+    font-family: 'Syne';
+}
+
+.q-tooltip--style {
+    color: #fafafa;
+    border-radius: 4px;    
+    cursor: pointer;
+    background: none;
+  }
+
+body{
+    overflow-y:hidden;
+}
+@media only screen and (max-width:960px){
+    body{
+        overflow-y:scroll;
+    }
+}
