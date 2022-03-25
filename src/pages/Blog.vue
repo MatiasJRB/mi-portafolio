@@ -1,7 +1,7 @@
 <template>
   <q-page  class="flex flex-center bg-dark text-gray-4" :style=" $q.screen.xl? 'padding-left: 130px' : 'padding-left: 130px'">
     <!-- Vista principal -->
-    <div class="" :style=" $q.screen.xl? '' : ''">
+    <!-- <div class="" :style=" $q.screen.xl? '' : ''">
       <div >
           <div class="row justify-start">
             <div class="col-2 " v-for="a,index in projects" :key="index" >
@@ -25,13 +25,19 @@
         
       </div>
       
-    </div>
+    </div> -->
+    <Carousel />
   </q-page>
 </template>
 
 <script>
+// Import Swiper Vue.js components
+  import { Swiper, SwiperSlide } from 'swiper';
+
 export default {
   // name: 'PageName',
+  components: {
+  },
   data () {
     return {
       projects: []

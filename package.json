@@ -19,8 +19,10 @@
     "core-js": "^3.6.5",
     "git": "^0.1.5",
     "quasar": "^1.15.21",
+    "swiper": "^8.0.7",
     "tiny-emitter": "^2.1.0",
-    "vue2-google-maps": "^0.10.7"
+    "vue2-google-maps": "^0.10.7",
+    "vue3-carousel": "^0.1.36"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",

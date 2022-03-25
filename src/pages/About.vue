@@ -1,12 +1,12 @@
 <template>
-  <q-page  class="flex flex-center bg-info" :style="( $q.screen.lg || $q.screen.xl )? 'padding-left: 130px' : ''">
+  <q-page  class="flex flex-center bg-info" :style="( !mobile )? 'padding-left: 130px' : ''">
     <!-- Vista principal -->
-    <div class="full-width " :style=" $q.screen.lg || $q.screen.xl? 'height: 100%' : ''">
+    <div class="full-width " :style=" !mobile? 'height: 100%' : ''">
       <div class="row justify-start ">
         <div class="col-6 col-md-6 col-xs-12 col-sm-12  "  >
           
-          <div class="q-mx-md">
-            <div :class="getAboutName" style="margin-top:30%" >
+          <div class="q-mx-xl q-mt-lg">
+            <div :class="getAboutName" style="" >
               About me
             </div>
             <div :class="getTextClass" style="line:height: 130%" >
@@ -22,10 +22,10 @@
             </span>
           </div>
         </div>
-        <div class="col-6  full-height" v-if="$q.screen.lg || $q.screen.xl" >
+        <div class="col-6  full-height" v-if="!$q.screen.xs" >
           
           <div class="row  justify-end" >                     
-            <q-img class="absolute-bottom-right" width="520px" style="margin-right: 5%"  src="../assets/portfolio.png"></q-img>
+            <q-img class="absolute-bottom-right" :width="getImageWidth" style="margin-right: 5%"  src="../assets/portfolio.png"></q-img>
           </div>
         </div>        
       </div>
@@ -42,6 +42,18 @@ export default {
     console.log(this.$route)
   },
   computed: {
+    getImageWidth () {
+      let ret = '665px'
+      ret = (this.$q.screen.height *80) / 100
+      ret = ret.toString() + 'px'
+      console.log(this.$q.screen)
+      return ret
+    },
+    mobile () {
+      let ret = false
+      ret = this.$q.screen.xs || this.$q.screen.sm || this.$q.screen.width < 1050
+      return ret
+    },
     getAboutName() {
       let ret = 'text-weight-bold  '
       if (this.$q.screen.xl) {

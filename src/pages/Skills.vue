@@ -1,12 +1,12 @@
 <template>
-   <q-page  class="flex flex-center bg-info" :style="( $q.screen.lg || $q.screen.xl )? 'padding-left: 130px' : ''">
+   <q-page  class="flex flex-center bg-info" :style="( !mobile )? 'padding-left: 130px' : ''">
     <!-- Vista principal -->
-    <div class="full-width " :style=" $q.screen.xl? 'height: 100%' : ''">
+    <div class="full-width " :style=" mobile? 'height: 100%' : ''">
       <div class="row justify-start ">
         <div class="col-6 col-md-6 col-xs-12 col-sm-12  "  >
           
-          <div class="q-ml-xl">
-            <div :class="getSkillsName" style="margin-top:30%" >
+          <div class="q-mx-xl q-mt-lg">
+            <div :class="getSkillsName" style="" >
               Skills & experience
             </div>
             <div :class="getTextClass" style="line:height: 130%" >
@@ -18,7 +18,8 @@
               I also have facilities to attend and understand the client, to arrive as quickly as possible to their desired product.<br>
 
               I create successfull responsive websites that are fast, easy to use and with good design criteria, just like this :). <br>
-              Visit my <span @click="goToWebPage" style="font-size: 18px" class="text-secondary cursor-pointer " clickable>
+              Visit my 
+              <span @click="windows.open('https://www.linkedin.com/in/matiasjriosb/')" style="font-size: 18px" class="text-secondary cursor-pointer " clickable>
               Linkedln</span> profile for more details or just <span @click="$router.push('/contact')" style="font-size: 18px" class="text-secondary cursor-pointer " clickable>
                 contact me.
               </span>
@@ -47,6 +48,11 @@ export default {
     }
   },
   computed: {
+    mobile () {
+      let ret = false
+      ret = this.$q.screen.xs || this.$q.screen.sm || this.$q.screen.width < 1050
+      return ret
+    },
     getSkillsName() {
       let ret = 'text-weight-bold  '
       if (this.$q.screen.xl) {

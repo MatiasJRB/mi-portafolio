@@ -1,11 +1,12 @@
 <template>
   <q-page class="flex flex-center 	" 
-  :style="( $q.screen.lg || $q.screen.xl )? 'padding-left: 130px' : ''">
+  :style="(mobile)? '' : 'padding-left: 130px'">
     
     <!-- Vista principal -->
     <div class="full-width full-height ">
-      <div class="row justify-start ">
-        <div class="col-6 col-md-6 col-xs-12 col-sm-12  "  >
+      
+      <div class="row justify-start  q-mt-xl">
+        <div :class="hideImage? 'col-12' : 'col-6'   "  >
           <transition
               name="fade"
               appear
@@ -20,20 +21,21 @@
               <div :class="getJobClass" >
                 Full Stack Hybrid Mobile App Developer
               </div>
-              <div class="row full-width q-mt-xl ">
+              <div class="row full-width q-mt-lg">
                 <q-btn @click="$router.push('/contact')" class="text-capitalize col-5 " outline color="secondary" label="Contact me!"/>
               </div>
             </div>
           
           </transition>
         </div>
-        <div class="col-6 "  v-if="$q.screen.lg || $q.screen.xl">
+        <div class="col-6 "  v-if="!hideImage">
           <transition
               name="fade"
               appear
             >   
               <div class="row  justify-end" >                     
-              <q-img class="absolute-bottom-right" width="665px" style="margin-right: 5%;"  src="../assets/portfolio.png"></q-img>
+              <q-img class="absolute-bottom-right"
+                :width="getImageWidth" style="margin-right: 5%;"  src="../assets/portfolio.png"></q-img>
             </div>
           
           </transition>
@@ -514,6 +516,8 @@
 import ModuloFunciones from '../modules/ModuloFunciones.vue'
 import ModuloNetwork from '../modules/ModuloNetwork.vue'
 import Vue from 'vue'; // es6 syntax
+import { mapState } from 'vuex'
+
 
 export default {
   name: 'PageIndex',
@@ -1045,6 +1049,23 @@ export default {
     }
   },
   computed: {
+    hideImage () {
+      let ret = false
+      ret = this.$q.screen.xs || this.$q.screen.width < 900
+      return ret
+    },
+    getImageWidth () {
+      let ret = '665px'
+      ret = (this.$q.screen.height *80) / 100
+      ret = ret.toString() + 'px'
+      console.log(this.$q.screen)
+      return ret
+    },
+    mobile () {
+      let ret = false
+      ret = this.$q.screen.xs || this.$q.screen.sm || this.$q.screen.width < 1050
+      return ret
+    },
     layout () {
       return this.$q.screen.lt.sm ? 'dense' : (this.$q.screen.lt.md ? 'comfortable' : 'loose')
     },

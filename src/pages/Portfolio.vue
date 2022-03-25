@@ -1,12 +1,12 @@
 <template>
-  <q-page  class="flex flex-center" :style=" $q.screen.xl? 'padding-left: 130px' : 'padding-left: 130px'" >
+  <q-page  class="flex flex-center" :style=" mobile? '  ' : 'padding-left: 130px'" >
     <div class="full-width  flex flex-center " :style=" $q.screen.xl? 'height: 100vh' : ''">
       <div class="row justify-start full-width  ">
         <q-card  
           flat           
           @click="handleShowProject(a)"
-          v-ripple :class="getNumberOfColumns" v-for="a in projects" :key="a.title"  :style="getCardStyle(a)"  >
-          <div v-if="!hover[a.images[0]] && !showProject" class="absolute bg-primary full-width full-height" style="opacity: 0.5; z-index: 10000"></div>
+          v-ripple class="col-xs-6 col-sm-4  col-xs-6 col-md-2 col-xl-2" v-for="a in projects" :key="a.title"  :style="getCardStyle(a)"  >
+          <div v-if="!hover[a.images[0]] && !showProject" class="absolute bg-primary full-width full-height" style="opacity: 0.5; z-index: 2"></div>
           <q-img class="full-height" fit="fill" :src="a.images[0]" >
             <div class="absolute-bottom-right bg-transparent" v-if="a.geome7ric" x>
               <img src="../assets/geome7ric_logo.svg" width="55px"  />
@@ -112,6 +112,12 @@ export default {
   },
   computed: {
     
+    mobile () {
+      let ret = false
+      ret = this.$q.screen.xs || this.$q.screen.sm || this.$q.screen.width < 1050
+      return ret
+    },
+
     getNumberOfColumns() {
       let ret = 'col-2'
       if (this.$q.screen.xs) {

@@ -1,12 +1,12 @@
 <template>
   <q-layout view="lHh lpR lFf"  >
-    <div class="col fixed-left full-height" v-if="!$q.screen.lg || !$q.screen.xl">
+    <q-page-sticky class="  " v-if="mobile" style="z-index:10000000">
       <div class="row justify-end q-ma-md">
         <q-btn flat icon="menu"/>
       </div>
-    </div> 
+    </q-page-sticky> 
     <div class="col fixed-left full-height  bg-dark text-secondary"  style="width: 130px; z-index:1000; margin:0 "
-      v-if="($q.screen.lg || $q.screen.xl )" >
+      v-if="!mobile" >
       <q-card @click="$router.push('/')" flat v-ripple clickable class="bg-black text-grey-6 cursor-pointer " style="height: 170px">
         <div class="row justify-center">
           <q-img class="flex flex-center col-6 q-mt-xl" src="../assets/MR_LOGO_WHITE.svg" >        
@@ -14,7 +14,7 @@
         </div>
         <div class="q-ma-md text-center q-mb-lg">Full Stack<br> Enginner</div>
       </q-card>
-      <div class="" style="margin-top: 120%">
+      <div class="" :style="'margin-top:' + getDistance">
         <q-separator color="primary"  />
         <div class="text-white">
         </div>
@@ -58,7 +58,7 @@
             </q-item-section>
         </q-item>
         <q-separator color="primary"/>
-        <q-item 
+        <!-- <q-item 
           clickable
           style="height:45px"
           @click="$router.push('/blog')"
@@ -66,17 +66,17 @@
             <q-item-section :class="$route.path.includes('blog')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
               Blog
             </q-item-section>
-        </q-item>
+        </q-item> -->
         <q-separator color="primary"/>
       </div>
-      <div class="row justify-center" style="margin-top: 120%" >
+      <!-- <div class="row justify-center" style="margin-top: " >
        <q-btn flat size="xs">
          <q-img src="../assets/social/linkdn.png" width="15px" style="filter: grayscale(1);"/>
        </q-btn>
        <q-btn flat size="xs">
          <q-img src="../assets/social/instagram.png" width="15px" style="filter: grayscale(1);"/>
        </q-btn>
-      </div>
+      </div> -->
     </div>
 
     <q-page-container style="margin: 0"  >
@@ -114,6 +114,19 @@ import { fasAirFreshener } from '@quasar/extras/fontawesome-v5'
 export default {
   name: 'MainLayout',
   components: {  },
+  computed: {
+    mobile () {
+      let ret = false
+      ret = this.$q.screen.xs || this.$q.screen.sm || this.$q.screen.width < 1050
+      return ret
+    },
+    getDistance () {
+      let ret = (this.$q.screen.height *10) / 100
+      ret = ret.toString() + 'px'
+      console.log(this.$q.screen)
+      return ret
+    },
+  },
   data () {
     return {
       class_button_toolbar: this.mostrando_porfolio? 'bg-info q-mx-xs' : 'bg-accent q-mx-xs',
