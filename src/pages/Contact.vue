@@ -16,20 +16,20 @@
             <div class="q-mt-xl  ">
               <div class="row justify-around ">
                 <div class="col-6 col-md-6 col-xs-12 q-pa-xs">
-                  <q-input clearable  class="" filled label="Name"/>
+                  <q-input v-model="form.name" clearable  class="" filled label="Name"/>
                 </div>
                 <div class="col-6 col-md-6  col-xs-12 q-pa-xs">
-                  <q-input clearable class="  " filled label="Email"/>
+                  <q-input v-model="form.from" clearable class="" filled label="Email"/>
                 </div>
               </div>
               <div class="row q-pa-xs ">
-                <q-input clearable class="full-width" filled label="Subject"/>
+                <q-input v-model="form.subject" clearable class="full-width" filled label="Subject"/>
               </div>
               <div class="q-pa-xs">
-                <q-input clearable  :autogrow="false" type="textarea" filled label="Message" style="max-height: 250px"/>
+                <q-input  v-model="form.text" clearable  :autogrow="false" type="textarea" filled label="Message" style="max-height: 250px"/>
               </div>
               <div class="row justify-end q-mt-sm">
-                <q-btn class="text-capitalize col-4 " outline color="secondary" label="Sent message!"/>
+                <q-btn @click="sendEmail" class="text-capitalize col-4 " outline color="secondary" label="Sent message!"/>
               </div>
             </div>
           </div>
@@ -46,6 +46,29 @@
 
 <script>
 export default {
+  data () {
+    return {
+      form: {
+        name: '',
+        from: '',
+        subject: '',
+        to: process.env.EMAIL,
+        text: ''
+      }
+    }
+  },
+  methods: {
+    sendEmail () {
+      this.$store.dispatch('account/sendEmail', this.form)
+        .then(() => {
+          alet('se envio correctamente')
+        })
+        .catch((error) => {
+          alert('error')
+          console.log(error)
+        })
+    }
+  },
   components: {
   },
   computed: {
