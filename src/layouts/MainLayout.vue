@@ -1,8 +1,8 @@
 <template>
   <q-layout view="lHh lpR lFf"  >
-    <q-page-sticky class="  " v-if="mobile" style="z-index:10000000">
+    <q-page-sticky position="top-right" class="  " v-if="mobile" style="z-index:10000000">
       <div class="row justify-end q-ma-md">
-        <q-btn flat icon="menu"/>
+        <q-btn  flat icon="menu" @click="expanded =! expanded"/>
       </div>
     </q-page-sticky> 
     <div class="col fixed-left full-height  bg-dark text-secondary"  style="width: 130px; z-index:1000; margin:0 "
@@ -44,7 +44,7 @@
           style="height:45px"
           class="">
             <q-item-section :class="$route.path.includes('portfolio')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
-              Work
+              Portfolio
             </q-item-section>
         </q-item>
         <q-separator color="primary"/>
@@ -78,6 +78,41 @@
        </q-btn>
       </div> -->
     </div>
+
+    <q-dialog position="top" v-model="expanded">
+      <q-card class="" flat style="border-radius: 0px">
+        <q-card-section>
+          <q-img
+            @click="handleMenu('/')"
+            class="q-ma-md" width="33px" src="../assets/mr.svg"/>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section
+          @click="handleMenu('/')"
+        :class="$route.path === '/'? '  bg-primary text-white  ' :' ' "
+         >
+          Home
+        </q-card-section>
+        <q-separator/>
+        <q-card-section
+          @click="handleMenu('/about')"
+          :class="$route.path.includes('about')? ' bg-primary text-white  ' :' ' ">
+          About
+        </q-card-section>
+        <q-separator/>
+        <q-card-section
+        @click="handleMenu('/portfolio')"
+           :class="$route.path.includes('portfol')? 'bg-primary text-white  ' :' ' ">
+          Portfolio
+        </q-card-section>
+        <q-separator/>
+        <q-card-section
+          @click="handleMenu('/contact')"
+           :class="$route.path.includes('contact')? 'bg-primary text-white  ' :' ' ">
+          Contact
+        </q-card-section>
+      </q-card>
+    </q-dialog>
 
     <q-page-container style="margin: 0"  >
       
@@ -129,6 +164,7 @@ export default {
   },
   data () {
     return {
+      expanded:false,
       class_button_toolbar: this.mostrando_porfolio? 'bg-info q-mx-xs' : 'bg-accent q-mx-xs',
       class_button_porfolio: this.mostrando_porfolio? 'bg-accent q-mx-xs' : 'bg-info q-mx-xs',
       mostrando_porfolio: true,
@@ -157,6 +193,17 @@ export default {
   },
   methods:
   {
+    handleMenu(path) {
+      if (path !== this.$route.path) {
+        this.$router.push(path)
+          .finally(() => {
+            this.expanded = false
+          })
+      } else {
+        this.expanded = false
+      }
+      
+    },
     toolbar_click()
     {
       if (this.mostrando_porfolio)

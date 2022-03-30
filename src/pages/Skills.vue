@@ -27,11 +27,50 @@
             </div>
           </div>
         </div>
-        <div class="col-6  full-height" >
+        <div class="col-6 col-md-6 col-xs-12 col-sm-12"  >
           
-          <div class="row  justify-end" >                     
-            <!-- <q-img class="absolute-bottom-right" width="520px" style="margin-right: 5%"  src="../assets/portfolio2.png"></q-img> -->
+          <div class="q-mt-md q-ml-md">
+            <div class="row q-pa-md justify-start "  > 
+              <div class="row q-ma-sm q-pa-sm cursor-pointer" style="border-style: solid; border-color: #4292F0; border-width: 1px; border-radius: 16px; width: 220px">
+                <q-img width="32px" contain class="q-ml-md " src="../assets/quasar.svg"/>
+                <div class="cursor-pointer flex flex-center">
+                  <span class="q-ml-md">
+                    Quasar Framework
+                  </span>
+                </div>
+              </div>
+              
+            </div>
+            <!-- <q-separator color="light-blue" style="width: 22%"/> -->
+            <div class="row  justify-start " > 
+              <q-img width="32px" contain class=" " src="../assets/vuejs.svg"/>
+              <div class="cursor-pointer flex flex-center">
+                <span class="q-ma-md">
+                  Vue JS
+                </span>
+              </div>
+            </div>
+            <q-separator color="light-green" />
+            <div class="row  justify-start " > 
+              <q-img width="32px" contain class=" " src="../assets/Laravel.svg"/>
+              <div class="cursor-pointer flex flex-center">
+                <span class="q-ma-md">
+                  Laravel
+                </span>
+              </div>
+            </div>
+            <q-separator color="red"/>
+            <div class="row  justify-start " > 
+              <q-img width="32px" contain class=" " src="../assets/quasar.svg"/>
+              <div class="cursor-pointer flex flex-center">
+                <span class="q-ma-md">
+                  Quasar Framework
+                </span>
+              </div>
+            </div>
+            <q-separator color="light-blue"/>
           </div>
+          
         </div>        
       </div>
       

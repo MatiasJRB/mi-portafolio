@@ -3,7 +3,7 @@
    <!-- Vista principal -->
     <div class="full-width" :style=" !mobile   ? 'height: 100vh' : ''">
       <div class="row justify-start  flex flex-center ">
-        <div class="col-6 col-md-6 col-xs-12 col-sm-12  "  >
+        <div class="col-6 col-md-6 col-xs-12 col-sm-12  " :style="mobile? 'height: 100vh': ''" >
           
           <div class="q-ma-md">
             <div :class="getNameClass" style="" >
@@ -23,18 +23,20 @@
                 </div>
               </div>
               <div class="row q-pa-xs ">
-                <q-input v-model="form.subject" clearable class="full-width" filled label="Subject"/>
-              </div>
-              <div class="q-pa-xs">
+                <q-input densez v-model="form.subject" clearable class="full-width" filled label="Subject"/>
+              </div> 
+              <!-- <div class="q-pa-xs">
                 <q-input  v-model="form.text" clearable  :autogrow="false" type="textarea" filled label="Message" style="max-height: 250px"/>
-              </div>
+              </div> -->
+              <q-editor  class=" q-mx-xs no-shadow"
+                style="border-radius: 0px" v-model="form.html" label="Message" min-height="5rem" max-height="250px" />
               <div class="row justify-end q-mt-sm">
-                <q-btn @click="sendEmail" class="text-capitalize col-4 " outline color="secondary" label="Sent message!"/>
+                <q-btn :loading="seendingMessage" @click="sendEmail" class="text-capitalize col-4 col-xs-12 " outline color="secondary" label="Sent message!"/>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-6 col-md-6 col-xs-12  full-height">          
+        <div class="col-6 col-md-6 col-xs-12" v-if="!mobile">          
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d99611.232271834!2d-62.25637244999999!3d-38.72122955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95edbcabdc1302bd%3A0x76d1d88d241e7a11!2sBah%C3%ADa%20Blanca%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1647766554503!5m2!1ses!2sar"
            style="border:0;height:100vh; width: 100%" allowfullscreen="" loading="lazy"></iframe>
         </div>        
@@ -48,24 +50,42 @@
 export default {
   data () {
     return {
+      seendingMessage: false,
       form: {
         name: '',
         from: '',
         subject: '',
         to: process.env.EMAIL,
-        text: ''
+        text: '',
+        html: ''
       }
     }
   },
   methods: {
+    resetForm() {
+      this.form = {
+        name: '',
+        from: '',
+        subject: '',
+        text: '',
+        html: ''
+      } 
+    },
     sendEmail () {
+      this.seendingMessage = true
       this.$store.dispatch('account/sendEmail', this.form)
         .then(() => {
-          alet('se envio correctamente')
+          this.$emitter.emit('positiveNotify', 'Your email was sent successfully')
+          this.resetForm()
         })
         .catch((error) => {
-          alert('error')
           console.log(error)
+          let errMessage = error.response?.data?.message
+          errMessage = errMessage || 'Please, try again later'
+          this.$emitter.emit('negativeNotify', errMessage)
+        })
+        .finally(() => {
+          this.seendingMessage = false
         })
     }
   },

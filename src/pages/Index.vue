@@ -1,10 +1,10 @@
 <template>
-  <q-page class="flex flex-center 	" 
-  :style="(mobile)? '' : 'padding-left: 130px'">
-    
+  <q-page 
+    class="flex flex-center 	" 
+    :style="(mobile)? '' : 'padding-left: 130px'"
+  >
     <!-- Vista principal -->
     <div class="full-width full-height ">
-      
       <div class="row justify-start  q-mt-xl">
         <div :class="hideImage? 'col-12' : 'col-6'   "  >
           <transition
@@ -25,7 +25,6 @@
                 <q-btn @click="$router.push('/contact')" class="text-capitalize col-5 " outline color="secondary" label="Contact me!"/>
               </div>
             </div>
-          
           </transition>
         </div>
         <div class="col-6 "  v-if="!hideImage">

@@ -6,7 +6,7 @@
           flat           
           @click="handleShowProject(a)"
           v-ripple class="col-xs-6 col-sm-4  col-xs-6 col-md-2 col-xl-2" v-for="a in projects" :key="a.title"  :style="getCardStyle(a)"  >
-          <div v-if="!hover[a.images[0]] && !showProject" class="absolute bg-primary full-width full-height" style="opacity: 0.5; z-index: 2"></div>
+          <div v-if="!mobile && !hover[a.images[0]] && !showProject" class="absolute bg-primary full-width full-height" style="opacity: 0.5; z-index: 2"></div>
           <q-img class="full-height" fit="fill" :src="a.images[0]" >
             <div class="absolute-bottom-right bg-transparent" v-if="a.geome7ric" x>
               <img src="../assets/geome7ric_logo.svg" width="55px"  />
@@ -34,23 +34,23 @@
         
         </q-card>
       </div> 
-      <q-dialog  full-height class="bg-white"  v-model="showProject"  position="bottom">
+      <q-dialog  :maximized="mobile" class="bg-white"  v-model="showProject"  position="bottom">
         <div class="bg-white" style="width: 100vh">
           
-          <!-- <div class="row justify-end" >
-              <q-btn flat icon="close" class="flex flex-center" size="md" @click="showProject =! showProject"/>
-          </div> -->
+          <div class="row justify-start " >
+              <q-btn flat icon="close" class="flex flex-center q-ma-md" @click="showProject =! showProject"/>
+          </div>
           <q-carousel
             @click.stop=""
             swipeable
-            control-color="accent"
+            control-color="primary"
             v-model="slide"
             arrows 
             class="full-width"
             infinite            
           >
             <q-carousel-slide
-              class="full-width"
+              class="full-width full-height"
               v-for="(image,index) in projectToShow.images"
               :key="index"
               :name="index"
