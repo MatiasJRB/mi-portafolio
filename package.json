@@ -11,6 +11,7 @@
     "build-spa": "cross-env QENV=development quasar build",
     "deploy": "vercel",
     "dev": "cross-env QENV=development quasar dev",
+    "prod": "cross-env QENV=production quasar dev",
     "local": "cross-env QENV=local quasar dev",
     "build-prod": "cross-env QENV=production quasar build",
     "newstoreaccount": "quasar new store account"
@@ -30,6 +31,7 @@
     "tiny-emitter": "^2.1.0",
     "vue2-google-maps": "^0.10.7",
     "vue3-carousel": "^0.1.36",
+    "vuex-persistedstate": "^4.1.0",
     "yarn": "^1.22.18"
   },
   "devDependencies": {

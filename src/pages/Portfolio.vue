@@ -6,14 +6,14 @@
           flat           
           @click="handleShowProject(a)"
           v-ripple class="col-xs-6 col-sm-4  col-xs-6 col-md-2 col-xl-2" v-for="a in projects" :key="a.title"  :style="getCardStyle(a)"  >
-          <div v-if="!mobile && !hover[a.images[0]] && !showProject" class="absolute bg-primary full-width full-height" style="opacity: 0.5; z-index: 2"></div>
-          <q-img class="full-height" fit="fill" :src="a.images[0]" >
-            <div class="absolute-bottom-right bg-transparent" v-if="a.geome7ric" x>
+          <div v-if="!mobile && a.images &&  !hover[a.images[0]] && !showProject" class="absolute bg-primary full-width full-height" style="opacity: 0.5; z-index: 2"></div>
+          <q-img v-if="a.images" class="full-height" fit="fill" :src="a.images[0]" >
+            <div class="absolute-bottom-right bg-transparent" v-if="a.geome7ric">
               <img src="../assets/geome7ric_logo.svg" width="55px"  />
             </div>
           </q-img>          
           <q-tooltip
-            v-if="!showProject"
+            v-if="!showProject && a.images"
             v-model="hover[a.images[0]]"
             anchor="center middle"
             self="center middle"
@@ -134,16 +134,13 @@ export default {
     },
     getCardStyle(project) {
       let toret = 'height:33.33333vh; border-radius: 0px;'
-      if (this.hover[project.images[0]]) {
-        // toret += 'filter: grayscale(0)'
-      } else {
-        // toret += 'filter:grayscale(0.6)'
-      }
       return toret
     },
   },
   async mounted () {
-    this.projects = await this.$store.dispatch('projects/getProjects')
+    // this.projects = await this.$store.dispatch('projects/getProjects')
+    this.projects = await this.$store.dispatch('articles/getArticles')
+    console.log(this.projects)
       
   }
 }

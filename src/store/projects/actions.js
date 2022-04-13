@@ -384,8 +384,7 @@ export function getProjects ({commit}, data) {
       project.status =  "Aprobado"
       project.tags =  ['React', 'NodeJS', 'UNS', 'EATI2019']      
       project.images = [
-        'https://res.cloudinary.com/geome7rc/image/upload/v1647801582/portfolio/eati/logo_eati2019_cunio4.jpg',
-        'https://matiasjrb.com.ar/images/goingbackhome.png'
+        'https://res.cloudinary.com/geome7rc/image/upload/v1647801582/portfolio/eati/logo_eati2019_cunio4.jpg'
       ]
       project.videos = [
         'https://www.youtube.com/embed/AuBwgJXerKc'

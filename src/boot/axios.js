@@ -4,12 +4,8 @@ import axios from 'axios'
 import { boot } from 'quasar/wrappers'
 
 const axiosInstance = axios.create({
-    baseURL: process.env.MATIAS.API
-  })
-
-
-console.log(' LA INSTANCIA DE AXIOS')
-console.log(axiosInstance)
+  baseURL: process.env.MATIAS.API
+})
 
 Vue.prototype.$axios = axiosInstance
 

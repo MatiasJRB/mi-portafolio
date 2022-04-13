@@ -1,10 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-// import example from './module-example'
+
+import createPersistedState from 'vuex-persistedstate'
+
 
 import projects from './projects'
 import account from './account'
+import articles from './articles'
 
 Vue.use(Vuex)
 
@@ -22,8 +25,17 @@ export default function (/* { ssrContext } */) {
     modules: {
       // example
       projects,
-      account
+      account,
+      articles
     },
+    plugins: [
+      createPersistedState({
+        paths: [
+          'projects',
+          'account',
+          'articles'
+        ]})
+    ],
 
     // enable strict mode (adds overhead!)
     // for dev mode only

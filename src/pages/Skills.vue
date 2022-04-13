@@ -31,7 +31,7 @@
           
           <div class="q-mt-md q-ml-md">
             <div class="row q-pa-md justify-start "  > 
-              <div class="row q-ma-sm q-pa-sm cursor-pointer" style="border-style: solid; border-color: #4292F0; border-width: 1px; border-radius: 16px; width: 220px">
+              <div class="row q-ma-sm q-pa-sm cursor-pointer " style="border-style: solid; border-color: #4292F0; border-width: 1px; border-radius: 16px; width: 220px">
                 <q-img width="32px" contain class="q-ml-md " src="../assets/quasar.svg"/>
                 <div class="cursor-pointer flex flex-center">
                   <span class="q-ml-md">
