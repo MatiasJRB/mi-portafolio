@@ -3,9 +3,9 @@
    <!-- Vista principal -->
     <div class="full-width" :style=" !mobile   ? 'height: 100vh' : ''">
       <div class="row justify-start  flex flex-center ">
-        <div class="col-6 col-md-6 col-xs-12 col-sm-12  " :style="mobile? 'height: 100vh': ''" >
+        <div class="col-6 col-md-6 col-xs-12 col-sm-12  " :style="mobile? 'height: 100vh; ': ''" >
           
-          <div class="q-ma-md">
+          <div class="q-ma-md" style="margin-top:30%">
             <div :class="getNameClass" style="" >
              Contact me
             </div>
@@ -16,22 +16,22 @@
             <div class="q-mt-xl  ">
               <div class="row justify-around ">
                 <div class="col-6 col-md-6 col-xs-12 q-pa-xs">
-                  <q-input v-model="form.name" clearable  class="" filled label="Name"/>
+                  <q-input dark v-model="form.name" clearable  class="" filled label="Name"/>
                 </div>
                 <div class="col-6 col-md-6  col-xs-12 q-pa-xs">
-                  <q-input v-model="form.from" clearable class="" filled label="Email"/>
+                  <q-input dark v-model="form.from" clearable class="" filled label="Email"/>
                 </div>
               </div>
               <div class="row q-pa-xs ">
-                <q-input densez v-model="form.subject" clearable class="full-width" filled label="Subject"/>
+                <q-input dark densez v-model="form.subject" clearable class="full-width" filled label="Subject"/>
               </div> 
               <!-- <div class="q-pa-xs">
-                <q-input  v-model="form.text" clearable  :autogrow="false" type="textarea" filled label="Message" style="max-height: 250px"/>
+                <q-input dark  v-model="form.text" clearable  :autogrow="false" type="textarea" filled label="Message" style="max-height: 250px"/>
               </div> -->
-              <q-editor  class=" q-mx-xs no-shadow"
+              <q-editor dark class=" q-mx-xs no-shadow"
                 style="border-radius: 0px" v-model="form.html" label="Message" min-height="5rem" max-height="250px" />
               <div class="row justify-end q-mt-sm">
-                <q-btn :loading="seendingMessage" @click="sendEmail" class="text-capitalize col-4 col-xs-12 " outline color="secondary" label="Sent message!"/>
+                <q-btn :loading="seendingMessage" @click="sendEmail" class="text-capitalize col-4 col-xs-12 " outline color="white" label="Sent message!"/>
               </div>
             </div>
           </div>

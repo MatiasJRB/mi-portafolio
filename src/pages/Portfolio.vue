@@ -5,25 +5,26 @@
         <q-card  
           flat           
           @click="handleShowProject(a)"
-          v-ripple class="col-xs-6 col-sm-4  col-xs-6 col-md-2 col-xl-2" v-for="a in projects" :key="a.title"  :style="getCardStyle(a)"  >
+          v-ripple class="col-xs-6 col-sm-4  col-xs-6 col-md-2 col-xl-2"
+          v-for="a in projects" :key="a.title"  :style="getCardStyle(a)"  >
           <div v-if="!mobile && a.images &&  !hover[a.images[0]] && !showProject" class="absolute bg-primary full-width full-height" style="opacity: 0.5; z-index: 2"></div>
-          <q-img v-if="a.images" class="full-height" fit="fill" :src="a.images[0]" >
+          <q-img  class="full-height" fit="fill" :src="a.cover" >
+          
             <div class="absolute-bottom-right bg-transparent" v-if="a.geome7ric">
               <img src="../assets/geome7ric_logo.svg" width="55px"  />
             </div>
-          </q-img>          
+          </q-img> 
           <q-tooltip
-            v-if="!showProject && a.images"
-            v-model="hover[a.images[0]]"
+            v-model="hover[a.id]"
             anchor="center middle"
             self="center middle"
-            class="bg-accent cursor-pointer	"
+            class="bg-secondary cursor-pointer	"
           >
             <div class="cursor-pointer " style="cursor: pointer">
-              <div class="bg-accent shadow-2 flex flex-center cursor-pointer	" 
+              <div class="bg-primary text-white shadow-2 flex flex-center cursor-pointer	" 
                 style="border-radius: 50%; height: 90px; width: 90px" >
                 <div class="cursor-pointer	">
-                  <div class="text-dark text-center cursor-pointer" style="margin-top:px; font-size: 14px">
+                  <div class="text-center cursor-pointer" style="margin-top:px; font-size: 14px">
                       View <br> project
                   </div>
                 </div>
@@ -34,23 +35,23 @@
         
         </q-card>
       </div> 
-      <q-dialog  :maximized="mobile" class="bg-white"  v-model="showProject"  position="bottom">
-        <div class="bg-white" style="width: 100vh">
+      <q-dialog  :maximized="mobile" class="bg-dark "  v-model="showProject"  position="bottom">
+        <div class="bg-dark" style="width: 100vh">
           
           <div class="row justify-start " >
-              <q-btn flat icon="close" class="flex flex-center q-ma-md" @click="showProject =! showProject"/>
+              <q-btn color="white" flat icon="close" class="flex flex-center q-ma-md" @click="showProject =! showProject"/>
           </div>
           <q-carousel
             @click.stop=""
             swipeable
-            control-color="primary"
+            control-color="white"
             v-model="slide"
             arrows 
-            class="full-width"
+            class="full-width bg-dark"
             infinite            
           >
             <q-carousel-slide
-              class="full-width full-height"
+              class=" "
               v-for="(image,index) in projectToShow.images"
               :key="index"
               :name="index"
@@ -58,12 +59,13 @@
               />
 
           </q-carousel>
-          <div class="q-ma-md">
+          <q-video v-if="projectToShow.video"  :ratio="16/9" :src="projectToShow.video"/>
+          <div class="q-ma-md text-white">
             <div class="row ">
               <div class="text-caption "
                 style="margin-top:-10px">{{ projectToShow.date }}</div>
             </div>
-            <div class="text-h6 text-dark  q-my-sm">
+            <div class="text-h6 q-my-sm">
               {{projectToShow.title}}
             </div>          
             <div class="" v-html="projectToShow.description">
@@ -71,22 +73,33 @@
             </div>     
           </div>
           <div class="col-md-12 col-xs-12 col-md q-my-sm" >
-            <div class="q-mx-md " v-html="projectToShow.content">
-              <!-- {{descripcion}} -->
+            <div class="q-mx-md text-white" v-html="projectToShow.content">
             </div>
+          </div>
+          <div 
+            v-for=" document in projectToShow.documents" 
+            :key="document.id" 
+            class="q-ma-md">
+            <q-btn 
+              no-caps
+              color="white" 
+              text-color="primary" :label="document.name" @click="open(document.url)" />
           </div>
           <div class="">
             <q-card-section class="row">
               <div  v-for="(media,index) in projectToShow.media" :key="index">
-                <q-btn  color="" flat class="q-ml-sm bg-primary text-white" :label="media.title" @click="handleMedia(media)" />
+                <q-btn 
+                no-caps
+                color="white" 
+                text-color="primary" :label="media.title" @click="open(media.src)" />
               </div>
             </q-card-section>
           </div> 
           <div class="">
             <q-card-actions class="q-ml-md " style="">
-              <q-badge outlined  color="dark" text-color="white" :label="'Status: ' + projectToShow.status" class="q-mx-xs" />
+              <q-badge outlined  color="white" text-color="dark" :label="'Status: ' + projectToShow.status" class="q-mx-xs" />
               <div class="" v-for="(tag,index) in projectToShow.tags" :key="index" >
-                <q-badge outlined color="dark" :label="tag" class="q-mx-xs" />
+                <q-badge outlined color="white" :label="tag" class="q-mx-xs" />
               </div>
             </q-card-actions>
           </div>
@@ -99,6 +112,9 @@
 </template>
 
 <script>
+
+import { openURL } from 'quasar'
+
 export default {
   // name: 'PageName',
   data () {
@@ -106,11 +122,16 @@ export default {
       slide: 0,
       projectToShow: {},
       showProject: false,
-      projects: [],
       hover: {}
     }
   },
   computed: {
+
+    projects: {
+      get() {
+        return this.$store.state.articles.articles
+      }
+    },
     
     mobile () {
       let ret = false
@@ -127,6 +148,10 @@ export default {
     }
   },
   methods: {
+
+    open(url){
+      openURL(url)
+    },
     handleShowProject(project) {
       this.hover = {}
       this.projectToShow = project
@@ -138,9 +163,7 @@ export default {
     },
   },
   async mounted () {
-    // this.projects = await this.$store.dispatch('projects/getProjects')
-    this.projects = await this.$store.dispatch('articles/getArticles')
-    console.log(this.projects)
+    await this.$store.dispatch('articles/getArticles')
       
   }
 }

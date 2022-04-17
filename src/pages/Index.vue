@@ -1,6 +1,6 @@
 <template>
   <q-page 
-    class="flex flex-center 	" 
+    class="flex flex-center bg-white text-dark	" 
     :style="(mobile)? '' : 'padding-left: 130px'"
   >
     <!-- Vista principal -->
@@ -19,7 +19,7 @@
                 </p>
               </div>            
               <div :class="getJobClass" >
-                Full Stack Hybrid Mobile App Developer
+                Full Stack Developer
               </div>
               <div class="row full-width q-mt-lg">
                 <q-btn @click="$router.push('/contact')" class="text-capitalize col-5 " outline color="secondary" label="Contact me!"/>
@@ -1055,7 +1055,7 @@ export default {
     },
     getImageWidth () {
       let ret = '665px'
-      ret = (this.$q.screen.height *80) / 100
+      ret = (this.$q.screen.height *75) / 100
       ret = ret.toString() + 'px'
       console.log(this.$q.screen)
       return ret

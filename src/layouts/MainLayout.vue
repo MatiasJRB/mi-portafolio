@@ -1,8 +1,8 @@
 <template>
   <q-layout view="lHh lpR lFf"  >
     <q-page-sticky position="top-right" class="  " v-if="mobile" style="z-index:10000000">
-      <div class="row justify-end q-ma-md">
-        <q-btn  flat icon="menu" @click="expanded =! expanded"/>
+      <div class="row justify-end q-ma-md text-dark">
+        <q-btn :color="$route.path === '/' ? 'black' : 'white'"  flat icon="menu" @click="expanded =! expanded"/>
       </div>
     </q-page-sticky> 
     <div class="col fixed-left full-height  bg-dark text-secondary"  style="width: 130px; z-index:1000; margin:0 "
@@ -84,37 +84,37 @@
         <q-card-section>
           <q-img
             @click="handleMenu('/')"
-            class="q-ma-md" width="33px" src="../assets/mr.svg"/>
+            class="q-ma-md cursor-pointer" width="33px" src="../assets/mr.svg"/>
         </q-card-section>
         <q-separator/>
         <q-card-section
           @click="handleMenu('/')"
-        :class="$route.path === '/'? '  bg-primary text-white  ' :' ' "
+        :class="$route.path === '/'? '  bg-primary text-white cursor-pointer' :'cursor-pointer ' "
          >
           Home
         </q-card-section>
         <q-separator/>
         <q-card-section
           @click="handleMenu('/about')"
-          :class="$route.path.includes('about')? ' bg-primary text-white  ' :' ' ">
+          :class="$route.path.includes('about')? ' bg-primary text-white cursor-pointer ' :' cursor-pointer' ">
           About
         </q-card-section>
         <q-separator/>
         <q-card-section
         @click="handleMenu('/portfolio')"
-           :class="$route.path.includes('portfol')? 'bg-primary text-white  ' :' ' ">
+           :class="$route.path.includes('portfol')? 'bg-primary text-white  cursor-pointer' :'cursor-pointer ' ">
           Portfolio
         </q-card-section>
         <q-separator/>
         <q-card-section
           @click="handleMenu('/contact')"
-           :class="$route.path.includes('contact')? 'bg-primary text-white  ' :' ' ">
+           :class="$route.path.includes('contact')? 'bg-primary text-white cursor-pointer ' :' cursor-pointer' ">
           Contact
         </q-card-section>
       </q-card>
     </q-dialog>
 
-    <q-page-container style="margin: 0"  >
+    <q-page-container style="margin: 0; background: rgb(29, 29, 29) " class="text-white"  >
       
       <transition
         enter-active-class="animated fadeIn"
