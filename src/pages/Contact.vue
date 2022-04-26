@@ -1,19 +1,22 @@
 <template>
-  <q-page  class="flex flex-center" :style=" !mobile ? 'padding-left: 130px' : ''" >
+  <q-page  class="flex flex-center " :style=" !mobile ? 'padding-left: 130px' : ''" >
    <!-- Vista principal -->
-    <div class="full-width" :style=" !mobile   ? 'height: 100vh' : ''">
+    <div class="full-width " :style=" !mobile   ? 'height: 100vh' : ''">
       <div class="row justify-start  flex flex-center ">
-        <div class="col-6 col-md-6 col-xs-12 col-sm-12  " :style="mobile? 'height: 100vh; ': ''" >
+        <div class="col-6 col-md-6 col-xs-12 col-sm-12 " :style="mobile? 'height: 100vh; ': ''" >
           
-          <div class="q-ma-md" style="margin-top:30%">
+          <div class="q-ma-md" style="margin-top:15%">
             <div :class="getNameClass" style="" >
              Contact me
             </div>
+            <SocialMedia/>
+            
+            
             <div :class="getJobClass" >
               I'm interested in freelance opportunities, especially big ones, to take this with Geome7ric to make it better and bigger. 
               However, if you have another request or question, don't hesitate to use the form.
             </div>
-            <div class="q-mt-xl  ">
+            <div class="q-mt-xl">
               <div class="row justify-around ">
                 <div class="col-6 col-md-6 col-xs-12 q-pa-xs">
                   <q-input dark v-model="form.name" clearable  class="" filled label="Name"/>
@@ -25,13 +28,11 @@
               <div class="row q-pa-xs ">
                 <q-input dark densez v-model="form.subject" clearable class="full-width" filled label="Subject"/>
               </div> 
-              <!-- <div class="q-pa-xs">
-                <q-input dark  v-model="form.text" clearable  :autogrow="false" type="textarea" filled label="Message" style="max-height: 250px"/>
-              </div> -->
               <q-editor dark class=" q-mx-xs no-shadow"
                 style="border-radius: 0px" v-model="form.html" label="Message" min-height="5rem" max-height="250px" />
               <div class="row justify-end q-mt-sm">
-                <q-btn :loading="seendingMessage" @click="sendEmail" class="text-capitalize col-4 col-xs-12 " outline color="white" label="Sent message!"/>
+                <q-btn :loading="seendingMessage" @click="sendEmail" class="text-capitalize col-4 col-xs-12 "
+                 outline color="white" label="Sent message!"/>
               </div>
             </div>
           </div>
@@ -47,6 +48,10 @@
 </template>
 
 <script>
+
+import SocialMedia from '../components/SocialMedia.vue'
+
+
 export default {
   data () {
     return {
@@ -90,6 +95,7 @@ export default {
     }
   },
   components: {
+    SocialMedia
   },
   computed: {
     mobile () {

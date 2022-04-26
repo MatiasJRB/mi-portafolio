@@ -24,7 +24,7 @@
         <div class="col-6 col-md-6 col-xs-12 col-sm-12  ">
           
           <div class="row justify-center " style=" ">  
-            <div class="q-mt-md  " style="z-index: 2000; margin-bottom: -50px; margin-top">
+            <div class="q-mt-md" style="z-index: 2000; margin-bottom: -0px;">
               <div class="row justify-center full-width ">
                 <div class="  q-pa-xs  ">
                   <div class="text-center row justify-center">
@@ -42,7 +42,7 @@
                           unchecked-icon=""
                         />
                     </div>
-                    <div class=" text-overline">
+                    <div class="text-overline">
                       Detailed
                     </div>
                   </div>
@@ -55,7 +55,7 @@
               style="height: 100vh; "
               class="full-width full-heigth"
             >
-              <div class="row justify-around q-ma-xl">
+              <div class="row justify-around">
 
                 <div class="row justify-around q-ma-lg" style=" ">
                   <q-timeline layout="dense" >
@@ -196,7 +196,7 @@ export default {
       return ret
     },
     getTextClass() {
-      let ret = 'text-subtitle1 q-mt-md'
+      let ret = ' q-mt-md'
       if (this.$q.screen.xl) {
         ret = ret + ' '
       } else {

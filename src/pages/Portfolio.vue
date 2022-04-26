@@ -3,10 +3,11 @@
     <div class="full-width  flex flex-center " :style=" $q.screen.xl? 'height: 100vh' : ''">
       <div class="row justify-start full-width  ">
         <q-card
-          flat
-          @click="handleShowProject(a)"
+          flat          
+          @click="goToProjectPage(a)"
           v-ripple class="col-xs-6 col-sm-4  col-xs-6 col-md-2 col-xl-2"
-          v-for="a in projects" :key="a.title"  :style="getCardStyle(a)"  >
+          v-for="a in projects" :key="a.title"  :style="getCardStyle(a)" >
+          
           <div v-if="!mobile && !hover[a.id] && !showProject" class="absolute bg-primary full-width full-height" style="opacity: 0.8; z-index: 2"></div>
           <q-img  class="full-height" fit="fill" :src="a.cover" >
 
@@ -116,7 +117,6 @@
 import { openURL } from 'quasar'
 
 export default {
-  // name: 'PageName',
   data () {
     return {
       slide: 0,
@@ -152,10 +152,11 @@ export default {
     open(url){
       openURL(url)
     },
-    handleShowProject(project) {
+    goToProjectPage(project) {
       this.hover = {}
-      this.projectToShow = project
-      this.showProject = true
+      // this.projectToShow = project
+      // this.showProject = true
+      this.$router.push({path: `portfolio/${project.id}` })
     },
     getCardStyle(project) {
       let toret = 'height:33.33333vh; border-radius: 0px;'
@@ -163,7 +164,11 @@ export default {
     },
   },
   async mounted () {
+    if (!this.projects) {
+      this.$q.loading.show()
+    }
     await this.$store.dispatch('articles/getArticles')
+    this.$q.loading.hide()
 
   }
 }

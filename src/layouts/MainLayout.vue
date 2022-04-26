@@ -77,14 +77,15 @@
          <q-img src="../assets/social/instagram.png" width="15px" style="filter: grayscale(1);"/>
        </q-btn>
       </div> -->
+      <SocialMedia :behavior="'justify-evenly'" class="q-mt-md"/>
     </div>
 
     <q-dialog position="top" v-model="expanded">
-      <q-card class="" flat style="border-radius: 0px">
+      <q-card class="bg-dark text-white" flat style="border-radius: 0px">
         <q-card-section>
           <q-img
             @click="handleMenu('/')"
-            class="q-ma-md cursor-pointer" width="33px" src="../assets/mr.svg"/>
+            class="q-ma-md cursor-pointer" width="33px" src="../assets/MR_LOGO_WHITE.svg"/>
         </q-card-section>
         <q-separator/>
         <q-card-section
@@ -111,6 +112,10 @@
            :class="$route.path.includes('contact')? 'bg-primary text-white cursor-pointer ' :' cursor-pointer' ">
           Contact
         </q-card-section>
+        <q-separator/>
+        <q-card-secion>
+          <SocialMedia  :behavior="'justify-around'" class=" q-my-md" />
+        </q-card-secion>
       </q-card>
     </q-dialog>
 
@@ -123,18 +128,6 @@
         :duration="animationTime"
       >      
         <router-view/>
-        <!-- <div class="">
-          <q-inner-loading 
-            label="Matias is thinking.."
-            label-class="text-dark"
-            class=" absolute-center" 
-            :showing="changingRoute" 
-          >
-             <q-spinner-oval color="" size="2em" />
-          </q-inner-loading>
-          <router-view>
-          </router-view>
-        </div> -->
       </transition>
     </q-page-container>
     
@@ -142,13 +135,14 @@
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
-import { fasAirFreshener } from '@quasar/extras/fontawesome-v5'
+import SocialMedia from '../components/SocialMedia.vue'
 
 
 export default {
   name: 'MainLayout',
-  components: {  },
+  components: { 
+    SocialMedia
+   },
   computed: {
     mobile () {
       let ret = false

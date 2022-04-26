@@ -11,8 +11,8 @@
     "build-spa": "cross-env QENV=development quasar build",
     "deploy": "vercel",
     "dev": "cross-env QENV=development quasar dev",
-    "prod": "cross-env QENV=production quasar dev",
-    "local": "cross-env QENV=local quasar dev",
+    "dev-prod": "cross-env QENV=production quasar dev",
+    "dev-local": "cross-env QENV=local quasar dev",
     "build-prod": "cross-env QENV=production quasar build",
     "newstoreaccount": "quasar new store account"
   },
