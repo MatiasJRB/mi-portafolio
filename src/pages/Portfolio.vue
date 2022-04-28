@@ -1,6 +1,6 @@
 <template>
-  <q-page  class="flex flex-center" :style=" mobile? '  ' : 'padding-left: 130px'" >
-    <div class="full-width  flex flex-center " :style=" $q.screen.xl? 'height: 100vh' : ''">
+  <q-page  class="flex flex-center" :style=" mobile? '  ' : ''" >
+    <div class="full-width  flex flex-center " >
       <div class="row justify-start full-width  ">
         <q-card
           flat          
@@ -37,7 +37,7 @@
         </q-card>
       </div>
       <q-dialog  :maximized="mobile" class="bg-dark "  v-model="showProject"  position="bottom">
-        <div class="bg-dark" style="width: 100vh">
+        <div class="bg-dark">
 
           <div class="row justify-start " >
               <q-btn color="white" flat icon="close" class="flex flex-center q-ma-md" @click="showProject =! showProject"/>

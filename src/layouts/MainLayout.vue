@@ -1,28 +1,25 @@
 <template>
-  <q-layout view="lHh lpR lFf"  >
+  <q-layout view="lHh Lpr lFf"  >
     <q-page-sticky position="top-right" class="  " v-if="mobile" style="z-index:10000000">
       <div class="row justify-end q-ma-md text-dark">
-        <q-btn :color="$route.path === '/' ? 'black' : 'white'"  flat icon="menu" @click="expanded =! expanded"/>
+        <q-btn :color="$route.path === '/' ? 'white' : 'white'"  flat icon="menu" @click="expanded =! expanded"/>
       </div>
     </q-page-sticky> 
-    <div class="col fixed-left full-height  bg-dark text-secondary"  style="width: 130px; z-index:1000; margin:0 "
+    <div class="row justify-around bg-dark  text-secondary"  style=" margin:0 "
       v-if="!mobile" >
-      <q-card @click="$router.push('/')" flat v-ripple clickable class="bg-black text-grey-6 cursor-pointer " style="height: 170px">
-        <div class="row justify-center">
-          <q-img class="flex flex-center col-6 q-mt-xl" src="../assets/MR_LOGO_WHITE.svg" >        
+      <q-card @click="$router.push('/')" 
+        flat v-ripple clickable class="col-2 flex flex-center bg-dark text-grey-6 cursor-pointer ">
+        <div class="row">
+          <q-img width="32px" class="" src="../assets/MR_LOGO_WHITE.svg" >        
          </q-img>
         </div>
-        <div class="q-ma-md text-center q-mb-lg">Full Stack<br> Enginner</div>
       </q-card>
-      <div class="" :style="'margin-top:' + getDistance">
-        <q-separator color="primary"  />
-        <div class="text-white">
-        </div>
+      <div class="row" :style="'margin-top:' + getDistance">
         <q-item 
           clickable
           style="height:45px"
           @click="$router.push('/about')"
-          class="">
+          class="col">
             <q-item-section :class="$route.path.includes('about')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
               About
             </q-item-section>
@@ -69,15 +66,7 @@
         </q-item> -->
         <q-separator color="primary"/>
       </div>
-      <!-- <div class="row justify-center" style="margin-top: " >
-       <q-btn flat size="xs">
-         <q-img src="../assets/social/linkdn.png" width="15px" style="filter: grayscale(1);"/>
-       </q-btn>
-       <q-btn flat size="xs">
-         <q-img src="../assets/social/instagram.png" width="15px" style="filter: grayscale(1);"/>
-       </q-btn>
-      </div> -->
-      <SocialMedia :behavior="'justify-evenly'" class="q-mt-md"/>
+      <SocialMedia :behavior="'justify-evenly'" class="col-3 q-mt-md"/>
     </div>
 
     <q-dialog position="top" v-model="expanded">
@@ -119,7 +108,7 @@
       </q-card>
     </q-dialog>
 
-    <q-page-container style="margin: 0; background: rgb(29, 29, 29) " class="text-white"  >
+    <q-page-container style=" background: rgb(29, 29, 29) " class="text-white"  >
       
       <transition
         enter-active-class="animated fadeIn"
@@ -153,7 +142,7 @@ export default {
       let ret = (this.$q.screen.height *10) / 100
       ret = ret.toString() + 'px'
       console.log(this.$q.screen)
-      return ret
+      return 0
     },
   },
   data () {

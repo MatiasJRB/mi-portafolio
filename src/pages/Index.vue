@@ -1,510 +1,88 @@
 <template>
   <q-page 
-    class="flex flex-center bg-white text-dark	" 
-    :style="(mobile)? '' : 'padding-left: 130px'"
+    class="flex flex-center text-white	" 
   >
-    <!-- Vista principal -->
-    <div class="full-width full-height ">
-      <div class="row justify-start  q-mt-xl">
-        <div :class="hideImage? 'col-12' : 'col-6'   "  >
-          <transition
-              name="fade"
-              appear
-              :duration="2000"
-            >   
-            <div class="" style="margin-left: 10%">            
-              <div :class="getNameClass" style="margin-top:%;  line-height: 102%" >
-                <p>
-                   Hi,<br> I'm <span class="text-primary">Matias</span>, <br> Full Stack Engineer
-                </p>
-              </div>            
-              <div :class="getJobClass" >
-                Full Stack Developer
+    <div>
+      <div class="" :style="mobile?  '' : 'height: 100vh;' ">
+        <div class="row justify-center flex  flex-center "
+          :style="mobile?  '' : 'width: 85em'">
+          <div class="col-xs-12 col-md-6" :style="!mobile?  '' : 'height: 100vh;'" >
+            <transition
+                name="fade"
+                appear
+                :duration="2000"
+              >   
+              <div :class="mobile? 'q-pa-lg q-mt-xl' : 'q-pa-xl'" >            
+                <div :class="getNameClass" >
+                  <p>
+                    Hi,<br> I'm <span class="text-primary">Matias</span>, <br> Full Stack Engineer
+                  </p>
+                </div>            
+                <div :class="getJobClass" >
+                  Feel free to contact me
+                </div>
+                <SocialMedia
+                  class="q-mt-md"
+                  :behavior="'justify-start'"/>
+                <!-- <div class="row full-width q-mt-lg">
+                  <q-btn @click="$router.push('/contact')" class="text-capitalize col-5 " outline color="secondary" label="Contact me!"/>
+                </div> -->
               </div>
-              <div class="row full-width q-mt-lg">
-                <q-btn @click="$router.push('/contact')" class="text-capitalize col-5 " outline color="secondary" label="Contact me!"/>
-              </div>
-            </div>
-          </transition>
-        </div>
-        <div class="col-6 "  v-if="!hideImage">
-          <transition
-              name="fade"
-              appear
-            >   
-              <div class="row  justify-end" >                     
-              <q-img class="absolute-bottom-right"
-                :width="getImageWidth" style="margin-right: 5%;"  src="../assets/portfolio.png"></q-img>
-            </div>
-          
-          </transition>
-          
-        </div>        
-      </div>
-      
-    </div>
-
-    <!-- History -->
-            <!-- <div class="row justify-around q-ma-xl" style=" ">              
-              <div class="col  q-pa-xs q-ma-lg full-width" style=" ">
-                <div class="text-center row justify-center">
-                  HISTORIA
+            </transition>
+          </div>
+          <div class="col-md-6 col-xs-12"  >
+            <transition
+                name="fade"
+                appear
+              >   
+                <div v-if="!mobile" class="q-mt-xl" :style="'border-radius:8px;height  : 33em;border: 2px solid white; border-color: #ffffff; width: ' + getImageWidth" >                     
+                  <q-img 
+                  height="33em" class="bg-white" 
+                  style="margin-top: -15px; margin-left: -12px; border-radius:8px"  src="../assets/portfolio.jpg"/>
                 </div>
-                <div class="row justify-center flex flex-center">
-                   <div class="text-dark text-overline ">
-                      PRINCIPAL
+                <v-else>
+                  <div class="row justify-center q-mb-md">
+                    <q-avatar size="200px" class="shadow-5">
+                    <img src="../assets/portfolio.jpg" />
+                  </q-avatar>
                   </div>
-                  <div class="">
-                    <q-toggle
-                        v-model="mostrar_historia_version_larga"
-                        checked-icon="check"
-                        color="accent"
-                        unchecked-icon=""
-                      />
-                  </div>
-                  <div class="text-dark text-overline">
-                    DETALLADA
-                  </div>
-                </div>
-              </div>      
-
-
-              <div class="row justify-around q-ma-lg" style=" ">
-                  <q-timeline :layout="layout" color="dark">
-
-                   
-
-                    <q-timeline-entry
-                      v-show="mostrar_historia_version_larga"
-                      title="Me egreso del secundario"
-                      subtitle="12 de Diciembre, 2012"
-                      side="left"
-                      icon="school"
-                    >
-                      <div>
-                        Termino el secundario en el Colegio Nacional
-                      </div>
-                    </q-timeline-entry>
-
-                    <q-timeline-entry
-                      v-show="mostrar_historia_version_larga"
-                      title="Me convierto en técnico en armado y reparación de PC"
-                      subtitle="20 de Noviembre, 2013"
-                      side="right"                      
-                      icon="school"
-                    >
-                      <div>
-                        Certificado por la Escuela Argentina de Idiomas y Tecnología
-                      </div>
-                    </q-timeline-entry>
-
-                    <q-timeline-entry
-                      v-show="mostrar_historia_version_larga"
-                      title="Vendo mi primer software, Geome7ric 1.0"
-                      subtitle="12 de junio, 2018"
-                      side="left"                      
-                      icon="school"
-                    >
-                      <div>
-                        Solucioné el problema de stock, ventas y manejo de clientela a una forrajería. Un evento que marcó mi inicio en el mundo freelance
-                      </div>
-                    </q-timeline-entry>
-
-
-                    <q-timeline-entry
-                      title="Comienzan mi pasantía en Profertil S.A. "
-                      subtitle="1 de octubre, 2020"
-                      side="right"
-                      icon="work"
-                    >
-                      <div>
-                        Trabajo a jornada parcial, como administrador de redes y sistemas Windows, dando soporte a productos ASPEN y desarrollando
-                      </div>
-                    </q-timeline-entry>
-
-                    <q-timeline-entry
-                      title="Me recibo de Ingeniero en Computación"
-                      subtitle="9 de abril, 2021"
-                      icon="school"
-                      side="left"
-                    >
-                      <div class="">
-                        Prensento mi proyecto final frente a amigos y familiares, para poner un fin a mi carrera de ingeniero
-                      </div>
-                    </q-timeline-entry>
-
-                    <q-timeline-entry
-                      title="Comienzo a brindar servicios con dedicación exclusiva a Profertil S.A."
-                      subtitle="12 de abril, 2021"
-                      side="right"
-                    >
-                      <div>
-                        Trabajo a jornada completa, como administrador de redes y sistemas Windows, y dando soportes a productos ASPEN
-                      </div>
-                    </q-timeline-entry>
-
-                    <q-timeline-entry
-                      title="Primer trabajo como desarrollador"
-                      subtitle="7 de junio, 2021"
-                      side="left"                      
-                      color="accent"
-                      icon="work"
-                    >
-                      <div>
-                        Comienzo como Fullstack Developer en Nuqlea, la evolución de CAPP, la plataforma líder en construcción
-                      </div>
-                    </q-timeline-entry>
-
-                  </q-timeline>
-              </div>
-            </div> -->
-              
-                    
-
-    <!-- <div class=" row justify-start "  >  
-          <div class=" bg-info col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12   " style="">
-            <q-card
-              flat
-              class="bg-info q-ma-xl flex flex-center" >
-              <div class=" col   q-my-xl " style=" ">
-                <div class="text-h1 text-weight-bold q-my-sm">
-                  Hi,<br> I'm <span class="text-primary">Matias</span>, <br> Full Stack Engineer
-                </div>
-                <div class="row justify-center">
-                  <div class="col-5 bg-info ">
-                    <img class="" src="../assets/portfolio.png">
-                  </div>
-                </div>
-                <div class="row justify-center q-mt-md text-white  " style=" margin-left: 0px; height: 50px; ">
-                  <div class="bg-dark flex flex-center " style="" >
-                    <q-icon class="q-mx-md" name="location_on" color="accent"/>
-                    
-                  </div>
-                  <div class="text-white text-weight-thin bg-dark flex flex-center " style="" >
-                      <span class="q-mx-md">Buenos Aires, Argentina</span>
-                    </div>
-                                    
-                </div>
-                
-              </div>            
-              
-            </q-card> 
+                </v-else>
+            </transition>
             
-          </div>
-          
-
-          <div class="col-12 bg-info col-md-5 q-pa-xs " v-show="mostrar_blog" style="margin: 0px">
-            <div class="row justify-center q-ma-lg q-pa-xs">
-              
-              <div v-for="project in projects" :key="project.id" class="col-12 col-md text-center">
-
-                <Proyecto
-                :project="project"/>
-
-              </div>
-            </div>
-          </div>
-          <div class="col-12 bg-info col-md-5 q-pa-xs " v-show="mostrar_portfolio" style="margin: 0px">
-
-            <div class="row justify-center q-ma-lg q-pa-xs" style=" ">
-              <div class="col-12 col-md ">
-                <div class="text-overline">
-                  COMPAÑÍA
-                </div>
-                <div class="text-weight-thin text-h4 ">
-                  Nuqlea 
-                </div>
-                <div class="text-caption q-my-sm  ">
-                  No disponible para contratar
-                </div>
-              </div>
-              <div class="col-12 col-md">
-                <div class="text-overline">
-                  CONCENTRADO EN
-                </div>
-                <div class="text-weight-thin text-h4" >
-                  Quasar
-                </div>
-                <div class="text-caption text-h4" >
-                  Framework 
-                  <q-btn size="xs" class="" flat icon="help" style="margin-left: 2px" />
-                </div>                
-                <div>
-                  
-                </div>
-              </div>
-            </div>
-
-            <div class="row justify-around q-ma-lg" style=" ">
-              <div class="col-12 col-md-7">
-                <div class="text-overline">
-                  TOP SKILLS
-                </div>
-                <div class="row justify-around q-mt-lg q-mb-sm text-weight-thin " style=" ">
-                  <div  style="border-radius: 7px; ">
-                    <q-card class="my-card bg-accent q-px-xs"  flat > 
-                      <q-card-section>
-                        <div class="text-h5 text-weight-thin q-mt-sm q-mb-xs text-center q-mt-md" >VueJS</div>                      
-                      </q-card-section>
-
-                      <q-card-actions>           
-
-                        <q-space />
-
-                        <q-btn
-                          color="grey"
-                          round
-                          size="xs"
-                          flat
-                          dense
-                          text-color="dark"
-                          :icon="more_skill1 ? 'expand_less' : 'info'"
-                          @click="more_skill1 = !more_skill1"
-                        />
-                      </q-card-actions>
-
-                    </q-card>
-                  </div>
-                  
-                  <div class="bg-accent q-mx-sm" style="border-radius: 3px; width: 100px">
-                    <q-card class="my-card bg-accent q-px-xs"  flat > 
-                      <q-card-section>
-                        <div class="text-h5 text-weight-thin q-mt-sm q-mb-xs text-center q-mt-md">VScode</div>                      
-                      </q-card-section>
-
-                      <q-card-actions>           
-
-                        <q-space />
-
-                        <q-btn
-                          color="grey"
-                          round
-                          size="xs"
-                          flat
-                          dense
-                          text-color="dark"
-                          :icon="more_skill1 ? 'expand_less' : 'info'"
-                          @click="more_skill1 = !more_skill1"
-                        />
-                      </q-card-actions>
-
-                      
-                    </q-card>
-                  </div>
-
-                  <div class="bg-accent " style="border-radius: 3px; width: 100px">
-                    <q-card class="my-card bg-accent q-px-xs"  flat > 
-                      <q-card-section>
-                        <div class="text-h5 text-weight-thin q-mt-sm q-mb-xs text-center q-mt-md">Github</div>                      
-                      </q-card-section>
-
-                      <q-card-actions>           
-
-                        <q-space />
-
-                        <q-btn
-                          color="grey"
-                          round
-                          size="xs"
-                          flat
-                          dense
-                          text-color="dark"
-                          :icon="more_skill1 ? 'expand_less' : 'info'"
-                          @click="more_skill1 = !more_skill1"
-                        />
-                      </q-card-actions>
-                    </q-card>
-                  </div>
-                </div>
-
-                <div class="row bg-accent text-dark text-body2" v-show="more_skill1" style=" ">
-                  <q-slide-transition>
-                    <div >
-                      <q-separator />
-                      <q-card-section class="text-subitle2">
-                        {{ info_skill1 }}
-                      </q-card-section>
-                    </div>
-                  </q-slide-transition>
-                </div>
-              </div>
-
-              <div class="col-12 col-md-3 text-weight-thin text-h5">
-                <div class="text-overline">
-                  MAIN TOOLS
-                </div>
-                <div class="bg-accent q-mt-lg" style="border-radius: 3px; width: 100px">
-                  <div class="q-ml-md">
-                    VueJS
-                  </div>
-                </div>
-                <div class="bg-accent q-my-sm" style="border-radius: 3px; width: 100px">
-                  <div class="q-ml-md">
-                    VScode
-                  </div>
-                </div>
-                <div class="bg-accent" style="border-radius: 3px; width: 100px">
-                  <div class="q-ml-md">
-                    Github
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row justify-around q-ma-lg" style=" ">
-              <div class="col ">
-                <div class="text-overline">
-                  SOBRE MÍ
-
-                </div>
-                <div class="text-body2 q-my-md">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soy Ingeniero en Computación graduado de la Universidad Nacional del Sur, y me encuentro trabajando a jornada completa. Suelo aceptar diferentes trabajos freelance que me obligan a aprender nuevas herramientas de manera autodidacta. Me apasiona el entrenamiento y el deporte (guerrero educado), la creación y edición de fotos y videos y determinados e-sports.
-                  <br>
-                </div>
-              </div>
-            </div>
-
-            <div class="row justify-around q-ma-lg" >
-              <div class="col" >
-                <div class="text-overline">
-                  <div class="row justify-center flex flex-center q-pa-xs q-ma-lg full-width" style=" ">
-                    <div class="text-dark text-overline">
-                      PORTFOLIO PERSONAL
-                    </div>
-                    <div class="">
-                      <q-toggle
-                          v-model="showGeome7ricPortfolio"
-                          checked-icon="check"
-                          color="accent"
-                          unchecked-icon=""
-                        />
-                    </div>
-                    <div class="text-dark text-overline">
-                      PORTFOLIO GEOME7RIC
-                    </div>
-                  </div>     
-                </div>
-                <div v-for="project in projects" :key="project.id"
-                  class="q-mt-md" >
-
-                  <Proyecto
-                    :imagen="project.imagen"
-                    :project="project"
-                    :fecha="project.fecha"
-                    :descripcion="project.descripcion"
-                    :nombre="project.nombre"/>
-
-                </div>
-              </div>
-            </div>
-
-
-             
-            <div class="row justify-around q-ma-lg" style=" ">
-              <div class="row text-h6 justify-around q-ma-lg text-center text-weight-regular" style=" ">
-                <div class="text-overline">
-                  CONTACTO
-
-                </div>
-              </div>                        
-            </div>
-            <div class="row justify-around q-ma-lg" style=" ">
-              <div class="col">
-                <q-input v-on:keyup.55="showAddNewPost" color="dark" v-model="tipo_proyecto" hint="Nombre"  class=" q-mr-xs"/>
-              </div>
-              <div class="col">
-                <q-input color="dark" v-model="tipo_proyecto" hint="Email" type="phone-number" class="q-ml-xs"/>
-              </div>
-              <div class="col flex flex-center">
-                <q-btn flat label="Consulta" size="md"  class="full-width"  @click="mostrar_datos_consulta = !mostrar_datos_consulta">
-                  
-                </q-btn>
-              </div>
-            </div>
-            <div class="row justify-around q-ma-lg" v-show="mostrar_datos_consulta" style=" ">
-              <div class="row justify-around full-width" style=" ">
-                  <div class="q-pa-md full-width">
-                    <q-badge color="dark">
-                      Presupuesto: $ {{ presupuesto }}.000 pesos
-                    </q-badge>
-                    <q-slider
-                      v-model="presupuesto"
-                      class="full-width q-mt-xl"
-                      :min="0"
-                      :max="500"
-                      :step="5"
-                      label
-                      label-always
-                      label-text-color="dark"
-                      color="accent"
-                    />
-                  </div>
-                <div class="col"></div>
-              </div>
-              <div class="row justify-around full-width" style=" "> 
-                <q-input color="dark" v-model="tipo_proyecto" hint="Tipo de proyecto"    class="full-width"/>
-              </div>
-              <div class="row justify-around full-width" style=" ">
-                <q-input color="dark" v-model="tipo_proyecto" hint="Numero de telefono" type="phone-number" class="full-width"/>
-              </div>
-            </div>
-            <div class="row justify-around q-ma-lg" style=" ">
-              <q-input
-                color="dark"
-                hint="Tu mensaje"
-                class="full-width"
-                v-model="texto_descripcion"
-                filled
-                type="textarea"                    
-                autogrow                     
-              ></q-input>
-            </div>
-            <div class="row justify-end q-ma-lg " style=" ">
-                <q-btn flat label="Enviar"  class="q-mr-md" @click="mostrar_datos_consulta = !mostrar_datos_consulta">
-                </q-btn>
-            </div>
-
-            
-
-
-          </div>
-          
-    </div> -->
-
-    <q-dialog v-model="mostrar_formulario_new_post" position="bottom">
-      <div class="bg-white full-width">
-        <div class="row">Añadir un nuevo post</div>
-        <q-input label="Título"/>
-        <q-input autogrow label="Descripción"/>
-        <q-uploader
-          label="Portada"
-          url="http://localhost:4444/upload"
-          style="max-width: 300px"
-        />
-        <q-editor></q-editor>
-      </div>
-    </q-dialog>
-    
-    
-    <!--Footer-->
-        <!-- <div class="row full-width bg-dark justify-around" style="height: 130px;  ">
-          <div class="col">
-            <div class=" q-ml-xl q-mt-sm">
-              <q-avatar size="xl" style="margin-left: -4px">
-                <img src="../assets/FVE-image-accent.svg" >
-              </q-avatar>  
-              <div class="text-accent text-weigth-regular">
-                2021 - Matias Rios <br>Todos los derechos reservados
-              </div>    
-            </div>
           </div>        
-        </div> -->
-    
+        </div>
+      </div>
+
+      <div class="" :style="mobile?  '' : 'width: 85em'">
+        <About/>
+      </div>
+
+      <div class="" :style="mobile?  '' : 'width: 85em'">
+        <Skills/>
+      </div>
+
+      
+      <div class="" :style="mobile?  '' : 'width: 85em'">
+        <div :class="getTitle + ' q-ml-xs q-my-md'">
+          My portfolio
+        </div>
+        <Portfolio/>
+      </div>
+
+      <div class="" :style="mobile?  '' : 'width: 85em'">
+        <Contact/>
+      </div>
 
 
-
+      <div class="q-my-xl">
+        <div class="row justify-center">
+          <div class="text-caption">
+            Designed and built by Matias Rios
+          </div>
+        </div>
+      </div>
     
-    
+  </div>
   </q-page>
 </template>
 
@@ -515,7 +93,13 @@
 import ModuloFunciones from '../modules/ModuloFunciones.vue'
 import ModuloNetwork from '../modules/ModuloNetwork.vue'
 import Vue from 'vue'; // es6 syntax
+import SocialMedia from '../components/SocialMedia.vue'
 import { mapState } from 'vuex'
+
+import Portfolio from '../pages/Portfolio.vue'
+import Contact from '../pages/Contact.vue'
+import Skills from '../pages/Skills.vue'
+import About from '../pages/About.vue'
 
 
 export default {
@@ -523,6 +107,7 @@ export default {
   data ()
   {
     return{
+      longVersion: false,
       mostrar_formulario_new_post: false,
       showGeome7ricPortfolio: false,
       geome7ricProjects: [],
@@ -550,7 +135,11 @@ export default {
   },  
   components:
   {
-    // Proyecto
+    Portfolio,
+    Contact,
+    About,
+    Skills,
+    SocialMedia
   },
   created()
   {
@@ -606,425 +195,9 @@ export default {
       }
     },
 
-    loadGeome7ricProjects () {
-      let projects = []
-      let project = {}
-      project.title =  "SISTEMA DE TURNOS"
-      project.description =  "Para Iten Centro Integral, desarrollamos una aplicacicón con perfiles de administración, profesionales y alumnos, que administra turnos, cupos y más. Además, se confeccionó su landing webpage."
-      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integrantes:  Catalfamo, Salvador. Universidad Nacional del Sur. 8000. Meneses, Christian. Universidad Nacional del Sur. 8000. Mignucci, Bruno. Universidad Nacional del Sur. 8000. Puhl, Juan Manuel. Universidad Nacional del Sur. 8000. Rios, Matias. Universidad Nacional del Sur. 8000.'
-      
-      project.media = [
-        {
-          type: 'url',
-          title: 'Documento PDF',
-          src: 'https://docs.google.com/viewerng/viewer?url=https://matiasjrb.com.ar/documentos/sistemaArchivosDistribuidos/Paper-Distributed_file_system.pdf'
-        },
-        {
-          type: 'url',
-          title: 'Karina Cenci',
-          src: 'https://lissi.cs.uns.edu.ar/integrantes/karina-cenci/'
-        },
-        {
-          type: 'url',
-          title: 'CONAIISI 2020',
-          src: 'http://conaiisi2020.frsfco.utn.edu.ar/'
-        },
-      ]
-      project.date =  "14 de diciembre, 2020"
-      project.status =  "Terminado"
-      project.tags =  ['CONAIISI 2020','Sistemas distribuidos','Distribuidora Amusquibar']      
-      project.images = [
-        'https://res.cloudinary.com/geome7ric-weasel-iten/image/upload/v1623368617/assets/fondo_tisy68.jpg'
-      ]
-      
-      project.showMore = false
-      this.geome7ricProjects.push(project)
-    },
+    loadGeome7ricProjects () {},
     
-    setear_personal_projects(){
-      this.projects = []
-      
-      let project = {}
-
-
-      
-      // PROMOCION GEOME7RIC
-            
-      project = {}
-      project.title =  "SISTEMA DE ARCHIVOS DISTRIBUIDO"
-      project.description =  "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Para la materia Sistemas Distribuidos, desarrollamos con compañeros un programa de archivos distribuido y llevamos a cabo un paper que fue aceptado en formato poster por la CONAIISI 2020. Trabajo supervisado por la Mg. Karina Cenci."
-      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integrantes:  Catalfamo, Salvador. Universidad Nacional del Sur. 8000. Meneses, Christian. Universidad Nacional del Sur. 8000. Mignucci, Bruno. Universidad Nacional del Sur. 8000. Puhl, Juan Manuel. Universidad Nacional del Sur. 8000. Rios, Matias. Universidad Nacional del Sur. 8000.'
-      
-      project.media = [
-        {
-          type: 'url',
-          title: 'Documento PDF',
-          src: 'https://docs.google.com/viewerng/viewer?url=https://matiasjrb.com.ar/documentos/sistemaArchivosDistribuidos/Paper-Distributed_file_system.pdf'
-        },
-        {
-          type: 'url',
-          title: 'Karina Cenci',
-          src: 'https://lissi.cs.uns.edu.ar/integrantes/karina-cenci/'
-        },
-        {
-          type: 'url',
-          title: 'CONAIISI 2020',
-          src: 'http://conaiisi2020.frsfco.utn.edu.ar/'
-        },
-      ]
-      project.date =  "14 de diciembre, 2020"
-      project.status =  "Terminado"
-      project.tags =  ['CONAIISI 2020','Sistemas distribuidos','Distribuidora Amusquibar']      
-      project.images = [
-        'https://matiasjrb.com.ar/images/sistemaArchivosDistribuido/imagena.jpg'
-      ]
-      
-      project.showMore = false
-      this.projects.push(project)
-
-
-      // PROMOCION GEOME7RIC
-            
-      project = {}
-      project.title =  "APLICACIÓN ANDROID + MÓDULO DE ESCRITORIO"
-      project.description =  "Desarrollé una aplicación para las plataformas Android y Windows a pedido de Distribuidora Amusquibar."
-      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Se me solicitó un programa de control de pedidos para una distribuidora local. Constará de una aplicación Android para realizar y gestionar pedidos de preventistas o clientes. Se dispone de una aplicación de escritorio Windows, para facilitar la administración de productos y clientes.'
-      
-      project.media = [
-        {
-          type: 'url',
-          title: 'PlayStore',
-          src: 'https://play.google.com/store/apps/details?id=com.amusquibarapp.loginactivity&hl=es_AR'
-        }
-      ]
-      project.date =  "23 de julio, 2020"
-      project.status =  "Terminado"
-      project.tags =  ['Android','Backoffice','Distribuidora Amusquibar']      
-      project.images = [
-        'https://matiasjrb.com.ar/images/distribuidoraAmusquibar/android1.jpg',
-        'https://matiasjrb.com.ar/images/distribuidoraAmusquibar/android2.jpg',
-        'https://matiasjrb.com.ar/images/distribuidoraAmusquibar/android3.jpg',
-        'https://matiasjrb.com.ar/images/distribuidoraAmusquibar/android4.jpg',
-        'https://res.cloudinary.com/geome7rc/image/upload/v1647737186/portfolio/amusquibar/backoffice1_yemwny.jpg',
-        'https://res.cloudinary.com/geome7rc/image/upload/v1647737185/portfolio/amusquibar/backoffice2_zyofkp.jpg',
-        '../assets/amusquibar/backoffice3.jpg'
-      ]
-      
-      project.showMore = false
-      this.projects.push(project)
-
-
-
-
-
-      // PROMOCION GEOME7RIC
-            
-      project = {}
-      project.title =  "APARTADO PARA PROMOCIÓN DE GEOME7RIC"
-      project.description =  "Un sofware para tu comercio."
-      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Geome7ric es un programa para poder llevar el control del stock de tu comercio, así como registro de venta, clientela y proveduría. Ya no más utilizar lapiz y papel para cerrar el día, o siquiera tener registro alguno de las ventas o el stock restante. Es cómodo, fácil de usar e intuitivo, lo que lo convierte en una concreta opción frente a programas como Tango, programas más complejos que requieren de cursos y horas invertidas para comprender como usarlo.   Le permitirá registrar los ingresos del día a día, agilizar las ventas sin tener que memorizar o buscar un precio en un papel y poder estar frente a una computadora y decidir en que consistirá su próxima compra al proveedor sin necesidad de ir a observar el depósito o recontar elementos de su comercio.'
-      
-      project.media = [
-        {
-          type: 'video',
-          title: 'Demostración',
-          src: 'https://www.youtube.com/watch?v=5eG9r3R7iPc'
-        }
-      ]
-      project.date =  "14 de abril, 2020"
-      project.status =  "Terminado"
-      project.tags =  ['Geome7ric 1.1','Software',' Demostración','Discontinuado']      
-      project.images = [
-        'https://matiasjrb.com.ar/images/geome7ric/portada.jpg'
-      ]
-      
-      project.showMore = false
-      this.projects.push(project)
-
-      // SIGNOS
-            
-      project = {}
-      project.title =  "PROGRAMA DE INVENTARIO Y PÁGINA WEB CON TIENDA"
-      project.description =  "Actualización de Geome7ric 1.0 para Signos Indumentaria."
-      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Se me solicitó un programa de control de stock y ventas para un local de ropa del centro bahiense. El mismo ya lo había desarrollado, pero decidí darle una actualización para mejorar el rendimiento en cuanto a velocidad de respuestas y estética del programa..'
-      
-      project.media = [
-        {
-          type: 'url',
-          title: 'Web',
-          src: 'https://budapesttrio.com.ar/'
-        },
-        {
-          type: 'url',
-          title: 'Budapest Ig',
-          src: 'https://www.instagram.com/budapest.trio/'
-        }
-      ]
-      project.date =  "11 de marzo, 2020"
-      project.status =  "Terminado"
-      project.tags =  ['Signos indumentaria','Software',' Actualizacion','Geome7ric 1.1']      
-      project.images = [
-        'https://matiasjrb.com.ar/images/signos/logo.png',
-        'https://matiasjrb.com.ar/images/signos/programa1.png',
-        'https://matiasjrb.com.ar/images/signos/programa2.png',
-        'https://matiasjrb.com.ar/images/signos/programa3.png',
-        'https://matiasjrb.com.ar/images/signos/programa4.png',
-        'https://matiasjrb.com.ar/images/signos/programa5.png'
-      ]
-      
-      project.showMore = false
-      this.projects.push(project)
-
-      // BUDAPEST
-            
-      project = {}
-      project.title =  "PÁGINA WEB PARA BUDAPEST"
-      project.description =  "Página web para una banda amiga hecha a base de código HTML, CSS y JS."
-      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Es posible descargar sus canciones y reproducirlas online. Además, se pueden encontrar las letras de las mismas.'
-      
-      project.media = [
-        {
-          type: 'url',
-          title: 'Web',
-          src: 'https://budapesttrio.com.ar/'
-        },
-        {
-          type: 'url',
-          title: 'Budapest Ig',
-          src: 'https://www.instagram.com/budapest.trio/'
-        }
-      ]
-      project.date =  "9 de marzo, 2020"
-      project.status =  "Terminado"
-      project.tags =  ['Budapest','Web']      
-      project.images = [
-        'https://matiasjrb.com.ar/images/budapest/logo.png',
-        'https://matiasjrb.com.ar/images/budapest/portada.jpg'
-      ]
-      project.showMore = false
-      this.projects.push(project)
-
-      // NORTE BUS
-            
-      project = {}
-      project.title =  "PÁGINA WEB PARA NORTEBUS BB"
-      project.description =  "Página web para una empresa de transporte hecha a base de código HTML, CSS y JS. Pasá a escucharlos"
-      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Una página de contacto responsiva hecha a la velocidad de la luz.  '
-      project.media = [
-        {
-          type: 'url',
-          title: 'NorteBus BB',
-          src: 'https://nortebusbb.com/'
-        }
-      ]
-      project.date =  "1 de marzo, 2020"
-      project.status =  "Terminado"
-      project.tags =  ['NorteBus','Web']      
-      project.images = [
-        'https://matiasjrb.com.ar/images/nortebus/logo.jpg',
-        'https://matiasjrb.com.ar/images/nortebus/portada.jpg'
-      ]
-      project.showMore = false
-      this.projects.push(project)
-
-      // EATI 2020
-            
-      project = {}
-      project.title =  "CURSO EATI 2020: DE 0 A NINJA CON COLLECTD, INFLUXDB Y GRAFANA"
-      project.description =  "Curso de verano dictado por la Escuela de Actualización en Tecnologías de Informática (EATI) a cargo de Emiliano Marini."
-      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Un curso en donde nos acercamos un poco al trabajo que lleva a cabo un SysAdmin en una empresa. Se utilizaron máquinas virtuales donde corrían servidores y monitores los cuales eran accedidos mediante SSH. Se instalaron y configuraron diferentes librerías para poder visualizar adecuadamente en Grafana recursos de la computadora (memoria RAM, uso de disco, etc.) y servicios como MySQL, apache y nginx..'
-      project.media = [
-        {
-          type: 'url',
-          title: 'Emiliano Marini',
-          src: 'https://www.linkedin.com/in/emarini/'
-        }
-      ]
-      project.date =  "21 de febrero, 2020"
-      project.status =  "Terminado"
-      project.tags =  ['Emiliano Marini', 'EATI 2020', 'Grafana','CollectD','InfluxDB']      
-      project.images = [
-        'https://matiasjrb.com.ar/images/eati2020/logo.png',
-        'https://matiasjrb.com.ar/images/eati2020/portada.png'
-      ]
-      project.showMore = false
-      this.projects.push(project)
-
-      // PROYECTO LEAP MOTION
-            
-      project = {}
-      project.title =  "PROYECTO LEAP MOTION"
-      project.description =  "Un proyecto muy interesante para la materia Ingeniería de aplicaciones correspondiente al segundo cuatrimestre de 4to año de la carrera, a cargo de Luján Ganuza."
-      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Se nos fue la mano con la cantidad de horas invertidas en este proyecto, que consistía en una experiencia de realidad virtual controlada mediante gestos de las manos. Un servidor, un Leap Motion, un smarthphone, mucho tiempo y muchas ganas para poder lograr lo demostrado en el trailer.'
-      project.media = [
-        {
-          type: 'url',
-          title: 'Luján Ganuza',
-          src: 'http://vyglab.cs.uns.edu.ar/webpage/index.php/en/people/m-lujan-ganuza'
-        },
-        {
-          type: 'video',
-          title: 'Trailer',
-          src: 'https://www.youtube.com/embed/Gon-pctdt1g'
-        }
-      ]
-      project.date =  "27 de noviembre, 2019"
-      project.status =  "Terminado"
-      project.tags =  ['Leap Motion','C#','Unity3D','Realidad virtual','Mobile']      
-      project.images = [
-        'https://matiasjrb.com.ar/images/leapmotion.jpeg',
-        'https://matiasjrb.com.ar/images/proyectoiap.jpg'
-      ]
-      project.videos = [
-        'https://www.youtube.com/embed/Gon-pctdt1g'
-      ]
-      project.showMore = false
-      this.projects.push(project)
-
-
-
-
-      // PARRILLA AUTOMATICA
-
-      project = {}
-      project.title =  "PARRILLA AUTOMÁTICA"
-      project.description =  "Un proyecto para la materia Sistemas embebidos correspondiente al segundo cuatrimestre de 4to año de la carrera, a cargo de José Moyano. Basado en la idea de mi amigo y compañero de proyectos Bruno Mignucci, una parrilla automática de madera que todos queremos que Brunito traslade a fierro y braza."
-      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fue desarrollado en Java a lo largo de 40 días utilizando como base de datos archivos .xlsx de Excel. El programa funciona con lectora de código de barras y es altamente adaptable a todo tipo de comercios que deseen eliminar el papel de su día a día, para mayor comodidad y seguridad.'
-      project.media = [
-        {
-          type: 'url',
-          title: 'José Moyano',
-          src: 'https://www.facebook.com/jhmoyano'
-        },
-        {
-          type: 'url',
-          title: 'Bruno Mignucci',
-          src: 'https://www.facebook.com/brunomignucci'
-        },
-        {
-          type: 'video',
-          title: 'Demostración',
-          src: 'https://www.youtube.com/watch?v=jU1Nd6McBcM&t=29s'
-        },
-      ]
-      project.date =  "27 de noviembre, 2019"
-      project.status =  "Terminado"
-      project.tags =  ['Java']      
-      project.images = [
-        'https://matiasjrb.com.ar/images/parri.png',
-        'https://matiasjrb.com.ar/images/petshop/portada.jpg'
-      ]
-      project.videos = [
-        'https://matiasjrb.com.ar/documentos/redes/vid.mp4'
-      ]
-      project.showMore = false
-      this.projects.push(project)
-
-      // PRIMER SOFTWARE VENDIDO
-
-      project = {}
-      project.title =  "PRIMER SOFTWARE VENDIDO 'GEOME7RIC 1.0'"
-      project.description =  "Software hecho a medida para PetShop Undiano: inventario para control de stock, control de ventas, proveeduría y clientela"
-      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fue desarrollado en Java a lo largo de 40 días utilizando como base de datos archivos .xlsx de Excel. El programa funciona con lectora de código de barras y es altamente adaptable a todo tipo de comercios que deseen eliminar el papel de su día a día, para mayor comodidad y seguridad.'
-      project.media = [
-        {
-          type: 'pdf',
-          title: 'Manual de usuario',
-          src: 'https://matiasjrb.com.ar/documentos/inventario/manual.pdf'
-        }
-      ]
-      project.date =  "29 de junio, 2019"
-      project.status =  "Terminado"
-      project.tags =  ['Java']      
-      project.images = [
-        'https://matiasjrb.com.ar/images/petshop/logo.jpg',
-        'https://matiasjrb.com.ar/images/petshop/portada.jpg'
-      ]
-      project.videos = [
-        'https://matiasjrb.com.ar/documentos/redes/vid.mp4'
-      ]
-      project.showMore = false
-      this.projects.push(project)
-
-      // RASTREO DNS
-      project = {}
-      project.title =  "RASTREO DNS"
-      project.description =  "Script en Python hecho para la materia Redes y Teleprocesamiento solicitado por Sergio Davicino"
-      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Se utilizó la libreria Scapy y servidores de Google. Las características del script son las siguientes. Argumentos y opciones de entrada: El FQDN sobre la cual se va a realizar la traza. Las opciones ”-h” o ”- -help” que hacen que el script retorne una ayuda de la forma de invocación. Validación de la entrada: Se debe validar que el FQDN pasado como par´ametro tenga resolución de DNS antes de iniciar la traza.Salida:En el caso de que las opciones de entrada no se ajusten a lo esperado por el script, debe imprimir por pantalla la ayuda. Para cada uno de los subdominios, el script debe mostrar por pantalla el nombre y la dirección de cada servidor de nombres (ver ejemplo). Al finalizar la traza debe mostrar todos los RRs asociados al FQDN (ver ejemplo).Ejecución:El script debe obtener los nombres de los TLD haciendo una consulta a los servidores de DNS configurados en el equipo (archivo /etc/resolv.conf ), y como última instancia, debe usar los servidores de Google. El script no puede invocar ningún comando exterior, solo librerías de Python y Scapy. En cada uno de los pasos, la resolución de nombres para presentar por pantalla la información, se llevará a cabo usando los servidores que se citan en el primer punto.'
-      project.media = [
-        {
-          type: 'url',
-          title: 'Script',
-          src: 'https://matiasjrb.com.ar/documentos/redes/RiosMatias105434'
-        }
-      ]
-      project.date =  "14 de junio, 2019"
-      project.status =  "Aprobado"
-      project.tags =  ['Python', 'DNS', 'FQDN ',  'UNS']      
-      project.images = [
-        'https://matiasjrb.com.ar/images/redes/dns.jpg'
-      ]
-      project.videos = [
-        'https://matiasjrb.com.ar/documentos/redes/vid.mp4'
-      ]
-      project.showMore = true
-      this.projects.push(project)
-
-      // CURSO DE REACT
-      project = {}
-      project.title =  "CURSO EATI2019 'INTRODUCCIÓN A REACT'"
-      project.description =  "Curso de verano dictado por la Escuela de Actualización en Tecnologías de Informática (EATI) a cargo de Mariano Tucat"
-      project.content = ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Un curso en donde programamos en JavaScript haciendo uso de NodeJS y React Dev Tools. La evaluación consistió en elaborar una pequeña página web de comidas utilizando las facilidades que provee REACT.'
-      project.media = [
-        {
-          type: 'pdf',
-          title: 'Certificado de aprobación',
-          src: 'https://matiasjrb.com.ar/documentos/eati2019/certificado.pdf'
-        },
-        {
-          type: 'url',
-          title: 'Mariano Tucat',
-          src: 'https://www.linkedin.com/in/marianotucat/?originalSubdomain=ar'
-        },
-      ]
-      project.date =  "7 de Abril, 2019"
-      project.status =  "Aprobado"
-      project.tags =  ['React', 'NodeJS', 'UNS', 'EATI2019']      
-      project.images = [
-        'https://matiasjrb.com.ar/images/eati2019/logo.jpg',
-        'https://matiasjrb.com.ar/images/goingbackhome.png'
-      ]
-      project.videos = [
-        'https://www.youtube.com/embed/AuBwgJXerKc'
-      ]
-      project.showMore = false
-      this.projects.push(project)
-
-      // ALIEN
-      project = {}
-      project.title =  "Going Back Home"
-      project.description =  "Proyecto final de materia Computación gráfica"
-      project.media = [
-        {
-          type: 'video',
-          title: 'Trailer',
-          src: 'https://www.youtube.com/watch?v=AuBwgJXerKc'
-        }
-      ]
-      project.date =  "29 de junio, 2018"
-      project.status =  "Terminado"
-      project.tags =  ['C++', 'Unity 3D', 'UNS']
-      project.images = [
-        'https://matiasjrb.com.ar/images/goingbackhome.png',
-        'https://matiasjrb.com.ar/images/goingbackhome.png'
-      ]
-      project.videos = [
-        'https://www.youtube.com/embed/AuBwgJXerKc'
-      ]
-      project.showMore = false
-      this.projects.push(project)
-      
-    },
+    setear_personal_projects() {},
     showAddNewPost(){
       console.log('Apretaste el 7')
       this.mostrar_formulario_new_post = true
@@ -1048,6 +221,28 @@ export default {
     }
   },
   computed: {
+
+    
+    getTextClass() {
+      let ret = ' q-mt-md'
+      if (this.$q.screen.xl) {
+        ret = ret + ' '
+      } else {
+        ret = ret + ' '
+      }
+      return ret
+    },
+
+
+    getTitle() {
+      let ret = 'text-weight-bold   '
+      if (this.$q.screen.xl) {
+        ret = ret + ' text-h1'
+      } else {
+        ret = ret + ' text-h2'
+      }
+      return ret
+    },
     hideImage () {
       let ret = false
       ret = this.$q.screen.xs || this.$q.screen.width < 900
@@ -1056,6 +251,9 @@ export default {
     getImageWidth () {
       let ret = '665px'
       ret = (this.$q.screen.height *75) / 100
+      if (this.mobile) {
+         ret = (this.$q.screen.height *55) / 100
+      }
       ret = ret.toString() + 'px'
       console.log(this.$q.screen)
       return ret

@@ -1,7 +1,6 @@
 <template>
-  <q-page  class="flex flex-center" :style=" mobile? '  ' : 'padding-left: 130px'" >
-    <q-scroll-area v-if="projectToShow" class="full-width flex flex-center " :style=" $q.screen.xl? 'height: 100vh' : 'height:100vh'">
-      <div class="bg-dark q-ma-sm" :style="mobile? 'margin-top:70px': ''"  >
+  <q-page  class="flex flex-center">
+   <div class="bg-dark q-ma-sm" :style="mobile? 'margin-top:70px': ''"  >
           <div :class="mobile? '' : 'q-mx-md'">
             <div class="text-white q-pa-lg">
               <div class="row">
@@ -85,7 +84,6 @@
             </div>
           </div>
       </div>
-    </q-scroll-area>
 
   </q-page>
 </template>
@@ -128,6 +126,7 @@ export default {
   },
   methods: {
 
+    
     open(url){
       openURL(url)
     },

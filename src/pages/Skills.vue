@@ -1,10 +1,10 @@
 <template>
-   <q-page  class="flex flex-center " :style="( !mobile )? 'padding-left: 130px' : ''">
+   <q-page  class="flex flex-center ">
     <div class="full-width " :style=" mobile? 'height: 100%' : ''">
       <div class="row justify-start ">
         <div class="col-6 col-md-6 col-xs-12 col-sm-12  "  >
           
-          <div class="q-mx-xl q-mt-lg">
+          <div class="q-pa-md">
             <div :class="getSkillsName" style="" >
               Skills & experience
             </div>

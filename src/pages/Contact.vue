@@ -1,45 +1,50 @@
 <template>
-  <q-page  class="flex flex-center " :style=" !mobile ? 'padding-left: 130px' : ''" >
-   <!-- Vista principal -->
-    <div class="full-width " :style=" !mobile   ? 'height: 100vh' : ''">
+  <q-page  class=" "  >
+    <div class="full-width" >
       <div class="row justify-start  flex flex-center ">
-        <div class="col-6 col-md-6 col-xs-12 col-sm-12 " :style="mobile? 'height: 100vh; ': ''" >
+        <div class="col-6 col-md-6 col-xs-12 col-sm-12  " :style="mobile? '': ''" >
           
-          <div class="q-ma-md" style="margin-top:15%">
+          <div class="q-pa-md">
             <div :class="getNameClass" style="" >
              Contact me
             </div>
-            <SocialMedia/>
+            <SocialMedia :behavior="' justify-around '" class="q-my-md full-width"/>
             
             
             <div :class="getJobClass" >
               I'm interested in freelance opportunities, especially big ones, to take this with Geome7ric to make it better and bigger. 
-              However, if you have another request or question, don't hesitate to use the form.
-            </div>
-            <div class="q-mt-xl">
-              <div class="row justify-around ">
-                <div class="col-6 col-md-6 col-xs-12 q-pa-xs">
-                  <q-input dark v-model="form.name" clearable  class="" filled label="Name"/>
-                </div>
-                <div class="col-6 col-md-6  col-xs-12 q-pa-xs">
-                  <q-input dark v-model="form.from" clearable class="" filled label="Email"/>
-                </div>
-              </div>
-              <div class="row q-pa-xs ">
-                <q-input dark densez v-model="form.subject" clearable class="full-width" filled label="Subject"/>
-              </div> 
-              <q-editor dark class=" q-mx-xs no-shadow"
-                style="border-radius: 0px" v-model="form.html" label="Message" min-height="5rem" max-height="250px" />
-              <div class="row justify-end q-mt-sm">
-                <q-btn :loading="seendingMessage" @click="sendEmail" class="text-capitalize col-4 col-xs-12 "
-                 outline color="white" label="Sent message!"/>
-              </div>
+              However, if you have another request or question, don't hesitate to use the form or
+              
+            <span @click="useOpenURL('mailto:matiasjriosb@gmail.com')"  class="text-secondary cursor-pointer " clickable>
+              use your email client
+            </span>.
             </div>
           </div>
         </div>
-        <div class="col-6 col-md-6 col-xs-12" v-if="!mobile">          
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d99611.232271834!2d-62.25637244999999!3d-38.72122955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95edbcabdc1302bd%3A0x76d1d88d241e7a11!2sBah%C3%ADa%20Blanca%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1647766554503!5m2!1ses!2sar"
-           style="border:0;height:100vh; width: 100%" allowfullscreen="" loading="lazy"></iframe>
+        <div class="col-6 col-md-6 col-xs-12 " > 
+            
+              <div class=" ">
+                <div class="row justify-around ">
+                  <div class="col-6 col-md-6 col-xs-12 q-pa-xs">
+                    <q-input dark  v-model="form.name" label-color="white" filled label="Name"/>
+                  </div>
+                  <div class="col-6 col-md-6  col-xs-12 q-pa-xs">
+                    <q-input dark v-model="form.from"  label-color="white" filled label="Email"/>
+                  </div>
+                </div>
+                <div class="row q-pa-xs ">
+                  <q-input dark densez v-model="form.subject" class="full-width"  label-color="white" filled label="Subject"/>
+                </div> 
+                <q-editor dark class=" q-mx-xs no-shadow"
+                 v-model="form.html" label="Message" min-height="5rem" />
+                <div class="row justify-center q-mt-sm">
+                  <q-btn :loading="seendingMessage" @click="sendEmail"
+                  class="text-capitalize  "
+                  style="width:98%"
+                  outline color="white" label="Sent message!"/>
+                </div>
+              </div>        
+         
         </div>        
       </div>
       
@@ -50,6 +55,7 @@
 <script>
 
 import SocialMedia from '../components/SocialMedia.vue'
+import { openURL } from 'quasar'
 
 
 export default {
@@ -67,6 +73,10 @@ export default {
     }
   },
   methods: {
+
+    useOpenURL(url) {
+      openURL(url)
+    },
     resetForm() {
       this.form = {
         name: '',
@@ -113,7 +123,7 @@ export default {
       return ret
     },
     getJobClass() {
-      let ret = ' q-mt-xs'
+      let ret = ' q-mt-md'
       if (this.$q.screen.xl) {
         ret = ret + ' text-subtitle1'
       } else {
