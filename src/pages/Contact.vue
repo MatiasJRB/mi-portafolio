@@ -1,14 +1,14 @@
 <template>
-  <q-page  class=" "  >
+  <div  class=" "  >
     <div class="full-width" >
-      <div class="row justify-start  flex flex-center ">
+      <div class="row justify-start  ">
         <div class="col-6 col-md-6 col-xs-12 col-sm-12  " :style="mobile? '': ''" >
           
           <div class="q-pa-md">
             <div :class="getNameClass" style="" >
              Contact me
             </div>
-            <SocialMedia :behavior="' justify-around '" class="q-my-md full-width"/>
+            <!-- <SocialMedia :behavior="' justify-around '" class="q-my-md full-width"/> -->
             
             
             <div :class="getJobClass" >
@@ -49,7 +49,7 @@
       </div>
       
     </div>
-  </q-page>
+  </div>
 </template>
 
 <script>
@@ -105,7 +105,7 @@ export default {
     }
   },
   components: {
-    SocialMedia
+    // SocialMedia
   },
   computed: {
     mobile () {

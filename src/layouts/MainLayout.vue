@@ -1,73 +1,90 @@
 <template>
-  <q-layout view="lHh Lpr lFf"  >
+  <q-layout view="hHh lpR fff"  >
     <q-page-sticky position="top-right" class="  " v-if="mobile" style="z-index:10000000">
       <div class="row justify-end q-ma-md text-dark">
         <q-btn :color="$route.path === '/' ? 'white' : 'white'"  flat icon="menu" @click="expanded =! expanded"/>
       </div>
-    </q-page-sticky> 
-    <div class="row justify-around bg-dark  text-secondary"  style=" margin:0 "
-      v-if="!mobile" >
-      <q-card @click="$router.push('/')" 
-        flat v-ripple clickable class="col-2 flex flex-center bg-dark text-grey-6 cursor-pointer ">
-        <div class="row">
-          <q-img width="32px" class="" src="../assets/MR_LOGO_WHITE.svg" >        
-         </q-img>
-        </div>
-      </q-card>
-      <div class="row" :style="'margin-top:' + getDistance">
-        <q-item 
-          clickable
-          style="height:45px"
-          @click="$router.push('/about')"
-          class="col">
-            <q-item-section :class="$route.path.includes('about')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
-              About
-            </q-item-section>
-        </q-item>
-        <q-separator color="primary"/>
-        <q-item 
-          clickable
-          style="height:45px"
-          @click="$router.push('/skills')"
-          class="">
-            <q-item-section :class="$route.path.includes('skills')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
-              My skills
-            </q-item-section>
-        </q-item>
-        <q-separator color="primary"/>
-        <q-item 
-          clickable
-          @click="$router.push('/portfolio')"
-          style="height:45px"
-          class="">
-            <q-item-section :class="$route.path.includes('portfolio')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
-              Portfolio
-            </q-item-section>
-        </q-item>
-        <q-separator color="primary"/>
-        <q-item 
-          clickable
-          style="height:45px"
-          @click="$router.push('/contact')"
-          class="">
-            <q-item-section :class="$route.path.includes('contact')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
-              Contact
-            </q-item-section>
-        </q-item>
-        <q-separator color="primary"/>
-        <!-- <q-item 
-          clickable
-          style="height:45px"
-          @click="$router.push('/blog')"
-          class="">
-            <q-item-section :class="$route.path.includes('blog')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
-              Blog
-            </q-item-section>
-        </q-item> -->
-        <q-separator color="primary"/>
-      </div>
-      <SocialMedia :behavior="'justify-evenly'" class="col-3 q-mt-md"/>
-    </div>
+    </q-page-sticky>
+    
+        <q-scroll-observer @scroll="onScroll" /> 
+    <transition 
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
+        appear
+        :duration="animationTime">
+        <q-header reveal  elevated 
+          v-if="!mobile" >
+          <q-toolbar class="row justify-around bg-dark  text-secondary"  style=" margin:0 ">
+            
+          <q-card @click="$router.push('/')" 
+            flat v-ripple clickable class="col-2 flex flex-center bg-dark text-grey-6 cursor-pointer ">
+            <div class="row">
+              <q-img width="32px" class="" src="../assets/MR_LOGO_WHITE.svg" >        
+            </q-img>
+            </div>
+          </q-card>
+          <div class="row" :style="'margin-top:' + getDistance">
+            <q-item 
+              clickable
+              style="height:45px"
+              @click="$router.push('/about')"
+              class="col">
+                <q-item-section :class="$route.path.includes('about')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
+                  About
+                </q-item-section>
+            </q-item>
+            <q-separator color="primary"/>
+            <q-item 
+              clickable
+              style="height:45px"
+              @click="$router.push('/skills')"
+              class="">
+                <q-item-section :class="$route.path.includes('skills')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
+                  My skills
+                </q-item-section>
+            </q-item>
+            <q-separator color="primary"/>
+            <q-item 
+              clickable
+              @click="$router.push('/portfolio')"
+              style="height:45px"
+              class="">
+                <q-item-section :class="$route.path.includes('portfolio')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
+                  Portfolio
+                </q-item-section>
+            </q-item>
+            <q-separator color="primary"/>
+            <q-item 
+              clickable
+              style="height:45px"
+              @click="$router.push('/contact')"
+              class="">
+                <q-item-section :class="$route.path.includes('contact')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
+                  Contact
+                </q-item-section>
+            </q-item>
+            <q-separator color="primary"/>
+            <!-- <q-item 
+              clickable
+              style="height:45px"
+              @click="$router.push('/blog')"
+              class="">
+                <q-item-section :class="$route.path.includes('blog')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
+                  Blog
+                </q-item-section>
+            </q-item> -->
+            <q-separator color="primary"/>
+          </div>
+          <div class="flex flex-center">
+            
+          <SocialMedia
+            style="margin-top: -3px"
+             :behavior="'justify-evenly flex flex-center'" class="col-3 q-mt-md flex flex-center full-height"/>
+          </div>
+        </q-toolbar>
+      </q-header>
+     
+    </transition>
 
     <q-dialog position="top" v-model="expanded">
       <q-card class="bg-dark text-white" flat style="border-radius: 0px">
@@ -119,6 +136,22 @@
         <router-view/>
       </transition>
     </q-page-container>
+
+     <q-footer elevated>
+        <q-toolbar>
+          <q-toolbar-title>
+            <div class="q-my-xs">
+              <div class="row justify-center">
+                <div class="text-caption">
+                  Designed and built by Matias Rios
+                </div>
+              </div>
+            </div>
+          </q-toolbar-title>
+        </q-toolbar>
+
+        
+      </q-footer>
     
   </q-layout>
 </template>
@@ -135,6 +168,7 @@ export default {
   computed: {
     mobile () {
       let ret = false
+      console.log(this.$q.screen)
       ret = this.$q.screen.xs || this.$q.screen.sm || this.$q.screen.width < 1050
       return ret
     },
@@ -147,6 +181,7 @@ export default {
   },
   data () {
     return {
+      hideLayout: false,
       expanded:false,
       class_button_toolbar: this.mostrando_porfolio? 'bg-info q-mx-xs' : 'bg-accent q-mx-xs',
       class_button_porfolio: this.mostrando_porfolio? 'bg-accent q-mx-xs' : 'bg-info q-mx-xs',
@@ -169,6 +204,10 @@ export default {
   },
   created()
   {
+    this.$emitter.on('hideLayout', (value) => {
+      this.hideLayout = value
+    })
+
     this.class_button_toolbar=this.mostrando_porfolio? 'bg-info q-mx-xs' : 'bg-accent q-mx-xs';
     
     this.class_button_porfolio= this.mostrando_porfolio? 'bg-accent q-mx-xs' : 'bg-info q-mx-xs';
@@ -176,6 +215,15 @@ export default {
   },
   methods:
   {
+
+     onScroll (info) {
+
+        if (info.position>60) {
+          this.hideLayout= true
+        } else {
+          this.hideLayout = false
+        }
+      },
     handleMenu(path) {
       if (path !== this.$route.path) {
         this.$router.push(path)

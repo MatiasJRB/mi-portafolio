@@ -1,18 +1,18 @@
 <template>
   <q-page 
-    class="flex flex-center text-white	" 
+    class="flex flex-center text-white bg-dark	" 
   >
     <div>
-      <div class="" :style="mobile?  '' : 'height: 100vh;' ">
-        <div class="row justify-center flex  flex-center "
-          :style="mobile?  '' : 'width: 85em'">
-          <div class="col-xs-12 col-md-6" :style="!mobile?  '' : 'height: 100vh;'" >
+      <div class="bg-red flex flex-center" :style="mobile?  '' : 'height: 100vh;' ">
+        <div class="row justify-center  "
+          :style="mobile?  '' : 'width: 89em'">
+          <div class="col-xs-12 col-md-6 " :style="!mobile?  '' : 'height: 100vh;'" >
             <transition
                 name="fade"
                 appear
                 :duration="2000"
               >   
-              <div :class="mobile? 'q-pa-lg q-mt-xl' : 'q-pa-xl'" >            
+              <div :class="mobile? 'q-pa-lg' : 'q-pa-xl'" >            
                 <div :class="getNameClass" >
                   <p>
                     Hi,<br> I'm <span class="text-primary">Matias</span>, <br> Full Stack Engineer
@@ -35,7 +35,8 @@
                 name="fade"
                 appear
               >   
-                <div v-if="!mobile" class="q-mt-xl" :style="'border-radius:8px;height  : 33em;border: 2px solid white; border-color: #ffffff; width: ' + getImageWidth" >                     
+                <div id="header" v-if="!mobile" class="q-mt-xl" :style="'border-radius:8px;height  : 33em;border: 2px solid white; border-color: #ffffff; width: ' + getImageWidth" >                     
+                  
                   <q-img 
                   height="33em" class="bg-white" 
                   style="margin-top: -15px; margin-left: -12px; border-radius:8px"  src="../assets/portfolio.jpg"/>
@@ -53,34 +54,27 @@
         </div>
       </div>
 
-      <div class="" :style="mobile?  '' : 'width: 85em'">
+      <div class="bg-green" :style="mobile?  '' : 'width: 85em'">
         <About/>
       </div>
 
-      <div class="" :style="mobile?  '' : 'width: 85em'">
+      <div class="bg-yellow" :style="mobile?  '' : 'width: 85em'">
         <Skills/>
       </div>
 
       
-      <div class="" :style="mobile?  '' : 'width: 85em'">
-        <div :class="getTitle + ' q-ml-xs q-my-md'">
+      <div class="bg-blue" :style="mobile?  '' : 'width: 85em'">
+        <div :class="getTitle + ' q-ml-xs'">
           My portfolio
         </div>
         <Portfolio/>
       </div>
 
-      <div class="" :style="mobile?  '' : 'width: 85em'">
-        <Contact/>
+      <div class="bg-orange" :style="mobile?  '' : 'width: 85em'">
+        <Contact
+          class="q-my-xl"/>
       </div>
 
-
-      <div class="q-my-xl">
-        <div class="row justify-center">
-          <div class="text-caption">
-            Designed and built by Matias Rios
-          </div>
-        </div>
-      </div>
     
   </div>
   </q-page>
@@ -95,6 +89,9 @@ import ModuloNetwork from '../modules/ModuloNetwork.vue'
 import Vue from 'vue'; // es6 syntax
 import SocialMedia from '../components/SocialMedia.vue'
 import { mapState } from 'vuex'
+
+import { scroll } from 'quasar'
+const { getVerticalScrollPosition, setVerticalScrollPosition } = scroll
 
 import Portfolio from '../pages/Portfolio.vue'
 import Contact from '../pages/Contact.vue'
@@ -168,6 +165,7 @@ export default {
   mounted()
   { 
     this.showTitle()
+    
   },
 
   watch: {
@@ -178,6 +176,7 @@ export default {
   methods:
   {
     
+   
    showTitle() {
      
       
@@ -250,12 +249,11 @@ export default {
     },
     getImageWidth () {
       let ret = '665px'
-      ret = (this.$q.screen.height *75) / 100
+      ret = (this.$q.screen.height *55) / 100
       if (this.mobile) {
          ret = (this.$q.screen.height *55) / 100
       }
       ret = ret.toString() + 'px'
-      console.log(this.$q.screen)
       return ret
     },
     mobile () {
