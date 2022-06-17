@@ -3,16 +3,16 @@
     class="flex flex-center text-white bg-dark	" 
   >
     <div>
-      <div class="bg-red flex flex-center" :style="mobile?  '' : 'height: 100vh;' ">
+      <div class="flex flex-center" :style="mobile?  '' : 'height: 100vh;' ">
         <div class="row justify-center  "
           :style="mobile?  '' : 'width: 89em'">
-          <div class="col-xs-12 col-md-6 " :style="!mobile?  '' : 'height: 100vh;'" >
+          <div class="col-xs-12 col-md-6 flex flex-center" :style="!mobile?  '' : 'height: 100vh;'" >
             <transition
                 name="fade"
                 appear
                 :duration="2000"
               >   
-              <div :class="mobile? 'q-pa-lg' : 'q-pa-xl'" >            
+              <div :class="mobile? 'q-pa-lg ' : 'q-pa-xl'" >            
                 <div :class="getNameClass" >
                   <p>
                     Hi,<br> I'm <span class="text-primary">Matias</span>, <br> Full Stack Engineer
@@ -24,55 +24,59 @@
                 <SocialMedia
                   class="q-mt-md"
                   :behavior="'justify-start'"/>
-                <!-- <div class="row full-width q-mt-lg">
-                  <q-btn @click="$router.push('/contact')" class="text-capitalize col-5 " outline color="secondary" label="Contact me!"/>
-                </div> -->
               </div>
             </transition>
           </div>
-          <div class="col-md-6 col-xs-12"  >
+          <div class="col-md-6 col-xs-12" v-if="!mobile" >
             <transition
                 name="fade"
                 appear
               >   
-                <div id="header" v-if="!mobile" class="q-mt-xl" :style="'border-radius:8px;height  : 33em;border: 2px solid white; border-color: #ffffff; width: ' + getImageWidth" >                     
-                  
+                <div id="header"  class="q-mt-xl" :style="'border-radius:8px;height  : 33em;border: 2px solid white; border-color: #ffffff; width: ' + getImageWidth" >                  
                   <q-img 
-                  height="33em" class="bg-white" 
-                  style="margin-top: -15px; margin-left: -12px; border-radius:8px"  src="../assets/portfolio.jpg"/>
+                    height="33em" class="bg-white" 
+                    style="margin-top: -15px; margin-left: -12px; border-radius:8px"  src="../assets/portfolio.jpg"/>
                 </div>
-                <v-else>
-                  <div class="row justify-center q-mb-md">
-                    <q-avatar size="200px" class="shadow-5">
-                    <img src="../assets/portfolio.jpg" />
-                  </q-avatar>
-                  </div>
-                </v-else>
             </transition>
             
           </div>        
         </div>
       </div>
 
-      <div class="bg-green" :style="mobile?  '' : 'width: 85em'">
-        <About/>
+      <div class="q-my-md" :style="mobile?  '' : 'width: 85em'">
+        <div class="row justify-center" v-if="mobile">
+          <div class="col-xs-8" >
+            <transition
+                name="fade"
+                appear
+              >   
+                <div class="full-width" :style="'border-radius:8px;height  : 20em;border: 2px solid white; border-color: #ffffff; width: ' + getImageWidth" >                  
+                    <q-img 
+                      height="20em" class="bg-white" 
+                      style="margin-top: -15px; margin-left: -12px; border-radius:8px"  src="../assets/portfolio.jpg"/>
+                  </div>
+            </transition>
+            
+          </div> 
+        </div>
+        <About class="q-ma-sm"/>        
       </div>
 
-      <div class="bg-yellow" :style="mobile?  '' : 'width: 85em'">
-        <Skills/>
+      <div class="q-mt-xl" :style="mobile?  '' : 'width: 85em'">
+        <Skills class="q-mx-sm"/>
       </div>
 
       
-      <div class="bg-blue" :style="mobile?  '' : 'width: 85em'">
-        <div :class="getTitle + ' q-ml-xs'">
-          My portfolio
+      <div class="" :style="mobile?  '' : 'width: 85em'">
+        <div :class="getTitle + ' q-ma-md'">
+          My work
         </div>
         <Portfolio/>
       </div>
 
-      <div class="bg-orange" :style="mobile?  '' : 'width: 85em'">
+      <div class="" :style="mobile?  '' : 'width: 85em'">
         <Contact
-          class="q-my-xl"/>
+          class="q-my-xl q-mx-sm"/>
       </div>
 
     

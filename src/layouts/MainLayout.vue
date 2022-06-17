@@ -1,21 +1,31 @@
 <template>
   <q-layout view="hHh lpR fff"  >
-    <q-page-sticky position="top-right" class="  " v-if="mobile" style="z-index:10000000">
-      <div class="row justify-end q-ma-md text-dark">
-        <q-btn :color="$route.path === '/' ? 'white' : 'white'"  flat icon="menu" @click="expanded =! expanded"/>
-      </div>
-    </q-page-sticky>
-    
-        <q-scroll-observer @scroll="onScroll" /> 
+    <q-scroll-observer @scroll="onScroll" /> 
     <transition 
-        enter-active-class="animated fadeIn"
-        leave-active-class="animated fadeOut"
-        appear
-        :duration="animationTime">
-        <q-header reveal  elevated 
-          v-if="!mobile" >
-          <q-toolbar class="row justify-around bg-dark  text-secondary"  style=" margin:0 ">
-            
+      enter-active-class="animated fadeIn"
+      leave-active-class="animated fadeOut"
+      appear
+      :duration="animationTime">
+      <q-header reveal   v-if="mobile" >
+        <q-toolbar class="row justify-between bg-dark">
+          <q-card @click="$router.push('/')" 
+            flat v-ripple clickable class="col-2 flex flex-center bg-dark text-grey-6 cursor-pointer ">
+            <div class="row">
+              <q-img width="32px" class="" src="../assets/MR_LOGO_WHITE.svg" >        
+            </q-img>
+            </div>
+          </q-card>
+          <q-btn
+            flat
+            icon="menu"
+            @click="expanded =! expanded"
+            />
+        </q-toolbar>
+      </q-header>
+      
+      <q-header v-else reveal elevated >
+        <q-toolbar class="row justify-around bg-dark  text-secondary"  style=" margin:0 ">
+          
           <q-card @click="$router.push('/')" 
             flat v-ripple clickable class="col-2 flex flex-center bg-dark text-grey-6 cursor-pointer ">
             <div class="row">
@@ -79,7 +89,7 @@
             
           <SocialMedia
             style="margin-top: -3px"
-             :behavior="'justify-evenly flex flex-center'" class="col-3 q-mt-md flex flex-center full-height"/>
+            :behavior="'justify-evenly flex flex-center'" class="col-3 q-mt-md flex flex-center full-height"/>
           </div>
         </q-toolbar>
       </q-header>

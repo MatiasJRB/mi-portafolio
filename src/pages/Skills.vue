@@ -26,51 +26,101 @@
             </div>
           </div>
         </div>
-        <div class="col-6 col-md-6 col-xs-12 col-sm-12"  >
+        <div class="col-md-6 col-xs-12 col-sm-12"  >
           
-          <div class="q-mt-md q-ml-md">
-            <div class="row q-pa-md justify-start "  > 
-              <div class="row q-ma-sm q-pa-sm cursor-pointer skill " style="border-color: " > 
-                <q-icon size="32px" class="q-ml-md" style="margin-top: 7px" name="preview"/>
-                <div class="cursor-pointer flex flex-center">
-                  <span class="q-ma-md">
+          <div class="row q-pa-md justify-start "  > 
+            <div class="col-6   "  > 
+              <div class="row q-ma-sm skill">
+                <q-icon size="32px" class="q-ma-sm q-ml-md"  name="preview"/>
+                <div class="flex flex-center q-ml-md">
+                  <span class="">
                     Front-end
                   </span>
                 </div>
               </div>
-              <div class="row q-ma-sm q-pa-sm cursor-pointer skill " style="border-color: " > 
-                <q-icon size="32px" class="q-ml-md" style="margin-top: 7px" name="settings_suggest"/>
-                <div class="cursor-pointer flex flex-center">
-                  <span class="q-ma-md">
+            </div>
+            <div class="col-6   "  > 
+              <div class="row q-ma-sm skill">
+                <q-icon size="32px" class="q-ma-sm q-ml-md"  name="settings_suggest"/>
+                <div class="flex flex-center q-ml-md">
+                  <span class="">
                     Back-end
                   </span>
                 </div>
-              </div>             
-              <div class="row q-ma-sm q-pa-sm cursor-pointer skill " style="border-color: " > 
-                <q-icon size="32px" class="q-ml-md" style="margin-top: 7px" name="person"/>
-                <div class="cursor-pointer flex flex-center">
-                  <span class="q-ma-md">
-                    User experience
+              </div>
+            </div>                      
+            <div :class="mobile? 'col-12' :'col-6'"  > 
+              <div class="row q-ma-sm skill">
+                <q-icon size="32px" class="q-ma-sm q-ml-md"  name="psychology"/>
+                <div class="flex flex-center q-ml-xl">
+                  <span class="">
+                    UX design
                   </span>
                 </div>
-              </div>         
-              <div class="row q-ma-sm q-pa-sm cursor-pointer skill " style="border-color: " > 
-                <q-icon size="32px" class="q-ml-md" style="margin-top: 7px" name="group"/>
-                <div class="cursor-pointer flex flex-center">
-                  <span class="q-ma-md">
+              </div>
+            </div>
+            <div class="col-6   "  > 
+              <div class="row q-ma-sm skill">
+                <q-icon size="32px" class="q-ma-sm q-ml-md"  name="group"/>
+                <div class="flex flex-center q-ml-md">
+                  <span class="">
                     Leader
                   </span>
                 </div>
-              </div>      
-              <div class="row q-ma-sm q-pa-sm cursor-pointer skill " style="border-color: #4292F0;">
-                <q-img width="32px" contain class="q-ml-md " src="../assets/quasar.svg"/>
-                <div class="cursor-pointer flex flex-center">
-                  <span class="q-ml-md">
+              </div>
+            </div>
+            <div class="col-6   "  > 
+              <div class="row q-ma-sm skill">
+                <q-icon size="32px" class="q-ma-sm q-ml-md"  name="compare"/>
+                <div class="flex flex-center q-ml-xs">
+                  <span class="">
+                    Media editing
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="text-center q-my-md">Here are a few technologies I've working with recently</div>
+            <div :class="mobile? 'col-12' :'col-6'"  > 
+              <div class="row q-ma-sm skill " style="border-color: #4292F0;">
+                <q-img height="40px" contain class="col-2 q-ml-md q-mt-xs " src="../assets/quasar.svg"/>
+                <div class="col-9 text-center flex flex-center" style="color: #4292F0;">
+                  <span class="">
                     Quasar Framework
                   </span>
                 </div>
               </div>
             </div>
+            <div :class="mobile? 'col-12' :'col-6'"  > 
+              <div class="row q-ma-sm skill " style="border-color: #61dafb;">
+                <q-img height="40px" contain class="col-2 q-ml-md q-mt-xs " src="../assets/reactnative.svg"/>
+                <div class="col-9 text-center flex flex-center" style="color: #61dafb;">
+                  <span class="">
+                    React Native
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div :class="mobile? 'col-12' :'col-6'"  > 
+              <div class="row q-ma-sm skill " style="border-color: #5AAD45;">
+                <q-img contain class="col-2 q-ml-md " src="../assets/nodejs.svg"/>
+                <div class="col-9 text-center flex flex-center " style="color: #5AAD45;">
+                  <span class="">
+                    Node JS
+                  </span>
+                </div>
+              </div>
+            </div>            
+            <div :class="mobile? 'col-12' :'col-6'"  > 
+              <div class="row q-ma-sm skill " style="border-color: #FF2D20;">
+                <q-img height="40px" contain class="col-2 q-ml-md q-mt-xs" src="../assets/Laravel.svg"/>
+                <div class="col-9 text-center flex flex-center" style="color: #FF2D20;">
+                  <span class="">
+                    Laravel
+                  </span>
+                </div>
+              </div>
+            </div>            
+            
           </div>
           
         </div>        

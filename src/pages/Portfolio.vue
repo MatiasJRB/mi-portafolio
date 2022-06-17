@@ -159,7 +159,11 @@ export default {
       this.$router.push({path: `portfolio/${project.id}` })
     },
     getCardStyle(project) {
-      let toret = 'height:33.33333vh; border-radius: 0px;'
+      let height = 33.33333333333333
+      if (this.mobile) {
+        height = 22
+      }
+      let toret = `height:${height}vh; border-radius: 0px;`
       return toret
     },
   },
