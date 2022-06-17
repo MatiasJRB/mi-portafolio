@@ -147,9 +147,7 @@
                       </q-timeline-entry>
 
                     </q-timeline>
-                    <div class="text-caption">
-                      I trust that with smart work and time, there will be many more entries in this timeline :)
-                    </div>
+                    
                   </div>
                 </div>
               </q-scroll-area>
