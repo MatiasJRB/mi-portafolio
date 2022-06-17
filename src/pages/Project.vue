@@ -142,9 +142,7 @@ export default {
     },
   },
   async mounted () {
-    console.log(this.projects)
     this.projectToShow = this.projects.filter((pr) => (parseInt(pr.id) === parseInt(this.$route.params.id)))[0]
-    console.log(this.projectToShow)
   }
 }
 </script>

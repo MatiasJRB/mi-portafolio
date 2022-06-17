@@ -129,9 +129,7 @@
           Contact
         </q-card-section>
         <q-separator/>
-        <q-card-secion>
-          <SocialMedia  :behavior="'justify-around'" class=" q-my-md" />
-        </q-card-secion>
+        <SocialMedia  :behavior="'justify-around'" class=" q-my-md" />
       </q-card>
     </q-dialog>
 
@@ -178,14 +176,12 @@ export default {
   computed: {
     mobile () {
       let ret = false
-      console.log(this.$q.screen)
       ret = this.$q.screen.xs || this.$q.screen.sm || this.$q.screen.width < 1050
       return ret
     },
     getDistance () {
       let ret = (this.$q.screen.height *10) / 100
       ret = ret.toString() + 'px'
-      console.log(this.$q.screen)
       return 0
     },
   },
@@ -216,6 +212,7 @@ export default {
   {
     this.$emitter.on('hideLayout', (value) => {
       this.hideLayout = value
+      this.expanded = value
     })
 
     this.class_button_toolbar=this.mostrando_porfolio? 'bg-info q-mx-xs' : 'bg-accent q-mx-xs';
@@ -272,8 +269,6 @@ export default {
         }
         this.$root.$emit('listener_principal',data);
       }
-      else
-        console.log("wtf")
     },
     click_toolbar_blog()
     {
@@ -291,8 +286,6 @@ export default {
         }
         this.$root.$emit('listener_principal',data);
       }
-      else
-        console.log("wtf")
     }
   }
 }

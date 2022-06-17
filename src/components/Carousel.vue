@@ -106,14 +106,10 @@ export default {
     const i = 0
     const a = 0
     let brand
-    // this.aliados = this.shuffle(this.aliados)
-    console.log(this.aliados.length)
     this.aliados = this.aliados.sort()
-    console.log(this.aliados)
     this.brands[0] = (this.aliados.slice(0, 12))
     this.brands[1] = (this.aliados.slice(12, 24))
     this.brands[2] = (this.aliados.slice(24, 36))
-    console.log(this.brands)
     this.brands[3] = (this.aliados.slice(36, this.aliados.length))
   },
 

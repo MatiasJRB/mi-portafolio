@@ -180,15 +180,12 @@ export default {
     }
   },
   mounted () {
-    
-    console.log(this.$route)
   },
   computed: {
     getImageWidth () {
       let ret = '665px'
       ret = (this.$q.screen.height *80) / 100
       ret = ret.toString() + 'px'
-      console.log(this.$q.screen)
       return ret
     },
     mobile () {

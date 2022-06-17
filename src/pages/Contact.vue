@@ -94,7 +94,6 @@ export default {
           this.resetForm()
         })
         .catch((error) => {
-          console.log(error)
           let errMessage = error.response?.data?.message
           errMessage = errMessage || 'Please, try again later'
           this.$emitter.emit('negativeNotify', errMessage)

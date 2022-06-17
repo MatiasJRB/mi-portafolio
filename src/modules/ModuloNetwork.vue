@@ -34,7 +34,6 @@ export default {
     y asi con todo lo que querramos definir...
     */
     
-    console.log("[Mod network]se configuran los listener");
     //this.$root.$on('solicitud_a', (param) => this.prueba_retorno(param));
   },
   methods:
@@ -56,9 +55,6 @@ export default {
       await this.get_laravel(apicall)
         .then(response=>response.json())
         .then(resp=>{
-          console.log("[Mod network | GET ]");
-          console.log("apicall");
-          console.log(resp);
           return resp;
         });
     },
@@ -94,14 +90,11 @@ export default {
     },
     async post_laravel(apicall,fetch_data)
     {
-      console.log("POST: "+JSON.stringify(fetch_data));
       //Creo los datos a enviar en el request POST, incluido el metodo y el header
       const toSend = {method:'POST',body:JSON.stringify(fetch_data),headers: {
       'Content-Type': 'application/json',}};
       const response = await fetch(this.url_base_laravel+apicall,toSend);
       const data = await response;
-      console.log("En network");
-      console.log(data);
       return data;
     },
     async get_laravel(apicall)
@@ -136,16 +129,13 @@ export default {
         this.formData.append("timestamp", new Date());
         this.formData.append("folder",folder_name);
           
-        console.log(this.cloudinary_upload_url);
         let requestObj={
           url: this.cloudinary_upload_url,
           method: "POST",
           data: this.formData,
           onUploadProgress: function(progressEvent)
           {
-            console.log("progress",progressEvent);
             this.progress= Math.round((progressEvent.loaded*100.0)/progressEvent.total);
-            console.log(this.progress);
           }.bind(this)              
         };
         this.showProgress=true;
@@ -163,7 +153,6 @@ export default {
           return response.text();
         })
         .then((data) => {
-          console.log(data);
         });
 
     },
@@ -184,7 +173,6 @@ export default {
       var fd;
       for (var a in receptores)
       {
-        console.log(a);
         fd= new FormData();
         fd.append('mensaje', mensaje); 
         fd.append('receptor', receptores[a]); 

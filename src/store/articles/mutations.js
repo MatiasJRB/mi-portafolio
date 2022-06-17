@@ -1,7 +1,6 @@
 
 export function setArticles (state, articles) {
     
-    console.log(articles)
     articles = articles.filter((article) => {
         return article.attributes.enabled
     })

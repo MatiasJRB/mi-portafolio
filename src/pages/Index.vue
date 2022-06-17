@@ -96,7 +96,7 @@ import SocialMedia from '../components/SocialMedia.vue'
 import { mapState } from 'vuex'
 
 import { scroll } from 'quasar'
-const { getVerticalScrollPosition, setVerticalScrollPosition } = scroll
+const { getScrollTarget, getVerticalScrollPosition, setVerticalScrollPosition } = scroll
 
 import Portfolio from '../pages/Portfolio.vue'
 import Contact from '../pages/Contact.vue'
@@ -150,19 +150,10 @@ export default {
     this.funciones= new Vue(ModuloFunciones);
     this.network = new Vue(ModuloNetwork)
     this.$emitter.on('listener_principal', (data) => this.metodos_listener_principal[data.function](data.data) )
-    // this.network.getProjects()    
-    //   .then(response=>response.json())
-    //   .then(resp=> {
-    //     console.log(resp)
-    //     this.projects = resp["items"]
-    //     // console.log('Los proyectos son estos: ')
-    //     // console.log(this.projects)        
-    // });
     this.setear_personal_projects()
     this.personalProjects = this.projects
     this.loadGeome7ricProjects()
     this.$root.$on('listener_principal', (param) => this.listener(param));
-    console.log("Nope, u won't find any errors here :)")
     //this.funciones.alerta_positiva_home("Bienvenido");
   },  
   beforeMount()
@@ -183,13 +174,20 @@ export default {
   methods:
   {
 
-    // make a smooth scroll to a specific element of this page without setVerticalScrollPosition
+    
+
+
+
+
     scrollTo(element) {
-      element = '#' + element
-      console.log(element)
-      const el = document.querySelector(element)
-      console.log(el)
-      el?.scrollIntoView({ behavior: 'smooth' })
+      if (this.mobile) {
+        this.$emitter.emit('hideLayout', false)
+      }
+      this.$nextTick(() => {
+        element = '#' + element
+        const el = document.querySelector(element)
+        el?.scrollIntoView({ behavior: 'smooth' })
+      })
     },
     
     
@@ -215,7 +213,6 @@ export default {
     
     setear_personal_projects() {},
     showAddNewPost(){
-      console.log('Apretaste el 7')
       this.mostrar_formulario_new_post = true
     },
     manejador_mostrar_blog(data)
