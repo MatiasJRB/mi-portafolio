@@ -234,7 +234,11 @@ export default {
           this.hideLayout = false
         }
       },
-    handleMenu(path) {
+    async handleMenu(path) {
+      const route = this.$route.name
+      if (route?.includes('portfolio')) {
+        await this.$router.push('/')
+      }
       this.$emitter.emit('listener_principal', {
         function: 'scrollTo',
         data: path
