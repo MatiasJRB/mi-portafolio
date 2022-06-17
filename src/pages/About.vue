@@ -10,13 +10,13 @@
               </div>
               <div :class="getTextClass" style="lineheight: 130%; tab-size: 2;font-size: 16px" >
                   I'm a computer engineer graduated at Universidad Nacional del Sur, and currently I'm working full time. 
-                  I'm working with a small but powerfull team focused on an hybrid mobile application, avaiable in  <a class="text-accent" href="https://play.google.com/store/apps/details?id=com.nuqlea.m7&hl=es_AR&gl=US">Play Store</a> and, soonly in  Apple Store too.<br>
-                  I'm co-founder and active part of <a class="text-accent" href="https://geome7ric.com">Geome7ric</a>, a software entrepreneurship started at 2020.<br>
+                  I'm working with a small but powerfull team focused on an hybrid mobile application, avaiable in  <a class="text-secondary cursor-pointer" target="_blank" href="https://play.google.com/store/apps/details?id=com.nuqlea.m7&hl=es_AR&gl=US">Play Store</a> and, soonly in  Apple Store too.<br>
+                  I'm co-founder and active part of <a class="text-secondary cursor-pointer" target="_blank" href="https://geome7ric.com">Geome7ric</a>, a software entrepreneurship started at 2020.<br>
                   I usually accept different kinds of freelance jobs so learn new tools o in a self-thaugth way.
-                  I'am passionate about training and sports in general, <a class="text-accent" href="https://www.instagram.com/matiasjrb7/">creating and editing photos and videos</a> and certain e-sports.<br>
+                  I'am passionate about training and sports in general, <a class="text-secondary cursor-pointer" target="_blank" href="https://www.instagram.com/matiasjrb7/">creating and editing photos and videos</a> and certain e-sports.<br>
                     
               </div>
-              <span @click="$router.push('/contact')" style="font-size: 18px" class="text-secondary cursor-pointer " clickable>
+              <span @click="goTo('contact')" style="font-size: 18px" class="text-secondary cursor-pointer " clickable>
                 Let's make some special
               </span>
             </div>
@@ -152,7 +152,7 @@
                         icon="star"
                       >
                         <div>
-                          <a class="text-accent" href="https://play.google.com/store/apps/details?id=com.nuqlea.m7&hl=es_AR&gl=US">Nuqlea App</a>, my main project at work (made with Quasar Framework) was finally delivered to the customer.
+                          <a class="text-secondary cursor-pointer" target="_blank" href="https://play.google.com/store/apps/details?id=com.nuqlea.m7&hl=es_AR&gl=US">Nuqlea App</a>, my main project at work (made with Quasar Framework) was finally delivered to the customer.
                           
                         </div>
                       </q-timeline-entry>
@@ -177,6 +177,14 @@ export default {
   data () {
     return {
       longVersion: false
+    }
+  },
+  methods: {
+    goTo(path) {
+      this.$emitter.emit('listener_principal', {
+        function: 'scrollTo',
+        data: path
+      })
     }
   },
   mounted () {

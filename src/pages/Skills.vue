@@ -18,8 +18,8 @@
 
               I create successfull responsive websites that are fast, easy to use and with good design criteria, just like this :). <br>
               Visit my 
-              <span @click="openURL('https://www.linkedin.com/in/matiasjriosb/')" style="font-size: 18px" class="text-secondary cursor-pointer " clickable>
-              Linkedln</span> profile for more details or just <span @click="$router.push('/contact')" style="font-size: 18px" class="text-secondary cursor-pointer " clickable>
+              <a href="https://www.linkedin.com/in/matiasjriosb/" style="font-size: 18px" class="text-secondary cursor-pointer " >
+              Linkedln</a> profile for more details or just <span @click="goTo('contact')" style="font-size: 18px" class="text-secondary cursor-pointer " clickable>
                 contact me.
               </span>
                  
@@ -137,6 +137,12 @@ export default {
   methods: {
     openURL(url) {
       openURL(url)
+    },
+    goTo(path) {
+      this.$emitter.emit('listener_principal', {
+        function: 'scrollTo',
+        data: path
+      })
     }
   },
   computed: {

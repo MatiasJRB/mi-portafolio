@@ -43,7 +43,9 @@
         </div>
       </div>
 
-      <div id="about" class="q-my-md" :style="mobile?  '' : 'width: 85em'">
+      <q-separator class="bg-transparent" style="height: 20px" id="about"/>
+
+      <div  class="q-my-md" :style="mobile?  '' : 'width: 85em'">
         <div class="row justify-center" v-if="mobile">
           <div class="col-xs-8" >
             <transition
@@ -71,7 +73,7 @@
         <div :class="getTitle + ' q-ma-md'">
           My work
         </div>
-        <div class="text-caption">In progress</div>
+        <div class="text-caption">** update in progress **</div>
         <Portfolio/>
       </div>
 

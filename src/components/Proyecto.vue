@@ -1,7 +1,7 @@
 
 <template>
 
-    <q-card flat class="no-shadow "    >
+    <q-card flat class="no-shadow " v-if="project"   >
       <q-card-section vertical>
 
         <q-card-section class="q-pt-xs  q-mt-md">

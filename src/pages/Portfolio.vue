@@ -36,7 +36,7 @@
 
         </q-card>
       </div>
-      <q-dialog  :maximized="mobile" class="bg-dark "  v-model="showProject"  position="bottom">
+      <q-dialog  :maximized="mobile" class="bg-dark "  v-model="showProject"  position="bottom" v-if="projectToShow">
         <div class="bg-dark">
 
           <div class="row justify-start " >

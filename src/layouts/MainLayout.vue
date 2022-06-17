@@ -8,11 +8,11 @@
       :duration="animationTime">
       <q-header reveal   v-if="mobile" >
         <q-toolbar class="row justify-between bg-dark">
-          <q-card @click="$router.push('/')" 
-            flat v-ripple clickable class="col-2 flex flex-center bg-dark text-grey-6 cursor-pointer ">
-            <div class="row">
-              <q-img width="32px" class="" src="../assets/MR_LOGO_WHITE.svg" >        
-            </q-img>
+          <q-card @click="handleMenu('header')" 
+            flat  class="col-2 flex flex-center bg-dark text-grey-6  ">
+            <div class="row cursor-pointer"  >
+              <q-img  width="32px" class="" src="../assets/MR_LOGO_WHITE.svg" >        
+              </q-img>
             </div>
           </q-card>
           <q-btn
@@ -27,10 +27,10 @@
         <q-toolbar class="row justify-around bg-dark  text-secondary"  style=" margin:0 ">
           
           <q-card @click="handleMenu('header')" 
-            flat v-ripple clickable class="col-2 flex flex-center bg-dark text-grey-6 cursor-pointer ">
-            <div class="row">
-              <q-img width="32px" class="" src="../assets/MR_LOGO_WHITE.svg" >        
-            </q-img>
+            flat  class="col-2 flex flex-center bg-dark text-grey-6  ">
+            <div class="row cursor-pointer"  >
+              <q-img  width="32px" class="" src="../assets/MR_LOGO_WHITE.svg" >        
+              </q-img>
             </div>
           </q-card>
           <div class="row" :style="'margin-top:' + getDistance">
@@ -106,26 +106,26 @@
         <q-separator/>
         <q-card-section
           @click="handleMenu('header')"
-        :class="$route.path === '/'? '  bg-primary text-white cursor-pointer' :'cursor-pointer ' "
+        :class="$route.path === '/'? '   cursor-pointer' :'cursor-pointer ' "
          >
           Home
         </q-card-section>
         <q-separator/>
         <q-card-section
           @click="handleMenu('about')"
-          :class="$route.path.includes('about')? ' bg-primary text-white cursor-pointer ' :' cursor-pointer' ">
+          :class="$route.path.includes('about')? '  cursor-pointer ' :' cursor-pointer' ">
           About
         </q-card-section>
         <q-separator/>
         <q-card-section
         @click="handleMenu('portfolio')"
-           :class="$route.path.includes('portfol')? 'bg-primary text-white  cursor-pointer' :'cursor-pointer ' ">
+           :class="$route.path.includes('portfol')? '  cursor-pointer' :'cursor-pointer ' ">
           Portfolio
         </q-card-section>
         <q-separator/>
         <q-card-section
           @click="handleMenu('contact')"
-           :class="$route.path.includes('contact')? 'bg-primary text-white cursor-pointer ' :' cursor-pointer' ">
+           :class="$route.path.includes('contact')? ' cursor-pointer ' :' cursor-pointer' ">
           Contact
         </q-card-section>
         <q-separator/>
