@@ -100,31 +100,31 @@
       <q-card class="bg-dark text-white" flat style="border-radius: 0px">
         <q-card-section>
           <q-img
-            @click="handleMenu('/')"
+            @click="handleMenu('header')"
             class="q-ma-md cursor-pointer" width="33px" src="../assets/MR_LOGO_WHITE.svg"/>
         </q-card-section>
         <q-separator/>
         <q-card-section
-          @click="handleMenu('/')"
+          @click="handleMenu('header')"
         :class="$route.path === '/'? '  bg-primary text-white cursor-pointer' :'cursor-pointer ' "
          >
           Home
         </q-card-section>
         <q-separator/>
         <q-card-section
-          @click="handleMenu('/about')"
+          @click="handleMenu('about')"
           :class="$route.path.includes('about')? ' bg-primary text-white cursor-pointer ' :' cursor-pointer' ">
           About
         </q-card-section>
         <q-separator/>
         <q-card-section
-        @click="handleMenu('/portfolio')"
+        @click="handleMenu('portfolio')"
            :class="$route.path.includes('portfol')? 'bg-primary text-white  cursor-pointer' :'cursor-pointer ' ">
           Portfolio
         </q-card-section>
         <q-separator/>
         <q-card-section
-          @click="handleMenu('/contact')"
+          @click="handleMenu('contact')"
            :class="$route.path.includes('contact')? 'bg-primary text-white cursor-pointer ' :' cursor-pointer' ">
           Contact
         </q-card-section>

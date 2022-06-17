@@ -71,6 +71,7 @@
         <div :class="getTitle + ' q-ma-md'">
           My work
         </div>
+        <div class="text-caption">In progress</div>
         <Portfolio/>
       </div>
 
