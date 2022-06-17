@@ -26,7 +26,7 @@
       <q-header v-else reveal elevated >
         <q-toolbar class="row justify-around bg-dark  text-secondary"  style=" margin:0 ">
           
-          <q-card @click="$router.push('/')" 
+          <q-card @click="handleMenu('header')" 
             flat v-ripple clickable class="col-2 flex flex-center bg-dark text-grey-6 cursor-pointer ">
             <div class="row">
               <q-img width="32px" class="" src="../assets/MR_LOGO_WHITE.svg" >        
@@ -37,7 +37,7 @@
             <q-item 
               clickable
               style="height:45px"
-              @click="$router.push('/about')"
+              @click="handleMenu('about')"
               class="col">
                 <q-item-section :class="$route.path.includes('about')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
                   About
@@ -47,7 +47,7 @@
             <q-item 
               clickable
               style="height:45px"
-              @click="$router.push('/skills')"
+              @click="handleMenu('skills')"
               class="">
                 <q-item-section :class="$route.path.includes('skills')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
                   My skills
@@ -56,7 +56,7 @@
             <q-separator color="primary"/>
             <q-item 
               clickable
-              @click="$router.push('/portfolio')"
+              @click="handleMenu('portfolio')"
               style="height:45px"
               class="">
                 <q-item-section :class="$route.path.includes('portfolio')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
@@ -67,7 +67,7 @@
             <q-item 
               clickable
               style="height:45px"
-              @click="$router.push('/contact')"
+              @click="handleMenu('contact')"
               class="">
                 <q-item-section :class="$route.path.includes('contact')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
                   Contact
@@ -235,14 +235,10 @@ export default {
         }
       },
     handleMenu(path) {
-      if (path !== this.$route.path) {
-        this.$router.push(path)
-          .finally(() => {
-            this.expanded = false
-          })
-      } else {
-        this.expanded = false
-      }
+      this.$emitter.emit('listener_principal', {
+        function: 'scrollTo',
+        data: path
+      })
       
     },
     toolbar_click()

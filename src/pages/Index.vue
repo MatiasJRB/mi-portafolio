@@ -3,7 +3,7 @@
     class="flex flex-center text-white bg-dark	" 
   >
     <div>
-      <div class="flex flex-center" :style="mobile?  '' : 'height: 100vh;' ">
+      <div id="header"  class="flex flex-center" :style="mobile?  '' : 'height: 100vh;' ">
         <div class="row justify-center  "
           :style="mobile?  '' : 'width: 89em'">
           <div class="col-xs-12 col-md-6 flex flex-center" :style="!mobile?  '' : 'height: 100vh;'" >
@@ -32,7 +32,7 @@
                 name="fade"
                 appear
               >   
-                <div id="header"  class="q-mt-xl" :style="'border-radius:8px;height  : 33em;border: 2px solid white; border-color: #ffffff; width: ' + getImageWidth" >                  
+                <div   class="q-mt-xl" :style="'border-radius:8px;height  : 33em;border: 2px solid white; border-color: #ffffff; width: ' + getImageWidth" >                  
                   <q-img 
                     height="33em" class="bg-white" 
                     style="margin-top: -15px; margin-left: -12px; border-radius:8px"  src="../assets/portfolio.jpg"/>
@@ -43,7 +43,7 @@
         </div>
       </div>
 
-      <div class="q-my-md" :style="mobile?  '' : 'width: 85em'">
+      <div id="about" class="q-my-md" :style="mobile?  '' : 'width: 85em'">
         <div class="row justify-center" v-if="mobile">
           <div class="col-xs-8" >
             <transition
@@ -62,19 +62,19 @@
         <About class="q-ma-sm"/>        
       </div>
 
-      <div class="q-mt-xl" :style="mobile?  '' : 'width: 85em'">
+      <div id="skills" class="q-mt-xl" :style="mobile?  '' : 'width: 85em'">
         <Skills class="q-mx-sm"/>
       </div>
 
       
-      <div class="" :style="mobile?  '' : 'width: 85em'">
+      <div class="" id="portfolio" :style="mobile?  '' : 'width: 85em'">
         <div :class="getTitle + ' q-ma-md'">
           My work
         </div>
         <Portfolio/>
       </div>
 
-      <div class="" :style="mobile?  '' : 'width: 85em'">
+      <div class="" id="contact" :style="mobile?  '' : 'width: 85em'">
         <Contact
           class="q-my-xl q-mx-sm"/>
       </div>
@@ -116,7 +116,8 @@ export default {
       metodos_listener_principal:
       {
         'mostrar_blog': (data) => this.manejador_mostrar_blog(data),
-        'mostrar_portfolio' : (data) => this.manejador_mostrar_porftolio(data)
+        'mostrar_portfolio' : (data) => this.manejador_mostrar_porftolio(data),
+        'scrollTo' : (data) => this.scrollTo(data),
       },
       mostrar_blog: false,
       mostrar_portfolio: true,
@@ -147,6 +148,7 @@ export default {
     
     this.funciones= new Vue(ModuloFunciones);
     this.network = new Vue(ModuloNetwork)
+    this.$emitter.on('listener_principal', (data) => this.metodos_listener_principal[data.function](data.data) )
     // this.network.getProjects()    
     //   .then(response=>response.json())
     //   .then(resp=> {
@@ -179,6 +181,16 @@ export default {
   },
   methods:
   {
+
+    // make a smooth scroll to a specific element of this page without setVerticalScrollPosition
+    scrollTo(element) {
+      element = '#' + element
+      console.log(element)
+      const el = document.querySelector(element)
+      console.log(el)
+      el?.scrollIntoView({ behavior: 'smooth' })
+    },
+    
     
    
    showTitle() {

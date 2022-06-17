@@ -145,6 +145,17 @@
                           I starts as Fullstack Developer in Nuqlea, the evolution of CAPP, 'la plataforma líder en construcción.' (the lider platform in construction).
                         </div>
                       </q-timeline-entry>
+                      <q-timeline-entry
+                        title="First big production delivery "
+                        subtitle="June 3th, 2022"
+                        side="left"  
+                        icon="star"
+                      >
+                        <div>
+                          <a class="text-accent" href="https://play.google.com/store/apps/details?id=com.nuqlea.m7&hl=es_AR&gl=US">Nuqlea App</a>, my main project at work (made with Quasar Framework) was finally delivered to the customer.
+                          
+                        </div>
+                      </q-timeline-entry>
 
                     </q-timeline>
                     
