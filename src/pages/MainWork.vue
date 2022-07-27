@@ -1,6 +1,6 @@
 <template>
   <q-page  class="flex flex-center" :style=" mobile? '  ' : ''" >
-    <div class="   flex flex-center " v-if="!mobile">
+    <div class=" full-width  flex flex-center " v-if="!mobile">
       <div class="reveal fade-bottom  row justify-center full-width  q-my-xl"
         v-for="(project,index) in mainProjects" :key="project.title">
 
@@ -29,10 +29,11 @@
         
         <div v-if="index % 2===0" class="col-xs-6 col-sm-4 col-xs-6 col-md-6 ">
           <q-img   
+            @click="goToProjectPage(project)"
             style="z-index: 1"
             height="300px" class="cursor-pointer full-width " 
-            v-if="project.images && project.images.length" 
-            :src="project.images[0]">
+            v-if="project.image" 
+            :src="project.images">
             <div class="imageOverlay"/>
           </q-img>
         </div>
@@ -57,7 +58,9 @@
           </div>          
         </div>
         <div v-else class="col-xs-6 col-sm-4 col-xs-6 col-md-6 ">
-          <q-img  height="300px" class="cursor-pointer " v-if="project.images && project.images.length" :src="project.images[0]"
+          <q-img 
+            @click="goToProjectPage(project)"
+            height="300px" class="cursor-pointer " v-if="project.image" :src="project.image"
             style="margin-left:-80px;">
             <div class="imageOverlay"></div>
            </q-img>
@@ -103,7 +106,11 @@ export default {
   // name: 'MainWork',
   methods: {
     goToProjectPage (project) {
+      this.$q.loading.show()
       this.$router.push({path: `portfolio/${project.id}` })
+        .finally(() => {
+          this.$q.loading.hide()
+        })
     },
     getCardStyle(project) {
       let toret = 'height:300px;'
@@ -128,6 +135,7 @@ export default {
   },
   async mounted () {
     await this.$store.dispatch('articles/getFeaturedArticles')
+    console.log('articles', this.mainProjects)
   },
   data () {
     return { 

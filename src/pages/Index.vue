@@ -94,9 +94,6 @@
 </template>
 
 <script>
-
-
-// import Proyecto from 'components/Proyecto.vue'
 import ModuloFunciones from '../modules/ModuloFunciones.vue'
 import ModuloNetwork from '../modules/ModuloNetwork.vue'
 import Vue from 'vue'; // es6 syntax
@@ -260,9 +257,9 @@ export default {
     getTitle() {
       let ret = 'text-weight-bold   '
       if (this.$q.screen.xl) {
-        ret = ret + ' text-h1'
-      } else {
         ret = ret + ' text-h2'
+      } else {
+        ret = ret + ' text-h3'
       }
       return ret
     },

@@ -38,6 +38,8 @@ function parseArticle (article) {
     article.images = article.attributes.images.data?.map((image) => {
         return image.attributes.url
     })
+    article.image = article.attributes.image.data.attributes.url
+    console.log(article.image)
     article.media = article.attributes.meta?.media
     article.video = article.attributes.meta?.media?.video?.src
     article.documents = article.attributes.documents?.data?.map((document) => {

@@ -130,11 +130,12 @@ export default {
     open(url){
       openURL(url)
     },
-    goToProjectPage(project) {
-      this.hover = {}
-      // this.projectToShow = project
-      // this.showProject = true
-      this.$router.push('')
+    goToProjectPage (project) {
+      this.$q.loading.show()
+      this.$router.push({path: `portfolio/${project.id}` })
+        .finally(() => {
+          this.$q.loading.hide()
+        })
     },
     getCardStyle(project) {
       let toret = 'height:33.33333vh; border-radius: 0px;'
