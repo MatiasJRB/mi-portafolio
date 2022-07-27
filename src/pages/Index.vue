@@ -47,7 +47,7 @@
 
       <div  class="q-my-md" :style="mobile?  '' : 'width: 85em'">
         <div class="row justify-center" v-if="mobile">
-          <div class="col-xs-8" >
+          <div class="col-xs-8 col-sm-5 col-md-4" >
             <transition
                 name="fade"
                 appear
@@ -69,11 +69,17 @@
       </div>
 
       
+      <div class="" id="mainWork" :style="mobile?  '' : 'width: 85em'">
+        <div :class="getTitle + ' q-ma-md'">
+          Some things I've built
+        </div>
+        <MainWork/>
+      </div>
+
       <div class="" id="portfolio" :style="mobile?  '' : 'width: 85em'">
         <div :class="getTitle + ' q-ma-md'">
-          My work
+          Other interested things
         </div>
-        <div class="text-caption">** update in progress **</div>
         <Portfolio/>
       </div>
 
@@ -101,6 +107,7 @@ import { scroll } from 'quasar'
 const { getScrollTarget, getVerticalScrollPosition, setVerticalScrollPosition } = scroll
 
 import Portfolio from '../pages/Portfolio.vue'
+import MainWork from '../pages/MainWork.vue'
 import Contact from '../pages/Contact.vue'
 import Skills from '../pages/Skills.vue'
 import About from '../pages/About.vue'
@@ -144,7 +151,8 @@ export default {
     Contact,
     About,
     Skills,
-    SocialMedia
+    SocialMedia,
+    MainWork
   },
   created()
   {

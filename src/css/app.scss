@@ -1,4 +1,6 @@
 // app global css in SCSS form
+
+
 .element.style {
     padding-left: 100px;
 }
@@ -10,7 +12,6 @@
 
 * {
     font-family: 'Syne';
-    // font-size: 16px;
 }
 
 .q-tooltip--style {
@@ -45,16 +46,133 @@
     background: #d6be32;
 }
 
-// body{
-//     overflow-y:hidden;
-// }
+.reveal {
+position: relative;
+opacity: 0;
+}
 
-// @media only screen and (max-width:960px){
-//     body{
-//         overflow-y:scroll;
-//     }
-// }
+.reveal.active {
+opacity: 1;
+}
+.active.fade-bottom {
+animation: fade-bottom .5s ease-in;
+}
+.active.fade-left {
+animation: fade-left 1s ease-in;
+}
+.active.fade-right {
+animation: fade-right 1s ease-in;
+}
+@keyframes fade-bottom {
+0% {
+    transform: translateY(30px);
+    opacity: 0;
+}
+100% {
+    transform: translateY(0);
+    opacity: 1;
+}
+}
+@keyframes fade-left {
+0% {
+    transform: translateX(-100px);
+    opacity: 0;
+}
+100% {
+    transform: translateX(0);
+    opacity: 1;
+}
+}
+
+@keyframes fade-right {
+0% {
+    transform: translateX(100px);
+    opacity: 0;
+}
+100% {
+    transform: translateX(0);
+    opacity: 1;
+}
+}
 
 .skill {
     border-style: solid;  border-width: 1px; border-radius: 16px; height: 50px;
+}
+
+.projectCard {
+    border-radius:4px ;
+    box-shadow: inset 0 0 0 0 #54b3d6;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+.projectCard:hover {
+    box-shadow: inset 100px 0 0 0 #54b3d6;  
+    transition: color .2s ease-in-out, box-shadow .2s ease-in-out, transform .2s ease-in-out;
+    transform: translateY(-20px) scale(1.05);
+    color: #FFDF6C;
+
+}
+
+.mobileCard {
+    position: relative;
+}
+
+.mobileCard::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    filter: grayscale(100%);
+}
+.mobileCard-inside {
+    /* This will make it stack on top of the ::before */
+    position: relative;
+}
+
+
+.q-btn:hover {
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    color: #FFDF6C;
+}
+
+.imageOverlay {
+    position: absolute;
+    opacity: 1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    transition: .5s ease;
+    background-color: #FFDF6C;
+}
+
+.imageOverlay:hover {
+    transition: color .3s ease, box-shadow .3s ease-in-out;    
+    opacity: 0;
+}
+
+.bg-dark-bold {
+    background: #101010 !important;
+}
+
+.max4Lines {
+    overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 4;  -webkit-box-orient: vertical;
+}
+
+.title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    -webkit-transition: color 1s;
+    transition: color 0.5s;
+}
+
+.title:hover {
+    color: #FFDF6C;
+}
+
+.mobileMainProject {
+    background: rgb(47,47,47);
+background: linear-gradient(90deg, rgba(47,47,47,1) 0%, rgba(63,63,63,1) 35%);
 }

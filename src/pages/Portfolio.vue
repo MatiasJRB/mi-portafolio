@@ -2,41 +2,37 @@
   <q-page  class="flex flex-center" :style=" mobile? '  ' : ''" >
     <div class="full-width  flex flex-center " >
       <div class="row justify-start full-width  ">
-        <q-card
-          flat          
-          @click="goToProjectPage(a)"
-          v-ripple class="col-xs-6 col-sm-4  col-xs-6 col-md-2 col-xl-2"
-          v-for="a in projects" :key="a.title"  :style="getCardStyle(a)" >
-          
-          <div v-if="!mobile && !hover[a.id] && !showProject" class="absolute bg-primary full-width full-height" style="opacity: 0.8; z-index: 2"></div>
-          <q-img  class="full-height" fit="fill" :src="a.cover" >
-
-            <div class="absolute-bottom-right bg-transparent" v-if="a.geome7ric">
-              <img src="../assets/geome7ric_logo.svg" width="55px"  />
-            </div>
-          </q-img>
-          <q-tooltip
-            v-model="hover[a.id]"
-            anchor="center middle"
-            self="center middle"
-            class="bg-secondary cursor-pointer	"
-          >
-            <div class="cursor-pointer " style="cursor: pointer">
-              <div class="bg-primary text-white shadow-2 flex flex-center cursor-pointer	"
-                style="border-radius: 50%; height: 90px; width: 90px" >
-                <div class="cursor-pointer	">
-                  <div class="text-center cursor-pointer" style="margin-top:px; font-size: 14px">
-                      View <br> project
+        <div class="  col-xs-12 col-sm-4 col-xs-6 col-md-4"
+          v-for="a in projects" :key="a.title" >
+            <q-card
+                flat          
+                @click="goToProjectPage(a)"
+                class="reveal fade-bottom cursor-pointer projectCard bg-dark-bold q-ma-sm"
+                v-ripple  >
+                <q-card-section>
+                  <div class="row justify-end">
+                    <q-btn flat dark icon="open_in_new" @click.stop="goToProjectPage(a)"/>
                   </div>
-                </div>
-              </div>
-            </div>
-          </q-tooltip>
-
-
-        </q-card>
+                </q-card-section>
+                <q-card-section class="q-ma-sm">
+                  <div class="row title">
+                    {{ a.title }}
+                  </div>
+                  <div class="max4Lines text-white" v-html="a.description">
+                  </div>  
+                </q-card-section>
+                <q-card-section  >
+                  <q-badge outlined  color="dark" text-color="white" :label="'Status: ' + a.status" class="q-mx-xs" />
+                  <div class="" v-for="(tag,index) in a.tags" :key="index" >
+                    <q-badge v-if="tag" outlined color="dark" :label="tag" class="q-mx-xs" />
+                  </div>
+                </q-card-section>
+              </q-card> 
+          
+          </div>
+        
       </div>
-      <q-dialog  :maximized="mobile" class="bg-dark "  v-model="showProject"  position="bottom" v-if="projectToShow">
+      <q-dialog :maximized="mobile" class="bg-dark "  v-model="showProject"  position="bottom" v-if="projectToShow">
         <div class="bg-dark">
 
           <div class="row justify-start " >
@@ -127,6 +123,19 @@ export default {
   },
   computed: {
 
+    showCard(project) {
+      const id = 'project:' + project.id
+      const element = document.getElementById(id)
+      console.log(element)
+            const offset = element?.offsetTop + 3
+            const duration = 900
+      console.log(offset)
+      if (offset < 100) {
+        return true
+      }
+      return false
+    },
+
     projects: {
       get() {
         return this.$store.state.articles.articles
@@ -149,6 +158,8 @@ export default {
   },
   methods: {
 
+    
+
     open(url){
       openURL(url)
     },
@@ -158,20 +169,13 @@ export default {
       // this.showProject = true
       this.$router.push({path: `portfolio/${project.id}` })
     },
-    getCardStyle(project) {
-      let height = 33.33333333333333
-      if (this.mobile) {
-        height = 22
-      }
-      let toret = `height:${height}vh; border-radius: 0px;`
-      return toret
-    },
   },
   async mounted () {
     if (!this.projects) {
       this.$q.loading.show()
     }
     await this.$store.dispatch('articles/getArticles')
+    console.log('articles', this.projects)
     this.$q.loading.hide()
 
   }

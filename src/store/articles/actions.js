@@ -12,3 +12,16 @@ export function getArticles( { commit }) {
             })
     })
 }
+
+export function getFeaturedArticles ( { commit }) {
+    return new Promise((resolve, reject) => {
+        axiosInstance.get('articles?featured=true')
+            .then((response) => {
+                commit('setFeaturedArticles', response.data.response.data)
+                resolve(response.data.response.data)
+            })
+            .catch((error) => {
+                reject(error)
+            })
+    })
+}
