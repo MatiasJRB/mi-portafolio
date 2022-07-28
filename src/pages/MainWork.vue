@@ -116,7 +116,6 @@ export default {
       let toret = 'height:300px;'
       toret = `  position: absolute;z-index: 2; border-radius: 4px; `
       toret+= 'background-image: url("'+ project.images[0] + '");background-size: 100%;background-size: cover;background-position: center;' 
-      console.log(toret)
       return toret
     },
   },
@@ -135,7 +134,6 @@ export default {
   },
   async mounted () {
     await this.$store.dispatch('articles/getFeaturedArticles')
-    console.log('articles', this.mainProjects)
   },
   data () {
     return { 

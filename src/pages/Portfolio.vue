@@ -126,10 +126,8 @@ export default {
     showCard(project) {
       const id = 'project:' + project.id
       const element = document.getElementById(id)
-      console.log(element)
-            const offset = element?.offsetTop + 3
-            const duration = 900
-      console.log(offset)
+      const offset = element?.offsetTop + 3
+      const duration = 900
       if (offset < 100) {
         return true
       }
@@ -176,7 +174,6 @@ export default {
       this.$q.loading.show()
     }
     await this.$store.dispatch('articles/getArticles')
-    console.log('articles', this.projects)
     this.$q.loading.hide()
 
   }

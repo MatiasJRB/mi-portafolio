@@ -2,6 +2,7 @@
 export function setArticles (state, articles) {
     
     filterEnabled(articles)
+    filterFeatured(articles)
     parseArticles(articles)
     
     state.articles = articles
@@ -17,6 +18,12 @@ export function setFeaturedArticles (state, articles) {
 function filterEnabled (articles) {
     articles = articles.filter((article) => {
         return article.attributes.enabled
+    }) 
+}
+
+function filterFeatured (articles) {
+    articles = articles.filter((article) => {
+        return !article.attributes.featured
     }) 
 }
 
@@ -38,8 +45,8 @@ function parseArticle (article) {
     article.images = article.attributes.images.data?.map((image) => {
         return image.attributes.url
     })
-    article.image = article.attributes.image.data.attributes.url
-    console.log(article.image)
+    article.image = article.attributes.image?.data?.attributes.url
+    console.log('article.image: ' + article.image)
     article.media = article.attributes.meta?.media
     article.video = article.attributes.meta?.media?.video?.src
     article.documents = article.attributes.documents?.data?.map((document) => {
