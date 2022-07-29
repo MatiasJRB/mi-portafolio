@@ -21,7 +21,7 @@
                   <div class="max4Lines text-white" v-html="a.description">
                   </div>  
                 </q-card-section>
-                <q-card-section  >
+                <q-card-section class="absolute-bottom" >
                   <q-badge outlined  color="dark" text-color="white" :label="'Status: ' + a.status" class="q-mx-xs" />
                   <div class="" v-for="(tag,index) in a.tags" :key="index" >
                     <q-badge v-if="tag" outlined color="dark" :label="tag" class="q-mx-xs" />

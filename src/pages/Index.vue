@@ -5,7 +5,7 @@
     <div>
       <div id="header"  class="flex flex-center" :style="mobile?  '' : 'height: 100vh;' ">
         <div class="row justify-center  "
-          :style="mobile?  '' : 'width: 89em'">
+          :style="mobile?  '' : ''">
           <div class="col-xs-12 col-md-6 flex flex-center" :style="!mobile?  '' : 'height: 100vh;'" >
             <transition
                 name="fade"
@@ -27,7 +27,7 @@
               </div>
             </transition>
           </div>
-          <div class="col-md-6 col-xs-12" v-if="!mobile" >
+          <div class=" col-xs-12 col-md-8 col-xl-6 col-lg-6" v-if="!mobile" >
             <transition
                 name="fade"
                 appear
@@ -45,47 +45,60 @@
 
       <q-separator class="bg-transparent" style="height: 20px" id="about"/>
 
-      <div  class="q-my-md" :style="mobile?  '' : 'width: 85em'">
-        <div class="row justify-center" v-if="mobile">
-          <div class="col-xs-8 col-sm-5 col-md-4" >
-            <transition
-                name="fade"
-                appear
-              >   
-                <div class="full-width" :style="'border-radius:8px;height  : 20em;border: 2px solid white; border-color: #ffffff; width: ' + getImageWidth" >                  
-                    <q-img 
-                      height="20em" class="bg-white" 
-                      style="margin-top: -15px; margin-left: -12px; border-radius:8px"  src="../assets/portfolio.jpg"/>
-                  </div>
-            </transition>
-            
-          </div> 
-        </div>
-        <About class="q-ma-sm"/>        
+      <div  class="row justify-center q-my-md" :style="mobile?  '' : ''">
+        <div class="col-lg-9 col-xl-9 col-md-8 col-sm-12 col-xs-12">
+          <div class="row justify-center" v-if="mobile">
+            <div class="col-xs-8 col-sm-5 col-md-4" >
+              <transition
+                  name="fade"
+                  appear
+                >   
+                  <div class="full-width" :style="'border-radius:8px;height  : 20em;border: 2px solid white; border-color: #ffffff; width: ' + getImageWidth" >                  
+                      <q-img 
+                        height="20em" class="bg-white" 
+                        style="margin-top: -15px; margin-left: -12px; border-radius:8px"  src="../assets/portfolio.jpg"/>
+                    </div>
+              </transition>
+              
+            </div> 
+          </div>
+          <About class="q-ma-sm"/>     
+        </div>   
       </div>
 
-      <div id="skills" class="q-mt-xl" :style="mobile?  '' : 'width: 85em'">
-        <Skills class="q-mx-sm"/>
+      <div id="skills" class="row justify-center q-mt-xl" :style="mobile?  '' : ''">
+        <div class="col-lg-9 col-xl-9 col-md-8 col-sm-12 col-xs-12">
+          <Skills class="q-mx-sm"/>
+        </div>
       </div>
 
       
-      <div class="" id="portfolio" :style="mobile?  '' : 'width: 85em'">
-        <div :class="getTitle + ' q-ma-md'">
-          Some things I've built
+      <div class="row justify-center" id="portfolio" :style="mobile?  '' : ''">
+        <div class="col-lg-9 col-xl-9 col-md-8 col-sm-12 col-xs-12">
+          <div :class="getTitle + ' q-ma-md'">
+            Some things I've built
+          </div>
+          <MainWork/>
         </div>
-        <MainWork/>
+        
       </div>
 
-      <div class=""  :style="mobile?  '' : 'width: 85em'">
-        <div :class="getTitle + ' q-ma-md'">
-          Other interested things
+      <div class="row justify-center"  :style="mobile?  '' : ''">
+        <div class="col-lg-9 col-xl-9 col-md-8 col-sm-12 col-xs-12">
+          <div :class="getTitle + ' q-ma-md'">
+            Other interested things
+          </div>
+          <Portfolio class="q-mt-xl"/>
         </div>
-        <Portfolio/>
+        
       </div>
 
-      <div class="" id="contact" :style="mobile?  '' : 'width: 85em'">
-        <Contact
+      <div class="row justify-center q-my-md" id="contact" :style="mobile?  '' : ''">
+        <div class="col-lg-9 col-xl-9 col-md-8 col-sm-12 col-xs-12">
+          <Contact
           class="q-my-xl q-mx-sm"/>
+        </div>
+        
       </div>
 
     

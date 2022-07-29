@@ -60,7 +60,9 @@
         <div v-else class="col-xs-6 col-sm-4 col-xs-6 col-md-6 ">
           <q-img 
             @click="goToProjectPage(project)"
-            height="300px" class="cursor-pointer " v-if="project.image" :src="project.image"
+            height="300px" class="cursor-pointer " 
+            v-if="project.image" 
+            :src="project.image  || project.images[1]"
             style="margin-left:-80px;">
             <div class="imageOverlay"></div>
            </q-img>
