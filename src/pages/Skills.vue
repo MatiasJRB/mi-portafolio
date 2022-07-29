@@ -2,7 +2,7 @@
    <q-page  class="flex flex-center ">
     <div class="full-width " :style=" mobile? 'height: 100%' : ''">
       <div class="row justify-start ">
-        <div class="col-6 col-md-6 col-xs-12 col-sm-12  "  >
+        <div class="col-lg-6 col-xl-6 col-md-12 col-xs-12 col-sm-12  "  >
           
           <div class="q-pa-md">
             <div :class="getSkillsName" style="" >
@@ -17,16 +17,14 @@
               I also have facilities to attend and understand the client, to arrive as quickly as possible to their desired product.<br>
 
               I create successfull responsive websites that are fast, easy to use and with good design criteria, just like this :). <br>
-              Visit my 
-              <a href="https://www.linkedin.com/in/matiasjriosb/" style="font-size: 18px" class="text-secondary cursor-pointer " >
-              Linkedln</a> profile for more details or just <span @click="goTo('contact')" style="font-size: 18px" class="text-secondary cursor-pointer " clickable>
-                contact me.
-              </span>
+              <span @click="goTo('contact')" style="font-size: 18px" class="text-secondary cursor-pointer " clickable>
+                Contact me
+              </span> for more details
                  
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-xs-12 col-sm-12"  >
+        <div class="col-lg-6 col-xl-6 col-md-6 col-xs-12 col-sm-12"  >
           
           <div class="row q-pa-md justify-start "  > 
             <div class="col-6   "  > 

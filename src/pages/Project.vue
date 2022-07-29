@@ -1,6 +1,6 @@
 <template>
-  <q-page  class="flex flex-center">
-   <div class="bg-dark q-ma-sm" :style="mobile? 'margin-top:70px': ''"  v-if="projectToShow">
+  <q-page  class=" row justify-center">
+   <div class="bg-dark q-ma-sm col-md-8" :style="mobile? 'margin-top:70px': ''"  v-if="projectToShow">
           <div :class="mobile? '' : 'q-mx-md'">
             <div class="text-white q-pa-lg">
               <div class="row">

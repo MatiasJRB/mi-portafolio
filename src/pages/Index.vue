@@ -69,14 +69,14 @@
       </div>
 
       
-      <div class="" id="mainWork" :style="mobile?  '' : 'width: 85em'">
+      <div class="" id="portfolio" :style="mobile?  '' : 'width: 85em'">
         <div :class="getTitle + ' q-ma-md'">
           Some things I've built
         </div>
         <MainWork/>
       </div>
 
-      <div class="" id="portfolio" :style="mobile?  '' : 'width: 85em'">
+      <div class=""  :style="mobile?  '' : 'width: 85em'">
         <div :class="getTitle + ' q-ma-md'">
           Other interested things
         </div>

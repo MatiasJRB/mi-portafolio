@@ -48,7 +48,7 @@
               clickable
               style="height:45px"
               @click="handleMenu('skills')"
-              class="">
+            >
                 <q-item-section :class="$route.path.includes('skills')? 'text-grey-4 text-center' :'text-center' " style="font-size: 16px">
                   My skills
                 </q-item-section>
@@ -234,7 +234,7 @@ export default {
       },
     async handleMenu(path) {
       const route = this.$route.name
-      if (route?.includes('portfolio')) {
+      if (route?.includes('portfolio') || route?.includes('cv')) {
         await this.$router.push('/')
       }
       this.$emitter.emit('listener_principal', {
