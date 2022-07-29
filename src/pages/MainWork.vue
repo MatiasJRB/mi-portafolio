@@ -33,7 +33,7 @@
             style="z-index: 1"
             height="300px" class="cursor-pointer full-width " 
             v-if="project.image" 
-            :src="project.images">
+            :src="project.image">
             <div class="imageOverlay"/>
           </q-img>
         </div>

@@ -2,7 +2,7 @@
   <q-page class="flex flex-center " >
     <div class="full-width " >
       <div class="row justify-center ">
-          <div class="col-6 col-md-6 col-xs-12 col-sm-12 flex  flex-center  ">
+          <div class="col-lg-6 col-xl-6 col-md-12 col-xs-12 col-sm-12 flex  flex-center  ">
             
             <div class="q-pa-md" > 
               <div :class="getAboutName" style="" >
@@ -10,7 +10,8 @@
               </div>
               <div :class="getTextClass" style="lineheight: 130%; tab-size: 2;font-size: 16px" >
                   I'm a computer engineer graduated at Universidad Nacional del Sur, and currently I'm working full time. 
-                  I'm working with a small but powerfull team focused on an hybrid mobile application, avaiable in  <a class="text-secondary cursor-pointer" target="_blank" href="https://play.google.com/store/apps/details?id=com.nuqlea.m7&hl=es_AR&gl=US">Play Store</a> and, soonly in  Apple Store too.<br>
+                  I'm working with a small but powerfull team focused on an hybrid mobile application, avaiable in  
+                  <a class="text-secondary cursor-pointer" target="_blank" href="https://play.google.com/store/apps/details?id=com.nuqlea.m7&hl=es_AR&gl=US">Play Store</a> and, soonly in  Apple Store too.<br>
                   I'm co-founder and active part of <a class="text-secondary cursor-pointer" target="_blank" href="https://geome7ric.com">Geome7ric</a>, a software entrepreneurship started at 2020.<br>
                   I usually accept different kinds of freelance jobs so learn new tools o in a self-thaugth way.
                   I'am passionate about training and sports in general, <a class="text-secondary cursor-pointer" target="_blank" href="https://www.instagram.com/matiasjrb7/">creating and editing photos and videos</a> and certain e-sports.<br>
@@ -21,7 +22,7 @@
               </span>
             </div>
           </div>
-          <div class="col-6 col-md-6 col-xs-12 col-sm-12  ">
+          <div class="col-lg-6 col-xl-6 col-md-12 col-xs-12 col-sm-12  ">
             
             <div class="row justify-center " style=" ">  
               <div class="q-mt-md " style="z-index: 2000; margin-bottom: -0px;">

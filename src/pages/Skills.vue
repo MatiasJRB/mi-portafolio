@@ -1,5 +1,5 @@
 <template>
-   <q-page  class="flex flex-center ">
+   <q-page class="flex flex-center ">
     <div class="full-width " :style=" mobile? 'height: 100%' : ''">
       <div class="row justify-start ">
         <div class="col-lg-6 col-xl-6 col-md-12 col-xs-12 col-sm-12  "  >
