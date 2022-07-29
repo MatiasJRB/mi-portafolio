@@ -98,7 +98,7 @@
     </transition>
 
     <q-dialog position="top" v-model="expanded">
-      <q-card class="bg-dark text-white" flat style="border-radius: 0px">
+      <q-card class="bg-dark text-white full-width" flat style="border-radius: 0px">
         <q-card-section>
           <q-img
             @click="handleMenu('header')"
@@ -128,6 +128,12 @@
           @click="handleMenu('contact')"
            :class="$route.path.includes('contact')? ' cursor-pointer ' :' cursor-pointer' ">
           Contact
+        </q-card-section>
+        <q-separator/>
+        <q-card-section
+          @click="handleMenu('cv')"
+           class="cursor-pointer bg-accent text-dark  ">
+          CV
         </q-card-section>
         <q-separator/>
         <SocialMedia  :behavior="'justify-around'" class=" q-my-md" />
@@ -234,6 +240,13 @@ export default {
       },
     async handleMenu(path) {
       const route = this.$route.name
+      if (path === 'cv' && route?.includes('cv')) {
+        return
+      }
+      if (path === 'cv') {
+        this.$router.push('/cv')
+        return
+      }
       if (route?.includes('portfolio') || route?.includes('cv')) {
         await this.$router.push('/')
       }
