@@ -10,8 +10,17 @@
     src: url(./fonts/syne.ttf);
 }
 
+@font-face {
+    font-family: 'Barlock';
+    src: url(./fonts/Barlow-Black.ttf);
+}
+
 * {
     font-family: 'Syne';
+}
+
+.text-barlock {
+    font-family: 'Barlock';
 }
 
 .q-tooltip--style {

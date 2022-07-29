@@ -89,6 +89,7 @@
             
           <SocialMedia
             style="margin-top: -3px"
+            :header="true"
             :behavior="'justify-evenly flex flex-center'" class="col-3 q-mt-md flex flex-center full-height"/>
           </div>
         </q-toolbar>

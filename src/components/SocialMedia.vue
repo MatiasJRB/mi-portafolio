@@ -11,22 +11,26 @@
       class="q-mx-md cursor-pointer" />
     <q-icon name="fab fa-instagram" size="20px"  @click="useOpenURL('https://instagram.com/matiasjrios')"
       class="q-mx-md cursor-pointer" />
-    <q-icon name="fab fa-twitch" size="20px" @click="useOpenURL('https://twitch.tv/matiasj7')" 
-        class="q-mx-md cursor-pointer" />
+    <q-btn v-if="header" label="CV" color="accent" text-color="primary"  @click="$router.push('/cv')" 
+      class="q-mx-md flex flex-center" />
   </div>
     
 </template>
 
 <script>
 
-import Vue from 'vue'; // es6 syntax
+import Vue from 'vue';
 import { openURL } from 'quasar'
 
 export default({
   props:{
     behavior: {
-      type: String,
+      type: Object,
       defult: 'justify-start'
+    },
+    header: {
+      type: Boolean,
+      defult: false
     }
   },
   data()
