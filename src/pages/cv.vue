@@ -44,8 +44,8 @@
           - Experience in direct customer management<br>
           - Experience leading a small team in a fast-paced environment<br>
           - Experience with Quasar Framework (Web, Android and iOS), Vue JS, React Native
-          (Android and iOS), JavaScript, NestJS, Express JS, MySQL, Laravel, PHP, Nginx, NextJS,
-          Git, Jira, Docker, HTTP clients, AWS EC2, Sentry
+          (Android and iOS), JavaScript, NestJS, Express JS, MySQL, Laravel, PHP, Nginx, AWS, NextJS,
+          Git, Jira, Docker, HTTP clients, Figma
         </div>
         <div class="row q-mt-md">
           <div class="text-h6 text-bold">

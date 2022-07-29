@@ -9,7 +9,7 @@
       class="q-mx-md cursor-pointer"  />
     <q-icon name="fab fa-youtube" size="20px"  @click="useOpenURL('https://www.youtube.com/channel/UCZUdNoXqD2aSVJ3tEEbV5uw')" 
       class="q-mx-md cursor-pointer" />
-    <q-icon name="fab fa-instagram" size="20px"  @click="useOpenURL('https://instagram.com/matiasjrios')"
+    <q-icon v-if="!$route.path.includes('cv')"  name="fab fa-instagram" size="20px"  @click="useOpenURL('https://instagram.com/matiasjrios')"
       class="q-mx-md cursor-pointer" />
     <q-btn v-if="header && !$route.path.includes('cv')" label="CV" color="accent" text-color="primary"  @click="$router.push('/cv')" 
       class="q-mx-md flex flex-center" />
