@@ -2,6 +2,12 @@
 import { boot } from 'quasar/wrappers'
 import { Notify, openURL } from 'quasar'
 import Vue from 'vue'
+import print from 'print-js'
+
+
+function printHTML (element) {
+    print(element,'html')
+}
 
 function positiveNotify (msg) {
   Notify.create({
@@ -109,7 +115,8 @@ const helper = {
   isNumeric,
   isFloat,
   formatPrice,
-  formatDate
+  formatDate,
+  printHTML
 }
 
 Vue.prototype.$helper = helper

@@ -11,7 +11,7 @@
       class="q-mx-md cursor-pointer" />
     <q-icon name="fab fa-instagram" size="20px"  @click="useOpenURL('https://instagram.com/matiasjrios')"
       class="q-mx-md cursor-pointer" />
-    <q-btn v-if="header" label="CV" color="accent" text-color="primary"  @click="$router.push('/cv')" 
+    <q-btn v-if="header && !$route.path.includes('cv')" label="CV" color="accent" text-color="primary"  @click="$router.push('/cv')" 
       class="q-mx-md flex flex-center" />
   </div>
     
@@ -25,7 +25,7 @@ import { openURL } from 'quasar'
 export default({
   props:{
     behavior: {
-      type: Object,
+      type: String,
       defult: 'justify-start'
     },
     header: {

@@ -1,11 +1,15 @@
 <template>
   <q-page padding>
     <div class=" flex flex-center row full-width">
-      <div class="bg-dark-bold q-pa-lg col-md-6">
-        <div class="row ">
+      <div id="cv" class="bg-dark-bold q-pa-lg col-md-6">
+        
+        <div class="row justify-between">
           <div class="text-h2 text-barlock">
             RIOS MATIAS
           </div>
+          <!--div class="">
+            <q-btn  flat dark icon="print" @click="$helper.printHTML('cv')"/>
+          </div<-->
         </div>
         <div class="row q-mt-md ">
           <div class="text-h4 text-barlock">
