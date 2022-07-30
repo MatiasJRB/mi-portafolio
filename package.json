@@ -23,6 +23,7 @@
     "@quasar/extras": "^1.0.0",
     "@quasar/icongenie": "^2.5.3",
     "@quasar/quasar-app-extension-dotenv": "^1.1.0",
+    "analytics.js": "^2.9.1",
     "atropos": "^1.0.2",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
