@@ -1,17 +1,17 @@
 <template>
   <q-layout view="hHh lpR fff"  >
-    <q-scroll-observer @scroll="onScroll" /> 
-    <transition 
+    <q-scroll-observer @scroll="onScroll" />
+    <transition
       enter-active-class="animated fadeIn"
       leave-active-class="animated fadeOut"
       appear
       :duration="animationTime">
       <q-header reveal   v-if="mobile" >
         <q-toolbar class="row justify-between bg-dark">
-          <q-card @click="handleMenu('header')" 
+          <q-card @click="handleMenu('header')"
             flat  class="col-2 flex flex-center bg-dark text-grey-6  ">
             <div class="row cursor-pointer"  >
-              <q-img  width="32px" class="" src="../assets/MR_LOGO_WHITE.svg" >        
+              <q-img  width="32px" class="" src="../assets/MR_LOGO_WHITE.svg" >
               </q-img>
             </div>
           </q-card>
@@ -22,19 +22,19 @@
             />
         </q-toolbar>
       </q-header>
-      
+
       <q-header v-else reveal elevated >
         <q-toolbar class="row justify-around bg-dark  text-secondary"  style=" margin:0 ">
-          
-          <q-card @click="handleMenu('header')" 
+
+          <q-card @click="handleMenu('header')"
             flat  class="col-2 flex flex-center bg-dark text-grey-6  ">
             <div class="row cursor-pointer"  >
-              <q-img  width="32px" class="" src="../assets/MR_LOGO_WHITE.svg" >        
+              <q-img  width="32px" class="" src="../assets/MR_LOGO_WHITE.svg" >
               </q-img>
             </div>
           </q-card>
           <div class="row" :style="'margin-top:' + getDistance">
-            <q-item 
+            <q-item
               clickable
               style="height:45px"
               @click="handleMenu('about')"
@@ -44,7 +44,7 @@
                 </q-item-section>
             </q-item>
             <q-separator color="primary"/>
-            <q-item 
+            <q-item
               clickable
               style="height:45px"
               @click="handleMenu('skills')"
@@ -54,7 +54,7 @@
                 </q-item-section>
             </q-item>
             <q-separator color="primary"/>
-            <q-item 
+            <q-item
               clickable
               @click="handleMenu('portfolio')"
               style="height:45px"
@@ -64,7 +64,7 @@
                 </q-item-section>
             </q-item>
             <q-separator color="primary"/>
-            <q-item 
+            <q-item
               clickable
               style="height:45px"
               @click="handleMenu('contact')"
@@ -74,7 +74,7 @@
                 </q-item-section>
             </q-item>
             <q-separator color="primary"/>
-            <!-- <q-item 
+            <!-- <q-item
               clickable
               style="height:45px"
               @click="$router.push('/blog')"
@@ -86,7 +86,7 @@
             <q-separator color="primary"/>
           </div>
           <div class="flex flex-center">
-            
+
           <SocialMedia
             style="margin-top: -3px"
             :header="true"
@@ -94,7 +94,7 @@
           </div>
         </q-toolbar>
       </q-header>
-     
+
     </transition>
 
     <q-dialog position="top" v-model="expanded">
@@ -143,19 +143,19 @@
     <q-dialog  v-model="showArquitecture"  full-width>
       <q-card class="full-width bg-transparent">
         <q-img src="https://res.cloudinary.com/dhdfdo4p7/image/upload/v1659202559/arquitecture_onincb.jpg"
-          
+
         spinner-color="primary" />
       </q-card>
     </q-dialog>
 
     <q-page-container style=" background: rgb(29, 29, 29) " class="text-white"  >
-      
+
       <transition
         enter-active-class="animated fadeIn"
         leave-active-class="animated fadeOut"
         appear
         :duration="animationTime"
-      >      
+      >
         <router-view/>
       </transition>
     </q-page-container>
@@ -173,11 +173,11 @@
           </q-toolbar-title>
         </q-toolbar>
 
-        
+
       </q-footer>
 
-      
-    
+
+
   </q-layout>
 </template>
 
@@ -187,7 +187,7 @@ import SocialMedia from '../components/SocialMedia.vue'
 
 export default {
   name: 'MainLayout',
-  components: { 
+  components: {
     SocialMedia
    },
   computed: {
@@ -234,9 +234,9 @@ export default {
     })
 
     this.class_button_toolbar=this.mostrando_porfolio? 'bg-info q-mx-xs' : 'bg-accent q-mx-xs';
-    
+
     this.class_button_porfolio= this.mostrando_porfolio? 'bg-accent q-mx-xs' : 'bg-info q-mx-xs';
-    
+
   },
   methods:
   {
@@ -269,15 +269,15 @@ export default {
         function: 'scrollTo',
         data: path
       })
-      
+
     },
     toolbar_click()
     {
       if (this.mostrando_porfolio)
       {
-          
+
         this.mostrando_porfolio=false;
-        this.class_button_toolbar=this.mostrando_porfolio? 'bg-info q-mx-xs' : 'bg-accent q-mx-xs';   
+        this.class_button_toolbar=this.mostrando_porfolio? 'bg-info q-mx-xs' : 'bg-accent q-mx-xs';
         this.class_button_porfolio= this.mostrando_porfolio? 'bg-accent q-mx-xs' : 'bg-info q-mx-xs';
 
       }
