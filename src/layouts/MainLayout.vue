@@ -140,6 +140,14 @@
       </q-card>
     </q-dialog>
 
+    <q-dialog v-model="showArquitecture" >
+      <q-card class="full-width bg-transparent">
+        <q-img src="https://res-console.cloudinary.com/dhdfdo4p7/thumbnails/transform/v1/image/upload//v1659202559/YXJxdWl0ZWN0dXJlX29uaW5jYg==/drilldown"
+          style="min-height: 400px;" 
+        spinner-color="primary" />
+      </q-card>
+    </q-dialog>
+
     <q-page-container style=" background: rgb(29, 29, 29) " class="text-white"  >
       
       <transition
@@ -157,9 +165,9 @@
           <q-toolbar-title>
             <div class="q-my-xs">
               <div class="row justify-center">
-                <div class="text-caption">
+                <q-btn no-caps flat class="text-caption cursor-pointer" @click="openArquitecture" >
                   Designed and built by Matias Rios
-                </div>
+                </q-btn>
               </div>
             </div>
           </q-toolbar-title>
@@ -167,6 +175,8 @@
 
         
       </q-footer>
+
+      
     
   </q-layout>
 </template>
@@ -194,6 +204,7 @@ export default {
   },
   data () {
     return {
+      showArquitecture: false,
       hideLayout: false,
       expanded:false,
       class_button_toolbar: this.mostrando_porfolio? 'bg-info q-mx-xs' : 'bg-accent q-mx-xs',
@@ -229,6 +240,10 @@ export default {
   },
   methods:
   {
+
+    openArquitecture() {
+      this.showArquitecture = true
+    },
 
      onScroll (info) {
 

@@ -43,9 +43,9 @@
         </div>
       </div>
 
-      <q-separator class="bg-transparent" style="height: 20px" id="about"/>
+      <q-separator class="bg-transparent" style="height: 20px" />
 
-      <div  class="row justify-center q-my-md" :style="mobile?  '' : ''">
+      <div id="about" class="row justify-center q-my-md" :style="mobile?  '' : ''">
         <div class="col-lg-9 col-xl-9 col-md-8 col-sm-12 col-xs-12">
           <div class="row justify-center" v-if="mobile">
             <div class="col-xs-8 col-sm-5 col-md-4" >
