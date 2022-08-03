@@ -1,336 +1,247 @@
 <template>
-  <q-page 
-    class="flex flex-center text-white bg-dark	" 
-  >
-    <div>
-      <div id="header"  class="flex flex-center" :style="mobile?  '' : 'height: 100vh;' ">
-        <div class="row justify-center  "
-          :style="mobile?  '' : ''">
-          <div class="col-xs-12 col-md-6 col-lg-6 col-sm-12 flex flex-center" :style="!mobile?  '' : 'height: 100vh;'" >
-            <transition
-                name="fade"
-                appear
-                :duration="2000"
-              >   
-              <div :class="mobile? 'q-py-lg q-mx-xl' : 'q-py-xl q-mx-xl'" >            
-                <div :class="getNameClass" >
-                  <p>
-                    Hi,<br> I'm <span class="text-primary">Matias</span>, <br> Full Stack Engineer
-                  </p>
-                </div>            
-                <div :class="getJobClass" >
-                  Feel free to contact me
-                </div>
-                <SocialMedia
-                  class="q-mt-md"
-                  :behavior="'justify-start'"/>
-              </div>
-            </transition>
+  <q-page id="index">
+    <div
+      class="page-container"
+      :style="mobile ? '' : 'padding-left: 96px; padding-right: 96px; '"
+    >
+      <div class="row justify-center">
+        <!-- first column -->
+        <div
+          :class="'column col-md-6 col-lg-6 col-xs-12 col-sm-12'"
+          :style="mobile ? 'padding: 14px' : ''"
+        >
+          <Presentation style="padding-top: 92px" class="q-mb-xl" />
+
+          <Selector />
+
+          <q-space />
+
+          <SocialMedia
+            :style="mobile ? 'margin-bottom: 76px;' : 'margin-bottom: 96px;'"
+          />
+        </div>
+
+        <!-- second column -->
+        <div
+          class="col-md-6 col-lg-6 col-sm-12"
+          :style="mobile ? '' : 'height: 100vh; ;'"
+        >
+          <!-- If anyone knows a better way to do this, without repeating code, please let me know. -->
+          <q-scroll-area
+            ref="scrollArea"
+            :style="mobile ? '' : 'height: 100vh; ;'"
+            v-if="!mobile"
+            @scroll="updateScrollState"
+            :thumb-style="thumbStyle"
+            :bar-style="barStyle"
+            class="no-scroll"
+          >
+            <div :style="`margin-top: ${marginTop}px;`" />
+
+            <About style="margin-bottom: 9rem" />
+
+            <History style="margin-bottom: 9rem" class="position-absolute" />
+
+            <Footer id="footer" style="margin-bottom: 6rem" />
+          </q-scroll-area>
+
+          <div v-else class="q-pa-md">
+            <div class="subtitle q-mb-lg text-uppercase" v-if="mobile">
+              About
+            </div>
+
+            <About class="q-mb-xl" />
+
+            <div class="subtitle q-mb-lg q-mt-xl text-uppercase" v-if="mobile">
+              History
+            </div>
+
+            <History class="q-mb-xl" />
+
+            <Footer class="" />
           </div>
-          <div class=" col-xs-12 col-md-6 col-xl-6 col-lg-6 col-sm-12 flex flex-center " >
-            <transition
-                name="fade"
-                appear
-              >   
-                <div   class="q-mt-xl  " :style="'margin-right:-16px; margin-top:-4px;border-radius:8px;border: 2px solid white; border-color: #ffffff; width: ' + getImageWidth + ';height: ' +getImageHeight " >                  
-                  <q-img 
-                    :width="getImageWidth"
-                    :height="getImageHeight" class="bg-white" 
-                    style="margin-top: -15px; margin-left: -12px; border-radius:8px"  src="../assets/portfolio.jpg"/>
-                </div>
-            </transition>
-            
-          </div>        
         </div>
       </div>
+    </div>
 
-      <q-separator class="bg-transparent" style="height: 20px" />
-
-      <div id="about" class="row justify-center q-my-md" :style="mobile?  '' : ''">
-        <div class="col-lg-9 col-xl-9 col-md-8 col-sm-12 col-xs-12">
-          <!--div class="row justify-center" v-if="mobile">
-          
-            <div class="col-xs-8 col-sm-5 col-md-4 " >
-              <transition
-                  name="fade"
-                  appear
-                >   
-                  <div class="full-width" :style="'border-radius:8px;height  : 20em;border: 2px solid white; border-color: #ffffff; width: ' + getImageWidth" >                  
-                      <q-img 
-                        height="20em" class="bg-white" 
-                        style="margin-top: -15px; margin-left: -12px; border-radius:8px"  src="../assets/portfolio.jpg"/>
-                    </div>
-              </transition>
-              
-            </div> 
-          </div!-->
-          <About class="q-ma-sm"/>     
-        </div>   
-      </div>
-
-      <div id="skills" class="row justify-center q-mt-xl" :style="mobile?  '' : ''">
-        <div class="col-lg-9 col-xl-9 col-md-8 col-sm-12 col-xs-12">
-          <Skills class="q-mx-sm"/>
-        </div>
-      </div>
-
-      <!-- <div class="row justify-center" id="portfolio" :style="mobile?  '' : ''">
-        <div class="col-lg-9 col-xl-9 col-md-8 col-sm-12 col-xs-12">
-          <div :class="getTitle + ' q-ma-md'">
-            Some things I've built
-          </div>
-          <MainWork/>
-        </div>
-      </div> -->
-
-      <!-- <div class="row justify-center"  :style="mobile?  '' : ''">
-        <div class="col-lg-9 col-xl-9 col-md-8 col-sm-12 col-xs-12">
-          <div :class="getTitle + ' q-ma-md'">
-            Other interested things
-          </div>
-          <Portfolio class="q-mt-xl"/>
-        </div>
-      </div> -->
-
-      <div class="row justify-center q-my-md" id="contact" :style="mobile?  '' : ''">
-        <div class="col-lg-9 col-xl-9 col-md-8 col-sm-12 col-xs-12">
-          <Contact
-          class="q-my-xl q-mx-sm"/>
-        </div>
-        
-      </div>
-
-    
-  </div>
+    <GlowingCursor style="z-index: 1" />
   </q-page>
 </template>
 
 <script>
-import ModuloFunciones from '../modules/ModuloFunciones.vue'
-import ModuloNetwork from '../modules/ModuloNetwork.vue'
-import Vue from 'vue'; // es6 syntax
-import SocialMedia from '../components/SocialMedia.vue'
-import { mapState } from 'vuex'
+import About from "../pages/About.vue";
+import Footer from "../components/Footer.vue";
+import History from "../components/History.vue";
+import Presentation from "../components/Presentation.vue";
+import Selector from "../components/Selector.vue";
+import SocialMedia from "../components/SocialMedia.vue";
+import GlowingCursor from "components/GlowingCursor.vue";
 
-import { scroll } from 'quasar'
-const { getScrollTarget, getVerticalScrollPosition, setVerticalScrollPosition } = scroll
-
-// import Portfolio from '../pages/Portfolio.vue'
-// import MainWork from '../pages/MainWork.vue'
-import Contact from '../pages/Contact.vue'
-import Skills from '../pages/Skills.vue'
-import About from '../pages/About.vue'
-
+import resume from "../resume.json";
 
 export default {
-  name: 'PageIndex',
-  data ()
-  {
-    return{
-      longVersion: false,
-      mostrar_formulario_new_post: false,
-      showGeome7ricPortfolio: false,
-      geome7ricProjects: [],
-      personalProjects: {},
-      metodos_listener_principal:
-      {
-        'mostrar_blog': (data) => this.manejador_mostrar_blog(data),
-        'mostrar_portfolio' : (data) => this.manejador_mostrar_porftolio(data),
-        'scrollTo' : (data) => this.scrollTo(data),
-      },
-      mostrar_blog: false,
-      mostrar_portfolio: true,
-      mostrar_historia_version_larga: false,
-      mostrar_datos_consulta: false,
-      funciones: null,
-      presupuesto: 50,
-      tipo_proyecto: '',
-      texto_descripcion: '',
-      more_skill1: false,
-      more_skill2: false,
-      more_skill3: false,
-      info_skill1: 'Lo uso hace años y tengo mas de tres proyectos',
-      network: null,
-      projects: null
-    }
-  },  
-  components:
-  {
-    // Portfolio,
-    Contact,
-    About,
-    Skills,
-    SocialMedia,
-    // MainWork
-  },
-  created()
-  {
-    
-    this.funciones= new Vue(ModuloFunciones);
-    this.network = new Vue(ModuloNetwork)
-    this.$emitter.on('listener_principal', (data) => this.metodos_listener_principal[data.function](data.data) )
-    this.setear_personal_projects()
-    this.personalProjects = this.projects
-    this.loadGeome7ricProjects()
-    this.$root.$on('listener_principal', (param) => this.listener(param));
-    //this.funciones.alerta_positiva_home("Bienvenido");
-  },  
-  beforeMount()
-  {
-    // this.funciones.mostrar_cargando_tiempo(2000);
-  },
-  mounted()
-  { 
-    this.showTitle()
-    
-  },
-
+  name: "PageIndex",
   watch: {
-    showGeome7ricPortfolio: function (val) {
-      this.handleChangePortfolio()
-    }
+    scrollState() {
+      // console.log(this.scrollState);
+    },
   },
-  methods:
-  {
-
-    
-
-
-
-
-    scrollTo(element) {
-      if (this.mobile) {
-        this.$emitter.emit('hideLayout', false)
-      }
-      this.$nextTick(() => {
-        element = '#' + element
-        const el = document.querySelector(element)
-        el?.scrollIntoView({ behavior: 'smooth' })
-      })
-    },
-    
-    
-   
-   showTitle() {
-     
-      
-
-   },
-  
-   
-   
-
-    handleChangePortfolio () {
-      if (this.showGeome7ricPortfolio) {
-        this.projects = this.geome7ricProjects
-      } else {
-        this.projects = this.personalProjects
-      }
-    },
-
-    loadGeome7ricProjects () {},
-    
-    setear_personal_projects() {},
-    showAddNewPost(){
-      this.mostrar_formulario_new_post = true
-    },
-    manejador_mostrar_blog(data)
-    {
-      this.mostrar_portfolio=false;
-      this.mostrar_blog=true;
-    },
-    manejador_mostrar_porftolio(data)
-    {
-      this.mostrar_blog=false;
-      this.mostrar_portfolio=true;
-    },    
-    listener(param)
-    {
-      const funcion = this.metodos_listener_principal[param.function] 
-        ? this.metodos_listener_principal[param.function](param)
-        : this.funciones.alerta_negativa_default(param.function);
-      
-    }
+  data() {
+    return {
+      basics: resume.basics,
+      scrollState: 0,
+      mobile: this.$q.platform.is.mobile,
+      marginTop: 96,
+      thumbStyle: {
+        opacity: 0.0,
+      },
+      barStyle: {
+        opacity: 0.0,
+      },
+    };
   },
-  computed: {
+  components: {
+    About,
+    Footer,
+    GlowingCursor,
+    History,
+    Presentation,
+    Selector,
+    SocialMedia,
+  },
+  methods: {
+    updateScrollState(event) {
+      const { verticalPosition } = event;
 
-    
-    getTextClass() {
-      let ret = ' q-mt-md'
-      if (this.$q.screen.xl) {
-        ret = ret + ' '
-      } else {
-        ret = ret + ' '
+      // console.log(verticalPosition);
+
+      // si me voy de los margenes, no hago nada
+      if (verticalPosition < 0) {
+        return;
       }
-      return ret
-    },
 
-
-    getTitle() {
-      let ret = 'text-weight-bold   '
-      if (this.$q.screen.xl) {
-        ret = ret + ' text-h2'
-      } else {
-        ret = ret + ' text-h3'
+      // si no es entero, no hago nada
+      if (!Number.isInteger(verticalPosition)) {
+        return;
       }
-      return ret
+
+      this.scrollState = verticalPosition;
+
+      const aboutSection = document.getElementById("about");
+      const historySection = document.getElementById("history");
+
+      if (!aboutSection || !historySection) {
+        return;
+      }
+
+      const aboutSectionTop = aboutSection.offsetTop;
+      const historySectionTop = historySection.offsetTop;
+
+      const aboutReached = verticalPosition >= aboutSectionTop;
+
+      if (aboutReached && verticalPosition < historySectionTop) {
+        this.$emitter.emit("section-reached", "about");
+        return;
+      }
+
+      const historyReached = verticalPosition >= historySectionTop;
+
+      if (historyReached) {
+        this.$emitter.emit("section-reached", "history");
+        return;
+      }
     },
-    hideImage () {
-      let ret = false
-      ret = this.$q.screen.xs || this.$q.screen.width < 900
-      return ret
-    },
-    getImageHeight () {
-      let ret = '665px'
-      ret = (this.$q.screen.height *45) / 100
+    handleScroll(event) {
       if (this.mobile) {
-         ret = (this.$q.screen.height *45) / 100
+        return;
       }
-      ret = ret.toString() + 'px'
-      return ret
-    },
-    getImageWidth () {
-      let ret = '665px'
-      ret = (this.$q.screen.height *38) / 100
-      if (this.mobile) {
-         ret = (this.$q.screen.height *38) / 100
-      }
-      ret = ret.toString() + 'px'
-      return ret
-    },
-    mobile () {
-      let ret = false
-      ret = (this.$q.screen.xs || this.$q.screen.sm || this.$q.screen.width < 1050) 
-      
-      return ret
-    },
-    layout () {
-      return this.$q.screen.lt.sm ? 'dense' : (this.$q.screen.lt.md ? 'comfortable' : 'loose')
-    },
-    getNameClass() {
-      let ret = 'text-weight-bold '
-      if (this.$q.screen.xl) {
-        ret = ret + ' text-h1'
-      } else {
-        ret = ret + ' text-h2'
-      }
-      return ret
-    },
-    getJobClass() {
-      let ret = 'q-mt-md'
-      if (this.$q.screen.xl) {
-        ret = ret + ' text-h6'
-      } else {
-        ret = ret + ' text-h6'
-      }
-      return ret
-    },
 
-    
-  }
-}
+      const { deltaY } = event;
+
+      const goingUp = deltaY < 0;
+      const goingDown = deltaY > 0;
+
+      const scrollArea = this.$refs.scrollArea;
+
+      if (!scrollArea) {
+        return;
+      }
+
+      const percentage = scrollArea.getScrollPercentage();
+
+      console.log({
+        goingUp,
+        goingDown,
+        percentage,
+        deltaY,
+      });
+
+      if (goingDown && percentage >= 0.999) {
+        return;
+      }
+
+      if (goingUp && percentage <= 0) {
+        return;
+      }
+
+      if (!this.scrollState) this.scrollState = 0;
+
+      this.scrollState += deltaY;
+
+      try {
+        scrollArea.setScrollPosition(this.scrollState, 0, 990000);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  },
+  mounted() {
+    document.addEventListener("wheel", (event) => {
+      this.handleScroll(event);
+    });
+
+    this.$emitter.on("scroll-to-section", (sectionId) => {
+      const scrollArea = this.$refs.scrollArea;
+
+      if (!scrollArea) {
+        return;
+      }
+
+      const section = document.getElementById(sectionId);
+
+      if (!section) {
+        return;
+      }
+
+      const scrollPosition = scrollArea.getScrollPosition();
+
+      const deltaY = section.offsetTop - scrollPosition;
+
+      if (!this.scrollState) this.scrollState = 0;
+
+      this.scrollState += deltaY;
+
+      this.scrollState -= this.marginTop;
+
+      try {
+        scrollArea.setScrollPosition(this.scrollState, 0, 990000);
+      } catch (error) {
+        console.error(error);
+      }
+    });
+  },
+};
 </script>
 
-<style scoped>
+<style>
+.page-container {
+  max-width: 1280px;
+  margin: 0 auto; /* Centrar el contenedor horizontalmente */
+}
 
+@media (min-width: 1280px) {
+  .page-container {
+    max-width: 1280px;
+  }
+}
 </style>

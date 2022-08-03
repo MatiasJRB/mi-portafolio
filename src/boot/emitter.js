@@ -1,11 +1,7 @@
-import { boot } from 'quasar/wrappers'
-import Vue from 'vue'
+import Vue from "vue";
 
-const emitter = require('tiny-emitter/instance')
+const emitter = require("tiny-emitter/instance");
 
+Vue.prototype.$emitter = emitter;
 
-
-Vue.prototype.$emitter = emitter
-
-
-export { emitter }
+export { emitter };

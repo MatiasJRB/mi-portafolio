@@ -1,5 +1,5 @@
 <template>
-  <div class="fullscreen bg-dark text-white text-center q-pa-md flex flex-center">
+  <div class="fullscreen bg-dark  text-center q-pa-md flex flex-center">
     <div>
       <div style="font-size: 30vh">
         404
@@ -24,6 +24,6 @@
 
 <script>
 export default {
-  name: 'Error404'
-}
+  name: "Error404"
+};
 </script>

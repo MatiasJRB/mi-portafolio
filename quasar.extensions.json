@@ -1,6 +1,0 @@
-{
-  "@quasar/qenv": {
-    "common_root_object": "MATIAS",
-    "add_qenv_to_gitignore": true
-  }
-}

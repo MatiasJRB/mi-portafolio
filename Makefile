@@ -1,7 +1,12 @@
-up: install start-dev-server
+deploy-dev: build settings deploy
 
-start-dev-server:
-	yarn dev
+build:
+	yarn build
 
-install:
-	yarn
+settings:
+	cp ./vercel.json ./dist/spa
+	cp -r ./.vercel ./dist/spa
+
+deploy:
+	cd ./dist/spa && npx vercel --prod --yes
+	cd ../../

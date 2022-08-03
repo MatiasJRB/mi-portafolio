@@ -1,0 +1,206 @@
+{
+  "basics": {
+    "name": "Matias Rios",
+    "label": "Software Engineer",
+    "image": "",
+    "email": "matiasjriosb@gmail.com",
+    "phone": "(291) 645-0794",
+    "url": "https://matiasjriosb.com.ar",
+    "summary": "+4 years of experience as a software engineer. I drive business success through visionary leadership and an entrepreneurial mindset.",
+    "about": "<p>In 2013, I pursued a degree in computer engineering, and by 2018, I had sold my first software: an inventory app for a local pet shop. Since then, I've being coding for diverse industries, including building, ecommerce, physical retail, healthcare, distribution, port logistics, and corporate transportation.</p><p>My experience spans from frontend hybrid mobile development to pure backend engineering. My main focus these days is on backend development, excelling in the planning phase with strategic and foresighted solutions. Notable projects include leading a mobile app's journey from beta to app stores at <a href=\"https://nuqlea.com\" target=\"_blank\">Nuqlea</a>, and implementing a key integration process at <a href=\"https://kalkomey.com\" target=\"_blank\">Kalkomey</a>, driving increased subscriptions and revenue.</p><p>When I'm not at the computer, I’m usually at the gym, playing soccer at the best <a href=\"https://www.instagram.com/sincontratofc\" target=\"_blank\">friend's club</a> of my city, or with friends and family. I also manage projects at <a href=\"https://geome7ric.com\" target=\"_blank\">Geome7ric</a>, my software venture.</p>",
+    "location": {
+      "address": "Corrientes 211",
+      "postalCode": "B8000",
+      "city": "Bahía Blanca",
+      "countryCode": "AR",
+      "region": "Buenos Aires"
+    },
+    "profiles": [
+      {
+        "icon": "fab fa-github",
+        "url": "https://github.com/MatiasJRB"
+      },
+      {
+        "icon": "fab fa-linkedin",
+        "url": "https://www.linkedin.com/in/matiasjriosb/"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Kalkomey",
+      "position": "Software Engineer",
+      "url": "https://kalkomey.com",
+      "startDate": "02-2023",
+      "endDate": "PRESENT",
+      "summary": "Backend lead at HuntWise, a hunting app. Collaborated closely with product directors, marketing, mobile, and web teams, providing crucial support to enhance HuntWise's market positioning. Recognized with a promotion for effective leadership and contributions to the team.",
+      "highlights": [
+        "Node.js",
+        "Express",
+        "JavaScript",
+        "Python",
+        "PostgreSQL",
+        "Mocha",
+        "Docker",
+        "AWS",
+        "GitHub Actions",
+        "Strapi",
+        "Braze",
+        "Prisma"
+      ]
+    },
+    {
+      "name": "Geome7ric",
+      "position": "Co-Founder",
+      "url": "https://geome7ric.com",
+      "startDate": "2021",
+      "endDate": "PRESENT",
+      "summary": "These days, my primary role is guiding discoveries and development. Specializing in bespoke applications using Quasar Framework and NestJS. Focused on modern, tailored applications for diverse clientele.",
+      "highlights": [
+        "Quasar",
+        "NestJS",
+        "Next.js",
+        "Laravel",
+        "TypeScript",
+        "PostgreSQL",
+        "MySQL",
+        "Prisma",
+        "Budgeting",
+        "Client Relations",
+        "Project Management",
+        "Team Leadership",
+        "Docker",
+        "WooCommerce"
+      ],
+      "icon": "sell"
+    },
+    {
+      "name": "RazorTech",
+      "position": "Software Engineer",
+      "url": "https://razortech.com.ar",
+      "startDate": "2022",
+      "endDate": "2023",
+      "summary": "In charge of the backend development in Ruby on Rails, consistently met project milestones for Cargill, a key client, and seized opportunities to expand our services internationally, resulting in mutual benefits.",
+      "highlights": ["Ruby on Rails", "Rspec", "Sidekiq", "MySQL", "SQLServer"]
+    },
+    {
+      "name": "Nuqlea",
+      "position": "Fullstack Developer",
+      "url": "https://nuqlea.com",
+      "startDate": "2021",
+      "endDate": "2022",
+      "summary": "Led mobile app development, contributed to platform design using Quasar Framework, Laravel. Transitioned app from beta to production on Apple, Google. Enhanced B2C app, tackled system-wide issues, improved UX/UI. Learned startup agility, meeting deadlines.",
+      "highlights": ["Quasar", "Vue.js", "JavaScript", "Laravel", "MySQL"]
+    },
+    {
+      "name": "Profertil S.A.",
+      "position": "Network and Windows Systems Administrator",
+      "url": "https://profertil.com",
+      "startDate": "2021",
+      "endDate": "2021",
+      "summary": "Responsibilities include supporting Aspen Technology tools, managing and implementing backup policies, administering Windows servers, creating and modifying scripts for routine tasks, managing SQL databases, maintaining an internal website, and documenting procedures, manuals, and equipment inventories.",
+      "highlights": [
+        "PowerShell",
+        "Python",
+        "SQL Plus",
+        "SQL Server",
+        "CodeIgniter",
+        "PHP",
+        "Microsoft SQL"
+      ]
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Organization",
+      "position": "Volunteer",
+      "url": "https://organization.com/",
+      "startDate": "2012-01",
+      "endDate": "2013-01",
+      "summary": "Description…",
+      "highlights": ["Awarded 'Volunteer of the Month'"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University",
+      "url": "https://institution.com/",
+      "area": "Software Development",
+      "studyType": "Bachelor",
+      "startDate": "2011-01",
+      "endDate": "2013-01",
+      "score": "4.0",
+      "courses": ["DB1101 - Basic SQL"]
+    }
+  ],
+  "awards": [
+    {
+      "title": "Award",
+      "date": "2014-11-01",
+      "awarder": "Company",
+      "summary": "There is no spoon."
+    }
+  ],
+  "certificates": [
+    {
+      "name": "Certificate",
+      "date": "2021-11-07",
+      "issuer": "Company",
+      "url": "https://certificate.com"
+    }
+  ],
+  "publications": [
+    {
+      "name": "Publication",
+      "publisher": "Company",
+      "releaseDate": "2014-10-01",
+      "url": "https://publication.com",
+      "summary": "Description…"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Web Development",
+      "level": "Advanced",
+      "keywords": ["HTML", "CSS", "JavaScript", "Vue.js", "Quasar"],
+      "icon": "web"
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native speaker"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Wildlife",
+      "keywords": ["Ferrets", "Unicorns"]
+    }
+  ],
+  "references": [
+    {
+      "name": "Jane Doe",
+      "reference": "Reference…"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Project",
+      "description": "Description…",
+      "content": "Content…",
+      "media": [
+        {
+          "type": "url",
+          "title": "Link",
+          "src": "https://project.com"
+        }
+      ],
+      "date": "2021-11-01",
+      "status": "Finished",
+      "tags": ["Tag1", "Tag2"],
+      "images": ["https://via.placeholder.com/150"]
+    }
+  ],
+  "footer": "<p>Based on the design of <a href=\"https://brittanychiang.com\" target=\"_blank\" class=\"text-bold cursor-pointer link\" clickable>Brittany Chiang</a>, this SPA is built with the <a href=\"https://quasar.dev\" target=\"_blank\" class=\"text-bold cursor-pointer link\" clickable>Quasar Framework</a> and deployed with <a href=\"https://vercel.com\" target=\"_blank\" class=\"text-bold cursor-pointer link\" clickable>Vercel</a>. All text is set in the <a href=\"https://rsms.me/inter/\" target=\"_blank\" class=\"text-bold cursor-pointer link\" clickable>Inter</a> typeface. I created this website as a template, find the repository <a href=\"\" target=\"_blank\" class=\"text-bold cursor-pointer link\" clickable>here</a>.</p>"
+}
