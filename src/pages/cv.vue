@@ -102,7 +102,7 @@
         </div>
         <div class="row q-mt-md">
           <div class="text-h6 text-bold">
-            Lenguages
+            Languages
           </div>
         </div>
         <div>
@@ -115,7 +115,7 @@
         </div>
         <div>
           - Computer Engineer - National University of the South, 2021. Buenos Aires, Argentina<br>
-          - Proffesional IT Technician - Argentine School of Lenguages and Technologies Technology, 2013. Buenos Aires, Argentina
+          - Proffesional IT Technician - Argentine School of Languages and Technologies Technology, 2013. Buenos Aires, Argentina
         </div>
         <div class="row q-mt-md">
           <div class="text-h6 text-bold">
