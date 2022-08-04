@@ -45,6 +45,7 @@ function parseArticle (article) {
     article.images = article.attributes.images.data?.map((image) => {
         return image.attributes.url
     })
+    article.iframe = article.attributes.meta?.iframe
     article.image = article.attributes.image?.data?.attributes.url
     article.media = article.attributes.meta?.media
     article.video = article.attributes.meta?.media?.video?.src
