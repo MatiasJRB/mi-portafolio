@@ -1,4 +1,5 @@
 import { axiosInstance } from 'boot/axios'
+import {filterEnabled, filterFeatured, parseArticles} from './mutations'
 
 export function getArticles( { commit }) {
     return new Promise((resolve, reject) => {
@@ -8,6 +9,21 @@ export function getArticles( { commit }) {
                 resolve(response.data.response.data)
             })
             .catch((error) => {
+                reject(error)
+            })
+    })
+}
+
+export function getArticle({ commit }, id) {
+    return new Promise((resolve, reject) => {
+        axiosInstance.get(`articles/${id}`)
+            .then((response) => {
+                const article = response.data.response.data
+                filterEnabled([article])
+                filterFeatured([article])
+                parseArticles([article])
+                resolve(article)
+            }).catch((error) => {
                 reject(error)
             })
     })

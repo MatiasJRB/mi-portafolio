@@ -1,7 +1,7 @@
 <template>
   <q-page  class=" row justify-center">
    <div class="bg-dark q-ma-sm col-md-8 col-xs-12 col-sm-12" :style="mobile? 'margin-top:70px': ''"  v-if="projectToShow">
-   <div v-if="projectToShow.iframe" class="full-width full-height ">
+   <div v-if="projectToShow.iframe" class="full-width full-height">
     <iframe :src="projectToShow.iframe" frameborder="0" allowfullscreen class="full-width full-height"></iframe>
    </div>    
    <div v-else >
@@ -149,7 +149,19 @@ export default {
     },
   },
   async mounted () {
-    this.projectToShow = this.projects.filter((pr) => (parseInt(pr.id) === parseInt(this.$route.params.id)))[0]
+    this.$q.loading.show()
+    this.projectToShow = this.projects.filter((pr) => (parseInt(pr.id) === parseInt(this.$route.params.id)))[0] ?? null
+    if (!this.projectToShow) {
+      await this.$store.dispatch('articles/getArticles')
+      this.projectToShow = this.projects.filter((pr) => (parseInt(pr.id) === parseInt(this.$route.params.id)))[0] ?? null
+    }
+    if (this.projectToShow.iframe) {
+      setTimeout(() => {
+        this.$q.loading.hide()
+      }, 1000)
+    } else {
+      this.$q.loading.hide()
+    }
     console.log(this.projectToShow)
   }
 }

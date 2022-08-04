@@ -15,19 +15,19 @@ export function setFeaturedArticles (state, articles) {
     state.featuredArticles = articles
 }
 
-function filterEnabled (articles) {
+export function filterEnabled (articles) {
     articles = articles.filter((article) => {
         return article.attributes.enabled
     }) 
 }
 
-function filterFeatured (articles) {
+export function filterFeatured (articles) {
     articles = articles.filter((article) => {
         return !article.attributes.featured
     }) 
 }
 
-function parseArticles (articles) {
+export function parseArticles (articles) {
     articles.map((article) => {
         return parseArticle(article)
     })
