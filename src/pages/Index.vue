@@ -6,13 +6,13 @@
       <div id="header"  class="flex flex-center" :style="mobile?  '' : 'height: 100vh;' ">
         <div class="row justify-center  "
           :style="mobile?  '' : ''">
-          <div class="col-xs-12 col-md-6 flex flex-center" :style="!mobile?  '' : 'height: 100vh;'" >
+          <div class="col-xs-12 col-md-6 col-lg-6 col-sm-12 flex flex-center" :style="!mobile?  '' : 'height: 100vh;'" >
             <transition
                 name="fade"
                 appear
                 :duration="2000"
               >   
-              <div :class="mobile? 'q-pa-lg ' : 'q-pa-xl'" >            
+              <div :class="mobile? 'q-py-lg q-mx-xl' : 'q-py-xl q-mx-xl'" >            
                 <div :class="getNameClass" >
                   <p>
                     Hi,<br> I'm <span class="text-primary">Matias</span>, <br> Full Stack Engineer
@@ -27,14 +27,15 @@
               </div>
             </transition>
           </div>
-          <div class=" col-xs-12 col-md-8 col-xl-6 col-lg-6" v-if="!mobile" >
+          <div class=" col-xs-12 col-md-6 col-xl-6 col-lg-6 col-sm-12 flex flex-center " >
             <transition
                 name="fade"
                 appear
               >   
-                <div   class="q-mt-xl" :style="'border-radius:8px;height  : 33em;border: 2px solid white; border-color: #ffffff; width: ' + getImageWidth" >                  
+                <div   class="q-mt-xl  " :style="'margin-right:-16px; margin-top:-4px;border-radius:8px;border: 2px solid white; border-color: #ffffff; width: ' + getImageWidth + ';height: ' +getImageHeight " >                  
                   <q-img 
-                    height="33em" class="bg-white" 
+                    :width="getImageWidth"
+                    :height="getImageHeight" class="bg-white" 
                     style="margin-top: -15px; margin-left: -12px; border-radius:8px"  src="../assets/portfolio.jpg"/>
                 </div>
             </transition>
@@ -47,8 +48,9 @@
 
       <div id="about" class="row justify-center q-my-md" :style="mobile?  '' : ''">
         <div class="col-lg-9 col-xl-9 col-md-8 col-sm-12 col-xs-12">
-          <div class="row justify-center" v-if="mobile">
-            <div class="col-xs-8 col-sm-5 col-md-4" >
+          <!--div class="row justify-center" v-if="mobile">
+          
+            <div class="col-xs-8 col-sm-5 col-md-4 " >
               <transition
                   name="fade"
                   appear
@@ -61,7 +63,7 @@
               </transition>
               
             </div> 
-          </div>
+          </div!-->
           <About class="q-ma-sm"/>     
         </div>   
       </div>
@@ -281,18 +283,28 @@ export default {
       ret = this.$q.screen.xs || this.$q.screen.width < 900
       return ret
     },
+    getImageHeight () {
+      let ret = '665px'
+      ret = (this.$q.screen.height *45) / 100
+      if (this.mobile) {
+         ret = (this.$q.screen.height *45) / 100
+      }
+      ret = ret.toString() + 'px'
+      return ret
+    },
     getImageWidth () {
       let ret = '665px'
-      ret = (this.$q.screen.height *55) / 100
+      ret = (this.$q.screen.height *38) / 100
       if (this.mobile) {
-         ret = (this.$q.screen.height *55) / 100
+         ret = (this.$q.screen.height *38) / 100
       }
       ret = ret.toString() + 'px'
       return ret
     },
     mobile () {
       let ret = false
-      ret = this.$q.screen.xs || this.$q.screen.sm || this.$q.screen.width < 1050
+      ret = (this.$q.screen.xs || this.$q.screen.sm || this.$q.screen.width < 1050) 
+      
       return ret
     },
     layout () {
