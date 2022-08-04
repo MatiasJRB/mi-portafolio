@@ -140,10 +140,10 @@
       </q-card>
     </q-dialog>
 
-    <q-dialog v-model="showArquitecture" >
+    <q-dialog  v-model="showArquitecture"  full-width>
       <q-card class="full-width bg-transparent">
-        <q-img src="https://res-console.cloudinary.com/dhdfdo4p7/thumbnails/transform/v1/image/upload//v1659202559/YXJxdWl0ZWN0dXJlX29uaW5jYg==/drilldown"
-          style="min-height: 400px;" 
+        <q-img src="https://res.cloudinary.com/dhdfdo4p7/image/upload/v1659202559/arquitecture_onincb.jpg"
+          
         spinner-color="primary" />
       </q-card>
     </q-dialog>

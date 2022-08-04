@@ -3,10 +3,19 @@ import { boot } from 'quasar/wrappers'
 import { Notify, openURL } from 'quasar'
 import Vue from 'vue'
 import print from 'print-js'
+import VueHtml2pdf from 'vue-html2pdf'
+import html2pdf from 'html2pdf.js'
 
 
 function printHTML (element) {
-    print(element,'html')
+
+    const domElement = document.getElementById(element);
+    const opt = {
+      margin: 2,
+      filename: 'Matias Rios CV'
+    }
+    html2pdf(domElement,opt)
+
 }
 
 function positiveNotify (msg) {
