@@ -3,51 +3,43 @@
     <div class="full-width " :style=" mobile? 'height: 100%' : ''">
       <div class="row justify-start  ">
         <div class="col-6 col-md-6 col-xs-12 col-sm-12  " :style="mobile? '': ''" >
-          
           <div class="q-pa-md">
             <div :class="getNameClass" style="" >
              Contact me
             </div>
-            <!-- <SocialMedia :behavior="' justify-around '" class="q-my-md full-width"/> -->
-            
-            
             <div :class="getJobClass" >
               I'm interested in freelance opportunities, especially big ones, to take this with Geome7ric to make it better and bigger. 
-              However, if you have another request or question, don't hesitate to use the form or
-              
+              However, if you have another request or question, don't hesitate
             <span @click="useOpenURL('mailto:matiasjriosb@gmail.com')"  class="text-secondary cursor-pointer " clickable>
-              use your email client
+              to contact me.
             </span>.
             </div>
           </div>
         </div>
-        <div class="col-6 col-md-6 col-xs-12 " > 
-            
-              <div class=" ">
-                <div class="row justify-around ">
-                  <div class="col-6 col-md-6 col-xs-12 q-pa-xs">
-                    <q-input dark  v-model="form.name" label-color="white" filled label="Name"/>
-                  </div>
-                  <div class="col-6 col-md-6  col-xs-12 q-pa-xs">
-                    <q-input dark v-model="form.from"  label-color="white" filled label="Email"/>
-                  </div>
+        <div class="col-6 col-md-6 col-xs-12 " >
+            <div class=" ">
+              <div class="row justify-around ">
+                <div class="col-6 col-md-6 col-xs-12 q-pa-xs">
+                  <q-input dark  v-model="form.name" label-color="white" filled label="Name"/>
                 </div>
-                <div class="row q-pa-xs ">
-                  <q-input dark densez v-model="form.subject" class="full-width"  label-color="white" filled label="Subject"/>
-                </div> 
-                <q-editor dark class=" q-mx-xs no-shadow"
-                 v-model="form.html" label="Message" min-height="5rem" />
-                <div class="row justify-center q-mt-sm">
-                  <q-btn :loading="seendingMessage" @click="sendEmail"
-                  class="text-capitalize  "
-                  style="width:98%"
-                  outline color="white" label="Sent message!"/>
+                <div class="col-6 col-md-6  col-xs-12 q-pa-xs">
+                  <q-input dark v-model="form.from"  label-color="white" filled label="Email"/>
                 </div>
-              </div>        
-         
-        </div>        
+              </div>
+              <div class="row q-pa-xs ">
+                <q-input dark densez v-model="form.subject" class="full-width"  label-color="white" filled label="Subject"/>
+              </div> 
+              <q-editor dark class=" q-mx-xs no-shadow"
+                v-model="form.html" label="Message" min-height="5rem" />
+              <div class="row justify-center q-mt-sm">
+                <q-btn :loading="seendingMessage" @click="sendEmail"
+                class="text-capitalize  "
+                style="width:98%"
+                outline color="white" label="Sent message!"/>
+              </div>
+            </div>
+        </div>
       </div>
-      
     </div>
   </div >
 </template>
