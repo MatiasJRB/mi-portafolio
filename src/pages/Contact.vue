@@ -16,7 +16,7 @@
             </div>
           </div>
         </div>
-        <div class="col-6 col-md-6 col-xs-12 " >
+        <!-- <div class="col-6 col-md-6 col-xs-12 " >
             <div class=" ">
               <div class="row justify-around ">
                 <div class="col-6 col-md-6 col-xs-12 q-pa-xs">
@@ -38,7 +38,7 @@
                 outline color="white" label="Sent message!"/>
               </div>
             </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div >
