@@ -3,18 +3,21 @@
     <div class="full-width " >
       <div class="row justify-center ">
           <div class="col-6 col-md-6 col-xs-12 col-sm-12 flex  flex-center  ">
-            
-            <div class="q-pa-md" > 
+
+            <div class="q-pa-md" >
               <div :class="getAboutName" style="" >
                 About me
               </div>
               <div :class="getTextClass" style="lineheight: 130%; tab-size: 2;font-size: 16px" >
-                  I'm a computer engineer graduated at Universidad Nacional del Sur, and currently I'm working full time. 
-                  I'm working with a small but powerfull team focused on an hybrid mobile application, avaiable in  <a class="text-secondary cursor-pointer" target="_blank" href="https://play.google.com/store/apps/details?id=com.nuqlea.m7&hl=es_AR&gl=US">Play Store</a> and, soonly in  Apple Store too.<br>
-                  I'm co-founder and active part of <a class="text-secondary cursor-pointer" target="_blank" href="https://geome7ric.com">Geome7ric</a>, a software entrepreneurship started at 2020.<br>
-                  I usually accept different kinds of freelance jobs so learn new tools o in a self-thaugth way.
-                  I'am passionate about training and sports in general, <a class="text-secondary cursor-pointer" target="_blank" href="https://www.instagram.com/matiasjrb7/">creating and editing photos and videos</a> and certain e-sports.<br>
-                    
+                   I'm a computer engineer graduated at Universidad Nacional del Sur, currently
+                  working full time with a small but powerfull team, focused on Ruby on Rails, for <a class="text-secondary cursor-pointer" target="_blank" href="http://www.razortech.com.ar/">RazorTech</a>
+                  <br>
+                  I'm co-founder and active part of <a class="text-secondary cursor-pointer" target="_blank" href="https://geome7ric.com">Geome7ric</a>,
+                  a software entrepreneurship started at 2020.<br>
+                  Usually, I accepts different kinds of freelance jobs so learn new tools o in a self-thaugth way.
+                  I'am passionate about training and sports in general, <a class="text-secondary cursor-pointer" target="_blank" href="https://www.instagram.com/matiasjrb7/">
+                  creating and editing photos and videos</a> and certain e-sports.<br>
+
               </div>
               <span @click="goTo('contact')" style="font-size: 18px" class="text-secondary cursor-pointer " clickable>
                 Let's make some special
@@ -22,8 +25,8 @@
             </div>
           </div>
           <div class="col-6 col-md-6 col-xs-12 col-sm-12  ">
-            
-            <div class="row justify-center " style=" ">  
+
+            <div class="row justify-center " style=" ">
               <div class="q-mt-md " style="z-index: 2000; margin-bottom: -0px;">
                 <div class="row justify-center full-width ">
                   <div class="  q-pa-xs  ">
@@ -48,8 +51,8 @@
                     </div>
                   </div>
                 </div>
-                
-              </div>              
+
+              </div>
               <q-scroll-area
                 dark
                 style="height: 70vh; width: 100%; "
@@ -64,7 +67,7 @@
                         v-show="longVersion"
                         title="I certified as a build and reparation of PC technique"
                         subtitle="November 20th, 2013"
-                        side="right"                      
+                        side="right"
                         icon="school"
                       >
                         <div>
@@ -72,12 +75,12 @@
                         </div>
                       </q-timeline-entry>
 
-                      
+
 
                       <q-timeline-entry
                         title="I sell out my first software called 'Geome7ric 1.0'"
                         subtitle="June 12th, 2018"
-                        side="left"                      
+                        side="left"
                         icon="sell"
                       >
                         <div>
@@ -98,7 +101,7 @@
                         </div>
                       </q-timeline-entry>
 
-                      
+
 
                       <q-timeline-entry
                         title="I graduate from Computer Engineering"
@@ -126,7 +129,7 @@
                       <q-timeline-entry
                         title="Geome7ric sold his first product"
                         subtitle="March 20th, 2021"
-                        side="right"                      
+                        side="right"
                         icon="grade"
                       >
                         <div>
@@ -137,36 +140,37 @@
                       <q-timeline-entry
                         title="My first job as developer <3"
                         subtitle="June 7th to now, 2021"
-                        side="left"                      
+                        side="left"
                         color="accent"
                         icon="work"
                       >
                         <div>
-                          I starts as Fullstack Developer in Nuqlea, the evolution of CAPP, 'la plataforma líder en construcción.' (the lider platform in construction).
+                          I starts as Fullstack Developer in Nuqlea.
                         </div>
                       </q-timeline-entry>
                       <q-timeline-entry
                         title="First big production delivery "
                         subtitle="June 3th, 2022"
-                        side="left"  
+                        v-if="longVersion"
+                        side="left"
                         icon="star"
                       >
                         <div>
                           <a class="text-secondary cursor-pointer" target="_blank" href="https://play.google.com/store/apps/details?id=com.nuqlea.m7&hl=es_AR&gl=US">Nuqlea App</a>, my main project at work (made with Quasar Framework) was finally delivered to the customer.
-                          
+
                         </div>
                       </q-timeline-entry>
 
                     </q-timeline>
-                    
+
                   </div>
                 </div>
               </q-scroll-area>
             </div>
-          </div>        
+          </div>
         </div>
-        
-      
+
+
     </div>
   </q-page>
 </template>
