@@ -74,26 +74,23 @@
         </div>
       </div>
 
-      
-      <div class="row justify-center" id="portfolio" :style="mobile?  '' : ''">
+      <!-- <div class="row justify-center" id="portfolio" :style="mobile?  '' : ''">
         <div class="col-lg-9 col-xl-9 col-md-8 col-sm-12 col-xs-12">
           <div :class="getTitle + ' q-ma-md'">
             Some things I've built
           </div>
           <MainWork/>
         </div>
-        
-      </div>
+      </div> -->
 
-      <div class="row justify-center"  :style="mobile?  '' : ''">
+      <!-- <div class="row justify-center"  :style="mobile?  '' : ''">
         <div class="col-lg-9 col-xl-9 col-md-8 col-sm-12 col-xs-12">
           <div :class="getTitle + ' q-ma-md'">
             Other interested things
           </div>
           <Portfolio class="q-mt-xl"/>
         </div>
-        
-      </div>
+      </div> -->
 
       <div class="row justify-center q-my-md" id="contact" :style="mobile?  '' : ''">
         <div class="col-lg-9 col-xl-9 col-md-8 col-sm-12 col-xs-12">
@@ -118,8 +115,8 @@ import { mapState } from 'vuex'
 import { scroll } from 'quasar'
 const { getScrollTarget, getVerticalScrollPosition, setVerticalScrollPosition } = scroll
 
-import Portfolio from '../pages/Portfolio.vue'
-import MainWork from '../pages/MainWork.vue'
+// import Portfolio from '../pages/Portfolio.vue'
+// import MainWork from '../pages/MainWork.vue'
 import Contact from '../pages/Contact.vue'
 import Skills from '../pages/Skills.vue'
 import About from '../pages/About.vue'
@@ -159,12 +156,12 @@ export default {
   },  
   components:
   {
-    Portfolio,
+    // Portfolio,
     Contact,
     About,
     Skills,
     SocialMedia,
-    MainWork
+    // MainWork
   },
   created()
   {
