@@ -1,50 +1,78 @@
-
 <template>
-  <div :class="`row  ${behavior}`">
-    <q-icon name="fab fa-whatsapp" size="20px" @click="useOpenURL('https://api.whatsapp.com/send?phone=542916450794&text=Hi!')" 
-      class="q-mx-md cursor-pointer" src="../assets/social/whatsapp.svg" />
-    <q-icon name="fab fa-github" size="20px" @click="useOpenURL('https://github.com/MatiasJRB')" 
-      class="q-mx-md cursor-pointer" src="../assets/social/github.svg" />
-    <q-icon name="fab fa-linkedin" size="20px" @click="useOpenURL('https://www.linkedin.com/in/matiasjriosb/')" 
-      class="q-mx-md cursor-pointer"  />
-    <q-icon name="fab fa-youtube" size="20px"  @click="useOpenURL('https://www.youtube.com/channel/UCZUdNoXqD2aSVJ3tEEbV5uw')" 
-      class="q-mx-md cursor-pointer" />
-    <q-icon v-if="!$route.path.includes('cv')"  name="fab fa-instagram" size="20px"  @click="useOpenURL('https://instagram.com/matiasjrios')"
-      class="q-mx-md cursor-pointer" />
-    <q-btn v-if="header && !$route.path.includes('cv')" label="CV" color="accent" text-color="primary"  @click="$router.push('/cv')" 
-      class="q-mx-md flex flex-center" />
+  <div :class="`row ${behavior}`">
+    <div v-for="(profile, index) in profiles" :key="index">
+      <q-icon
+        :name="profile.icon"
+        size="24px"
+        @click="handleURL(profile)"
+        style="margin-right: 24px"
+        :class="[
+          'cursor-pointer',
+          {
+            mobile,
+          },
+        ]"
+      >
+      </q-icon>
+    </div>
   </div>
-    
 </template>
 
 <script>
+import { openURL } from "quasar";
+import resume from "src/resume.json";
 
-import Vue from 'vue';
-import { openURL } from 'quasar'
-
-export default({
-  props:{
+export default {
+  props: {
     behavior: {
       type: String,
-      defult: 'justify-start'
+      default: "justify-start",
     },
-    header: {
-      type: Boolean,
-      defult: false
-    }
   },
-  data()
-  {
-    return{
-    }
+  data() {
+    return {
+      profiles: resume.basics.profiles,
+      mobile: this.$q.platform.is.mobile,
+    };
   },
   methods: {
-    
-    useOpenURL(url) {
-      openURL(url)
+    handleURL(profile) {
+      const { target, url } = profile;
+
+      if (url.includes("https://")) {
+        openURL(url);
+        return;
+      }
+
+      this.$router.push(url);
     },
   },
-  mounted () {
-  }
-})
+  mounted() {},
+};
 </script>
+
+<!-- on hover, text-accent -->
+<style scoped>
+.mobile {
+  font-size: 24px;
+  color: #ffffff;
+}
+
+/* q icon on hover text-accent */
+.q-icon {
+  transition: color 0.3s;
+}
+
+.q-icon:hover {
+  color: var(--q-color-accent);
+}
+
+/* q-btn on hover text-accent */
+.q-btn {
+  transition: color 0.3s;
+}
+
+.q-btn .q-focus-helper {
+  color: #ffffff;
+}
+</style>

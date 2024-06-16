@@ -1,18 +1,22 @@
-
 const routes = [
   {
-    path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    path: "/",
+    component: () => import("layouts/MainLayout.vue"),
     children: [
-      { path: '', name:'home', component: () => import('pages/Index.vue') },
-      { path: 'portfolio/:id', name: 'portfolio', component: () => import('pages/Project.vue') },
-      { path: 'cv', name:'cv',component: () => import('pages/cv.vue') },
+      { path: "", name: "home", component: () => import("pages/Index.vue") },
+      {
+        path: "resume",
+        name: "resume",
+        beforeEnter() {
+          location.href = "/resume.pdf";
+        }
+      }
     ]
   },
   {
-    path: '*',
-    component: () => import('pages/Error404.vue')
+    path: "*",
+    component: () => import("pages/Error404.vue")
   }
-]
+];
 
-export default routes
+export default routes;
