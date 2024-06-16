@@ -51,14 +51,12 @@ export default {
 };
 </script>
 
-<!-- on hover, text-accent -->
 <style scoped>
 .mobile {
   font-size: 24px;
   color: #ffffff;
 }
 
-/* q icon on hover text-accent */
 .q-icon {
   transition: color 0.3s;
 }
@@ -67,7 +65,6 @@ export default {
   color: var(--q-color-accent);
 }
 
-/* q-btn on hover text-accent */
 .q-btn {
   transition: color 0.3s;
 }
