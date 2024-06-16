@@ -169,13 +169,6 @@ export default {
 
       const percentage = scrollArea.getScrollPercentage();
 
-      console.log({
-        goingUp,
-        goingDown,
-        percentage,
-        deltaY,
-      });
-
       if (goingDown && percentage >= 0.999) {
         return;
       }
