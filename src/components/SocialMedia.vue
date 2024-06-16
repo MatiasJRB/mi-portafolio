@@ -7,7 +7,7 @@
         @click="handleURL(profile)"
         style="margin-right: 24px"
         :class="[
-          'cursor-pointer',
+          'cursor-pointer icon-color',
           {
             mobile,
           },
@@ -52,9 +52,11 @@ export default {
 </script>
 
 <style scoped>
+.icon-color {
+  color: #94a3b8;
+}
 .mobile {
   font-size: 24px;
-  color: #ffffff;
 }
 
 .q-icon {

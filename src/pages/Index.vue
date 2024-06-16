@@ -2,15 +2,20 @@
   <q-page id="index">
     <div
       class="page-container"
-      :style="mobile ? '' : 'padding-left: 96px; padding-right: 96px; '"
+      :style="
+        mobile ? 'padding: 24px' : 'padding-left: 96px; padding-right: 96px; '
+      "
     >
       <div class="row justify-center">
         <!-- first column -->
         <div
           :class="'column col-md-6 col-lg-6 col-xs-12 col-sm-12'"
-          :style="mobile ? 'padding: 14px' : ''"
+          :style="mobile ? ' margin-top: -64px' : ''"
         >
-          <Presentation style="padding-top: 92px" class="q-mb-xl" />
+          <Presentation
+            style="padding-top: 92px"
+            :class="mobile ? 'q-mb-sm' : 'q-mb-xl'"
+          />
 
           <Selector />
 
@@ -45,20 +50,20 @@
             <Footer id="footer" style="margin-bottom: 6rem" />
           </q-scroll-area>
 
-          <div v-else class="q-pa-md">
-            <div class="subtitle q-mb-lg text-uppercase" v-if="mobile">
+          <div v-else>
+            <h2 class="text-subtitle1 q-mb-lg text-uppercase" v-if="mobile">
               About
-            </div>
+            </h2>
 
             <About class="q-mb-xl" />
 
-            <div class="subtitle q-mb-lg q-mt-xl text-uppercase" v-if="mobile">
+            <h2 class="text-subtitle1 q-mt-xl text-uppercase" v-if="mobile">
               History
-            </div>
+            </h2>
 
             <History class="q-mb-xl" />
 
-            <Footer class="" />
+            <Footer />
           </div>
         </div>
       </div>

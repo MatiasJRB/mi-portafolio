@@ -22,7 +22,7 @@
             <div class="text-h6">
               {{ projectToShow.title }}
             </div>
-            <div class="">
+            <div>
               <q-badge
                 outlined
                 text-color="white"
@@ -30,7 +30,7 @@
               />
             </div>
             <div class="text-white">
-              <div class="" v-html="projectToShow.description">
+              <div v-html="projectToShow.description">
                 <!-- {{descripcion}} -->
               </div>
             </div>
@@ -85,7 +85,7 @@
               @click="open(document.url)"
             />
           </div>
-          <div class="">
+          <div>
             <q-card-section class="row">
               <div v-for="(media, index) in projectToShow.media" :key="index">
                 <q-btn
@@ -99,13 +99,9 @@
               </div>
             </q-card-section>
           </div>
-          <div class="">
+          <div>
             <q-card-actions class="q-ml-md" style="">
-              <div
-                class=""
-                v-for="(tag, index) in projectToShow.tags"
-                :key="index"
-              >
+              <div v-for="(tag, index) in projectToShow.tags" :key="index">
                 <q-badge outlined color="white" :label="tag" class="q-mx-sm" />
               </div>
             </q-card-actions>
