@@ -31,9 +31,9 @@
       "name": "Kalkomey",
       "position": "Software Engineer",
       "url": "https://kalkomey.com",
-      "startDate": "02-2023",
-      "endDate": "PRESENT",
-      "summary": "Backend lead at HuntWise, a hunting app. Collaborated closely with product directors, marketing, mobile, and web teams, providing crucial support to enhance HuntWise's market positioning. Recognized with a promotion for effective leadership and contributions to the team.",
+      "startDate": "09-2022",
+      "endDate": "12-2024",
+      "summary": "Backend Lead at HuntWise, a leading hunting app, where I implemented backend solutions to enhance system reliability and drive market growth. Collaborated with product, marketing, and development teams to align technical solutions with business goals. Previously managed backend development for Cargill, consistently delivering milestones and strengthening client relationships. Recognized for leadership, strategic planning, and technical contributions with a promotion.",
       "highlights": [
         "Node.js",
         "Express",
@@ -46,7 +46,12 @@
         "GitHub Actions",
         "Strapi",
         "Braze",
-        "Prisma"
+        "Prisma",
+        "Ruby on Rails",
+        "Rspec",
+        "Sidekiq",
+        "MySQL",
+        "SQLServer"
       ]
     },
     {
@@ -73,15 +78,6 @@
         "WooCommerce"
       ],
       "icon": "sell"
-    },
-    {
-      "name": "RazorTech",
-      "position": "Software Engineer",
-      "url": "https://razortech.com.ar",
-      "startDate": "09-2022",
-      "endDate": "02-2023",
-      "summary": "In charge of the backend development in Ruby on Rails, consistently met project milestones for Cargill, a key client, and seized opportunities to expand our services internationally, resulting in mutual benefits.",
-      "highlights": ["Ruby on Rails", "Rspec", "Sidekiq", "MySQL", "SQLServer"]
     },
     {
       "name": "Nuqlea",
