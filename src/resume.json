@@ -91,23 +91,6 @@
       "endDate": "08-2022",
       "summary": "Led mobile app development, contributed to platform design using Quasar Framework, Laravel. Transitioned app from beta to production on Apple, Google. Enhanced B2C app, tackled system-wide issues, improved UX/UI. Learned startup agility, meeting deadlines.",
       "highlights": ["Quasar", "Vue.js", "JavaScript", "Laravel", "MySQL"]
-    },
-    {
-      "name": "Profertil S.A.",
-      "position": "Network and Windows Systems Administrator",
-      "url": "https://profertil.com",
-      "startDate": "2021",
-      "endDate": "2021",
-      "summary": "Responsibilities include supporting Aspen Technology tools, managing and implementing backup policies, administering Windows servers, creating and modifying scripts for routine tasks, managing SQL databases, maintaining an internal website, and documenting procedures, manuals, and equipment inventories.",
-      "highlights": [
-        "PowerShell",
-        "Python",
-        "SQL Plus",
-        "SQL Server",
-        "CodeIgniter",
-        "PHP",
-        "Microsoft SQL"
-      ]
     }
   ],
   "volunteer": [
