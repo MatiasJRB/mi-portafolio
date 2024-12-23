@@ -8,15 +8,15 @@ const routes = [
         path: "resume",
         name: "resume",
         beforeEnter() {
-          location.href = "/resume.pdf";
-        }
-      }
-    ]
+          location.href = "/[ENG]-Matias-Rios-CV-Dec-24.pdf";
+        },
+      },
+    ],
   },
   {
     path: "*",
-    component: () => import("pages/Error404.vue")
-  }
+    component: () => import("pages/Error404.vue"),
+  },
 ];
 
 export default routes;
