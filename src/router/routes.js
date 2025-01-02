@@ -1,3 +1,5 @@
+const RESUME_URL = "/[ENG]-Matias-Rios-CV-Dec-24.pdf";
+
 const routes = [
   {
     path: "/",
@@ -8,7 +10,7 @@ const routes = [
         path: "resume",
         name: "resume",
         beforeEnter() {
-          location.href = "/[ENG]-Matias-Rios-CV-Dec-24.pdf";
+          location.href = RESUME_URL;
         },
       },
     ],
